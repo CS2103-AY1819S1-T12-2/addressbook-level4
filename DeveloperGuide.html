@@ -1,87 +1,315 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 4 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 4 - Developer Guide</title><link rel="stylesheet" href="./gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 4 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="./coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 4 - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>At this time, no changes have been made to the Developer Guide. The following are changes that will be made in future versions:</p>
+</div>
+<div class="paragraph">
+<p><strong>Outline</strong></p>
+</div>
+<div class="paragraph">
+<p>EventsCenter will no longer be handling r/w actions to disk. Instead, Logic will forward all write requests to manage writing to disk separately. This refactoring has been tagged as Refactor-0.</p>
+</div>
+<div class="paragraph">
+<p><em>Refactor-0:</em></p>
+</div>
+<div class="paragraph">
+<p>The current model for new changes is <code>User&#8594; UI &#8594; Logic &#8594; Model &#8594; EventsCenter &#8594; Storage</code>. This will be changed to <code>Model &#8594; EventsCenter and Model &#8594;Storage</code></p>
+</div>
+<div class="paragraph">
+<p>The new flow of events will be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>deletePerson(p) references Model</p>
+</li>
+<li>
+<p>Model calls post(AddressBookChangedEvent) to eventcenter</p>
+</li>
+<li>
+<p>EventsCenter Executes handleAddressBookChangedEvent() by writing to stdout</p>
+</li>
+<li>
+<p>Model then calls Storage to save changes to file through storeAddressBookChangedEvent()</p>
+</li>
+<li>
+<p>Storage writes changes, and returns write/exit status to Model</p>
+</li>
+<li>
+<p>Model, which waits for this return value (Implemented as CompletableFuture object), forwards return value to EventsCenter as handle fileModification(String)</p>
+</li>
+<li>
+<p>EventsCenter handles file modification by writing to stdout</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As information in the PatientBook is sensitive, all patients and appointments must have a form of direct addressability. This is achieved through IDs. This change has been tagged as Refactor-1.</p>
+</div>
+<div class="paragraph">
+<p><em>Refactor-1:</em></p>
+</div>
+<div class="paragraph">
+<p>Currently, every person is handled as a person object which is passed by list reference rather than person reference. If multiple people have the same name, the wrong person may be deleted.</p>
+</div>
+<div class="paragraph">
+<p>To fix this, the current Person object implementation will be kept, except HashMap&lt;Int, Person&gt; will be used to store the mapping between a person&#8217;s ID and information. The ID will then be passed from object to object. When listing in User mode, all Persons displayed will have their ID in front; e.g. [ID: p10512] Jeremy Tan.</p>
+</div>
+<div class="paragraph">
+<p>A similar implementation will be used for Calendar events.</p>
+</div>
+<div class="paragraph">
+<p>The IDs will follow the following format:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Patients: character p, followed by integer. Automatically assigned when patient iscreated. PatientID will act as primary key if patient data is stored in relationaldatabase in the future.</p>
+</li>
+<li>
+<p>Appointment: character a, followed by integer. Automatically assigned whenappointment is created. AppointmentID will act as primary key if calendar data isstored in relational database in the future.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Finally, PatientDisplay and CalendarDisplay will be packaged into a ResultDisplayManager, with the former two realized through the existing ResultDisplay class (which in turn contains ResultListPanel and BrowserPanel). ResultDisplayManager will handle which mode the application is currently in, as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Patient Management Mode: PatientDisplay</p>
+</li>
+<li>
+<p>Appointment Management Mode : CalendarDisplay</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>User Stories</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As a doctor new to this software, I can view all possible operations by help command, so that Ican learn how to use it quickly.</p>
+</li>
+<li>
+<p>As an organized doctor, I can record health and body related information of a patient, so that Idon’t have to use pen to write it down.</p>
+</li>
+<li>
+<p>As a forgetful doctor, I can search the patient’s name by providing either his first name, lastname or middle name, so that I can recall his name easily.</p>
+</li>
+<li>
+<p>As a responsible doctor, I can edit any information of by patient by searching for his name or ID,so that I can make sure all data are updated.</p>
+</li>
+<li>
+<p>As a forgetful doctor, I can view the height, weight, BMI, medicine allergy and other healthrelated information of a patient by typing his name or ID, so that I can give diagnosis according to the information.</p>
+</li>
+<li>
+<p>As a forgetful doctor, I can view the patient name by typing a time-slot, so that I will know whowill be consulting me.</p>
+</li>
+<li>
+<p>As a responsible doctor, I can view the timeslot by typing a patient name or ID, so that I canaccess whether a patient is receiving enough guidance.</p>
+</li>
+<li>
+<p>As a busy doctor, I can view my current available time slots, so that I can make appointmentsmore easily.</p>
+</li>
+<li>
+<p>As an organized doctor, I can obtain an easily readable timetable for my appointments, so that Iknow how my schedule is like.</p>
+</li>
+<li>
+<p>As a responsible doctor, I can edit appointment details, so that in cases where there arechanges to an appointment, I can keep myself updated.</p>
+</li>
+<li>
+<p>As a caring doctor, I can find out the most dangerous patients using sort command, so that I cankeep track of their states actively.</p>
+</li>
+<li>
+<p>As an intern doctor, I can find the suggested prescription by entering the name of the disease,so that I can know how to give treatment when I forget.</p>
+</li>
+<li>
+<p>As an intern doctor, I can find the suggested possible diseases by entering the symptoms, sothat I can give diagnosis when I feel uncertain.</p>
+</li>
+<li>
+<p>As an intern doctor, I can calculate the dosing by inputting the patient’s disease and patient’s IDor name, so that I can know how to give prescription quantitatively.</p>
+</li>
+<li>
+<p>As a doctor who keeps learning, I can learn more about the different kinds of symptoms in thesymptom database anytime, so that I can perfect my relevant knowledge when I am free.</p>
+</li>
+<li>
+<p>As a responsible doctor, I can keep a record of patients who consulted me in the last week, sothat I can contact them to obtain feedback.</p>
+</li>
+<li>
+<p>As a time-saving doctor, I can filter my patients according to location, so that in case I need tovisit my patients, I can choose to visit those living in the same area at one go.</p>
+</li>
+<li>
+<p>As a forgetful doctor, I can list all the commands that I have entered by the history command,so that I can recall my previous operations.</p>
+</li>
+<li>
+<p>As a careful doctor, all the data will be saved in my disk automatically, so that I don’t need toworry about loss of data.</p>
+</li>
+<li>
+<p>As a doctor, I can receive a prompt for how to enter a command, so that if I accidentally entermy command in the wrong format, I can quickly recall the correct format.</p>
+</li>
+<li>
+<p>As a health-conscious doctor, I can view my workload for each week, so that I can make sure Ihave a good work-life balance.</p>
+</li>
+<li>
+<p>As a doctor, I can check whether a specific drug is available, so that I can ensure thatprescription I give has enough stocks.</p>
+</li>
+<li>
+<p>As a forward-looking doctor, I can delete the patients who have recovered, so that I don’t needto think of them anymore.</p>
+</li>
+<li>
+<p>As a doctor, I can enter my appointment details in natural language, so that I do not need tomemorize a strict format for this command.</p>
+</li>
+<li>
+<p>As a doctor, I can clear my timetable if there are many appointment changes, so that I canredesign my timetable from scratch.</p>
+</li>
+<li>
+<p>As a doctor, I can clear my patient book, so that I do not have to delete entry by entry.</p>
+</li>
+<li>
+<p>As a time-saving doctor, when I delete a specific patient, his corresponding appointment (if any)will also be cancelled from my timetable automatically, so that it saves my time from editing my timetable manually.</p>
+</li>
+<li>
+<p>As a diligent doctor, I can edit my saved prescriptions in case it requires an update, so that I canalways get the updated prescriptions when looking for solutions for a particular disease.</p>
+</li>
+<li>
+<p>As a hardworking doctor, I can print out the list of all my patients and hang it on my wall, sothat I am always motivated.</p>
+</li>
+<li>
+<p>As a forgetful doctor, I can append any note when I create an appointment, so that when I viewmy appointment I can quickly recall my purpose for the appointment.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Project Management</strong></p>
+</div>
+<div class="paragraph">
+<p>All: Refactoring code</p>
+</div>
+<div class="paragraph">
+<p>Feature 1 : ResultDisplayManager</p>
+</div>
+<div class="paragraph">
+<p>This Feature comprises the ResultDisplayManager class, which spawns PatientDisplay and Calendar Display (both of which extend ResultDisplay).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>V1.0: Patients display correctly. Mark deleted patients correctly. Ensure that patient information and details show correctly in Browser panel upon selection. (Optional: appointments for a patient are listed in browser panel. Group note: this might not be feasible as it invokes functions that are usually done through CLI, unless BrowserPanel can invoke functions in its display as well. May require javascript embedding if we stick with HTML output. If we stick with java, then we have to find some way to format the output correctly)</p>
+</li>
+<li>
+<p>V1.1: Calendar displays correctly. Possibly include grid calendar under Browser panel, then displaying patient details directly to CLI output. Application has to be manually launched in patient OR calendar management mode.</p>
+</li>
+<li>
+<p>V1.2: Result Display Manager can switch between patient and calendar management mode correctly.</p>
+</li>
+<li>
+<p>V1.3: Modes are identified through a mapping given by HashMap&lt;UIMode, ResultDisplay&gt;, with UIMode being an Enum. This facilitates future expansion as we can add more UI elemetns. Automatically switching between the two is done through an interface methods governed by:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switch to Patient Management mode: ResultDisplayManager.switch_ui_mode(UIMode.PATIENT)</p>
+</li>
+<li>
+<p>Switch to Calendar Management mode:ResultDisplayManager.switch_ui_mode(UIMode.CALENDAR)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>V1.4: Complete Unit tests to ensure future updates will not break the behaviour. This can be done by ensuring that running certain commands will correctly switch between the two modes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feature 2: Logic for adding/removing patients and appointments</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>V1.0: Morph existing AB4 code to accommodate patients</p>
+</li>
+<li>
+<p>V1.1: Make a new set of storage logic to accommodate appointments</p>
+</li>
+<li>
+<p>V1.2: Isolate Storage logic from EventsCenter as described in Refactor0. Ensure that files are written to/from storage correctly through Storage interface API calls.</p>
+</li>
+<li>
+<p>V1.3 Complete implementation of Refactor0 so that events are logged correctly through EventsCenter API calls. Write unit tests to ascertain this behaviour.</p>
+</li>
+<li>
+<p>V1.4: Complete unit tests to ensure that future updates will not break the behaviour.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feature 3: Storage Logic and BrowserPanel Display</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>V1.0 Create Storage for appointments, morph AB4 logic to accommodate two separate sets of data.</p>
+</li>
+<li>
+<p>V1.1 Create interface API calls for I/O to storage. Create unit tests to ensure that these calls work correctly.</p>
+</li>
+<li>
+<p>V1.2 Modify EventsCenter API calls, and create modify/create calls to accommodate new logging information for storage I/O.</p>
+</li>
+<li>
+<p>V1.3 Format output for BrowserPanel. BrowserPanel will accept a person object (in the case of PatientDisplay) or an appointment object (in the case of Calendar display) and format the output appropriately either through Java or generating and displaying a temporary HTML document.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feature 4: Natural Language Processing for appointment dates</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>V1.0 – V1.1: Create DateTimeParser API with ‘DateTime parseDateTime(String dateTimeInput)’ call.</p>
+</li>
+<li>
+<p>V1.2-V1.3: Create Unit Tests for DateTimeParser, including both commands which trigger DateTimeParser interface API calls and sample String inputs for the calls themselves.</p>
+</li>
+<li>
+<p>V1.4: Ensure that DateTimeParser works correctly with all commands which call it, ie. Correct strings are passed in. (Coordinate with Feature 2)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feature 5: Integration of Static Dataset to map symptoms and diagnoses/prescriptions</p>
+</div>
+<div class="paragraph">
+<p>This feature will use the appointment details as the text used to map symptoms and diagnoses/prescriptions. Possible WebMD integration.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>V1.0 Create database which maps common symptoms and prescriptions</p>
+</li>
+<li>
+<p>V1.1 Implement Search/Pattern Matching: Create API call SymptomMap.getInfo(String), which returns diagnoses and recommended prescriptions.</p>
+</li>
+<li>
+<p>V1.3 Create unit tests which ensure that the mapping is accurate and repeatable. Perform simple reduction of search terms through omission of non-essential words from symptoms, and searching for keywords, then feeding it into the API method.</p>
+</li>
+<li>
+<p>V1.4 Create commands to instruct PatientBook to identify diagnoses and prescriptions based on symptoms given inside appointment details.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
 </div>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a>
-<ul class="sectlevel2">
-<li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
-</ul>
-</li>
-<li><a href="#design">2. Design</a>
-<ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
-</ul>
-</li>
-<li><a href="#implementation">3. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#documentation">4. Documentation</a>
-<ul class="sectlevel2">
-<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
-<li><a href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></li>
-<li><a href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></li>
-<li><a href="#site-template">4.6. Site Template</a></li>
-</ul>
-</li>
-<li><a href="#Testing">5. Testing</a>
-<ul class="sectlevel2">
-<li><a href="#running-tests">5.1. Running Tests</a></li>
-<li><a href="#types-of-tests">5.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">6. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">6.1. Build Automation</a></li>
-<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
-<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
-<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
-<li><a href="#making-a-release">6.5. Making a Release</a></li>
-<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
-<ul class="sectlevel2">
-<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
-<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
-</ul>
-</li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
-<li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect1">
@@ -2301,4 +2529,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-19 16:58:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-19 17:58:56 UTC</div></div></div></body></html>
