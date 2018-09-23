@@ -20,6 +20,11 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  *
  * Supports a minimal set of list operations.
  *
+ * Developer note: We have modified addressbook-level4 to use an ID-based system to distinguish between persons, so
+ * both Person#isSamePerson(Person) and Person#equals(Object) match by PersonID. However, the methods are left separate
+ * in case future developers wish to separate them again. Remember to update the behaviour for unit tests if this is
+ * the case.
+ *
  * @see Person#isSamePerson(Person)
  */
 public class UniquePersonList implements Iterable<Person> {
@@ -67,6 +72,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * TODO: Set remove to only flag person as removed, rather than physically removing the person from list.
      * Removes the equivalent person from the list.
      * The person must exist in the list.
      */
@@ -120,7 +126,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code persons} contain only unique persons.
      */
     private boolean personsAreUnique(List<Person> persons) {
         for (int i = 0; i < persons.size() - 1; i++) {
