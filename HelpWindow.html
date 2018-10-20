@@ -35,6 +35,7 @@
 </li>
 <li><a href="#faq">4. FAQ</a></li>
 <li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#glossary">6. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -158,7 +159,7 @@ In some places in this guide, you will find that two or more commands have been 
 <div class="sect2">
 <h3 id="switching-to-patient-management-mode-code-mode-user-patient-code"><a class="link" href="#switching-to-patient-management-mode-code-mode-user-patient-code">3.2. Switching to patient management mode : <code>mode {user/patient}</code></a></h3>
 <div class="paragraph">
-<p>Switches the application to patient management mode. In this mode, you can view and manage your patient details and information.<br></p>
+<p>Switching the application to patient management mode. In this mode, you can view and manage your patient details and information.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>mode {user/patient}</code></p>
@@ -167,7 +168,7 @@ In some places in this guide, you will find that two or more commands have been 
 <div class="sect2">
 <h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br></p>
+<p>Showing a list of all persons in the address book.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list</code></p>
@@ -176,7 +177,7 @@ In some places in this guide, you will find that two or more commands have been 
 <div class="sect2">
 <h3 id="switching-to-appointment-management-mode-code-mode-appointment-cal-calendar-appt-code"><a class="link" href="#switching-to-appointment-management-mode-code-mode-appointment-cal-calendar-appt-code">3.4. Switching to appointment management mode : <code>mode {appointment/cal/calendar/appt}</code></a></h3>
 <div class="paragraph">
-<p>Switches the application to appointment management mode. In this mode, you can view and manage your appointments scheduled.<br></p>
+<p>Switching the application to appointment management mode. In this mode, you can view and manage your appointments scheduled.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>mode {appointment/cal/calendar/appt}</code></p>
@@ -185,8 +186,8 @@ In some places in this guide, you will find that two or more commands have been 
 <div class="sect2">
 <h3 id="adding-a-patient-code-add-patient-code"><a class="link" href="#adding-a-patient-code-add-patient-code">3.5. Adding a patient : <code>add patient</code></a></h3>
 <div class="paragraph">
-<p>Adds a new patient to the address book.
-Switches application to patient management mode automatically.</p>
+<p>Adding a new patient to the address book.
+Switching the application to patient management mode automatically.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BLOOD_TYPE] [t/TAG] …</code></p>
@@ -223,8 +224,8 @@ A person can have any number of tags, including 0
 <div class="sect2">
 <h3 id="creating-an-appointment-code-make-appointment-code"><a class="link" href="#creating-an-appointment-code-make-appointment-code">3.6. Creating an appointment : <code>make appointment</code></a></h3>
 <div class="paragraph">
-<p>Creates a new appointment and places it in the calendar where appropriate.
-Switches application to appointment management mode automatically.<br></p>
+<p>Creating a new appointment and places it in the calendar where appropriate.
+Switching the application to appointment management mode automatically.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>{schedule/make} {appointment /appt} for {PATIENT ID/PATIENT NAME} [DATE AND TIME] [;] …</code></p>
@@ -258,7 +259,7 @@ Command parses natural expressions for <code>[DATE AND TIME]</code>. Anything af
 <div class="sect2">
 <h3 id="listing-all-persons-code-list-patients-code"><a class="link" href="#listing-all-persons-code-list-patients-code">3.7. Listing all persons : <code>list patients</code></a></h3>
 <div class="paragraph">
-<p>Automatically switches to patient management mode, and lists all patients in the patient record.<br></p>
+<p>Switching to patient management mode automatically, and listing all patients in the patient record.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list patient/patients</code></p>
@@ -267,7 +268,7 @@ Command parses natural expressions for <code>[DATE AND TIME]</code>. Anything af
 <div class="sect2">
 <h3 id="listing-all-appointments-code-list-appointments-code"><a class="link" href="#listing-all-appointments-code-list-appointments-code">3.8. Listing all appointments : <code>list appointments</code></a></h3>
 <div class="paragraph">
-<p>Automatically switches to appointment management mode, and lists all appointments from now in the record.<br></p>
+<p>Switching to appointment management mode automatically, and listing all appointments from now in the record.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list {appointments/appointment/appt/appts} [all]</code></p>
@@ -288,7 +289,7 @@ Using <code>all</code> will also display all past appointments.
 <div class="sect2">
 <h3 id="editing-patient-information-code-change-patient-code"><a class="link" href="#editing-patient-information-code-change-patient-code">3.9. Editing patient information : <code>change patient</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing patient in the address book. Automatically switches to patient management mode. Restores the address book to the state before the previous <em>undoable</em> command was executed.<br></p>
+<p>Editing an existing patient in the address book. Automatically switching to patient management mode. Restoring the address book to the state before the previous <em>undoable</em> command was executed.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>{change/edit} patient {PATIENT_NAME/PATIENT_ID} [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] [b/BLOOD TYPE]</code></p>
@@ -298,7 +299,7 @@ Using <code>all</code> will also display all past appointments.
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person specified by <code>PATIENT_NAME</code> or <code>PATIENT_ID</code>. If the application has any uncertainties, e.g. patients having the same name, a prompt will appear to select the appropriate person.</p>
+<p>Editing the person specified by <code>PATIENT_NAME</code> or <code>PATIENT_ID</code>. If the application has any uncertainties, e.g. patients having the same name, a prompt will appear to select the appropriate person.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -333,11 +334,13 @@ Using <code>all</code> will also display all past appointments.
 <div class="sect2">
 <h3 id="editing-an-appointment-code-change-appointment-code"><a class="link" href="#editing-an-appointment-code-change-appointment-code">3.10. Editing an appointment : <code>change appointment</code></a></h3>
 <div class="paragraph">
-<p>Automatically enters appointment management mode, then edits an existing appointment in the calendar.<br>
-<strong>Format:</strong> <code>{change/edit} {appointment/appt} {DATE AND TIME/APPOINTMENT_ID} NEW_DETAILS</code></p>
+<p>Entering appointment management mode automatically, then editing an existing appointment in the calendar.<br></p>
 </div>
 <div class="paragraph">
-<p>Edits the details for the appointment.</p>
+<p><strong>Format:</strong> <code>{change/edit} {appointment/appt} {DATE AND TIME/APPOINTMENT_ID} NEW_DETAILS</code></p>
+</div>
+<div class="paragraph">
+<p>Editing the details for the appointment.</p>
 </div>
 </div>
 <div class="sect2">
@@ -390,7 +393,7 @@ Returns any person whose name contain 'Betsy', 'Tim' or 'John'.</p>
 <div class="sect2">
 <h3 id="locating-an-appointment-code-find-appointment-code"><a class="link" href="#locating-an-appointment-code-find-appointment-code">3.12. Locating an appointment : <code>find appointment</code></a></h3>
 <div class="paragraph">
-<p>Automatically enters appointment management mode, then finds appointments a person or in a given date range.</p>
+<p>Entering appointment management mode automatically, then finding appointments a person or in a given date range.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format 1:</strong> <code>find [all] {appointment/appointments/appt/appts} [for] {PATIENT_ID/PATIENT_NAME}</code></p>
@@ -411,11 +414,11 @@ Returns any person whose name contain 'Betsy', 'Tim' or 'John'.</p>
 <ul>
 <li>
 <p><code>find all appt John Doe</code><br>
-Returns all appointments for John Doe, including past appointments.</p>
+Returning all appointments for John Doe, including past appointments.</p>
 </li>
 <li>
 <p><code>find appointments from last Monday till now</code><br>
-Returns all appointments from last Monday (defaults to 12am) to the time now.</p>
+Returning all appointments from last Monday (defaults to 12am) to the time now.</p>
 </li>
 </ul>
 </div>
@@ -423,7 +426,7 @@ Returns all appointments from last Monday (defaults to 12am) to the time now.</p
 <div class="sect2">
 <h3 id="deleting-a-patient-record-code-delete-patient-code"><a class="link" href="#deleting-a-patient-record-code-delete-patient-code">3.13. Deleting a patient record : <code>delete patient</code></a></h3>
 <div class="paragraph">
-<p>Deletes a patient. Automatically enters patient management mode. Due to the nature of medical records, patient records will only be marked as deleted, and displayed as such. They will never disappear completely.<br></p>
+<p>Deleting a patient. Automatically entering patient management mode. Due to the nature of medical records, patient records will only be marked as deleted, and displayed as such. They will never disappear completely.<br></p>
 </div>
 <div class="paragraph">
 <p>Deleted patients will not surface on search/list commands and cannot be interacted with in future commands.</p>
@@ -435,7 +438,7 @@ Returns all appointments from last Monday (defaults to 12am) to the time now.</p
 <div class="sect2">
 <h3 id="deleting-an-appointment-code-delete-appointment-code"><a class="link" href="#deleting-an-appointment-code-delete-appointment-code">3.14. Deleting an appointment : <code>delete appointment</code></a></h3>
 <div class="paragraph">
-<p>Deletes an appointment. Automatically enters appointment management mode.</p>
+<p>Deleting an appointment. Automatically entering appointment management mode.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>delete {appointment/appt} [APPOINTMENT_ID]</code></p>
@@ -450,7 +453,7 @@ Returns all appointments from last Monday (defaults to 12am) to the time now.</p
 <div class="sect2">
 <h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.15. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
-<p>Lists all commands that you have entered in reverse chronological order.</p>
+<p>Lists=ing all commands that you have entered in reverse chronological order.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>history</code></p>
@@ -471,7 +474,7 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 <div class="sect2">
 <h3 id="clearing-the-calendar-code-clear-calendar-code"><a class="link" href="#clearing-the-calendar-code-clear-calendar-code">3.16. Clearing the calendar : <code>clear calendar</code></a></h3>
 <div class="paragraph">
-<p>Empties out all appointments scheduled from the calendar.</p>
+<p>Emptying out all appointments scheduled from the calendar.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>clear {calendar/cal/appointments/appts}</code></p>
@@ -480,7 +483,7 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 <div class="sect2">
 <h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.</p>
+<p>Exiting the program.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>exit</code></p>
@@ -559,4 +562,20 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-19 18:08:44 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">6. Glossary</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Calendar Mode:</strong>
+Same as <code>Appointment Mode</code>. It is the mode which allows users to view their current appointments with the patients.
+Users can switch to the Calendar mode using <code>mode</code> command by adding <code>calendar</code>, <code>cal</code>, <code>appointment</code> or <code>appt</code> after
+the command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Patient Mode:</strong>
+Same as <code>User Mode</code>. It is the mode which allows users to view the patients and their personal medical details .
+Users can switch to the Patient mode using <code>mode</code> command by adding <code>patient</code> or <code>user</code> after the command.</p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-20 13:55:03 UTC</div></div></div></body></html>

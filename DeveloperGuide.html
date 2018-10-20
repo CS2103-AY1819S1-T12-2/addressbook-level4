@@ -1,315 +1,91 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 4 - Developer Guide</title><link rel="stylesheet" href="./gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>PatientBook - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 4 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>PatientBook - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
-<p>At this time, no changes have been made to the Developer Guide. The following are changes that will be made in future versions:</p>
+<p>By: <code>T12-2</code>      Since: <code>Aug 2018</code>      Licence: <code>MIT</code></p>
 </div>
-<div class="paragraph">
-<p><strong>Outline</strong></p>
 </div>
-<div class="paragraph">
-<p>EventsCenter will no longer be handling r/w actions to disk. Instead, Logic will forward all write requests to manage writing to disk separately. This refactoring has been tagged as Refactor-0.</p>
-</div>
-<div class="paragraph">
-<p><em>Refactor-0:</em></p>
-</div>
-<div class="paragraph">
-<p>The current model for new changes is <code>User&#8594; UI &#8594; Logic &#8594; Model &#8594; EventsCenter &#8594; Storage</code>. This will be changed so that <code>Model &#8594; EventsCenter</code> and <code>Model &#8594; Storage</code> are separate.</p>
-</div>
-<div class="paragraph">
-<p>The new flow of events will be:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>deletePerson(p) references Model</p>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#setting-up">1. Setting up</a>
+<ul class="sectlevel2">
+<li><a href="#prerequisites">1.1. Prerequisites</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
+<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
+</ul>
 </li>
-<li>
-<p>Model calls post(AddressBookChangedEvent) to eventcenter</p>
+<li><a href="#design">2. Design</a>
+<ul class="sectlevel2">
+<li><a href="#Design-Architecture">2.1. Architecture</a></li>
+<li><a href="#Design-Ui">2.2. UI component</a></li>
+<li><a href="#Design-Logic">2.3. Logic component</a></li>
+<li><a href="#Design-Model">2.4. Model component</a></li>
+<li><a href="#Design-Storage">2.5. Storage component</a></li>
+<li><a href="#Design-Commons">2.6. Common classes</a></li>
+</ul>
 </li>
-<li>
-<p>EventsCenter Executes handleAddressBookChangedEvent() by writing to stdout</p>
+<li><a href="#implementation">3. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#on-the-fly-switching-between-modes">3.1. On-the-fly Switching between Modes</a></li>
+<li><a href="#natural-language-processing-for-scheduling">3.2. Natural Language Processing for Scheduling</a></li>
+<li><a href="#diagnosis">3.3. Diagnosis</a></li>
+<li><a href="#deletion-of-entries-from-working-dataset">3.4. Deletion of Entries from Working Dataset</a></li>
+<li><a href="#undo-redo-coming-in-v1-4">3.5. Undo/Redo (Coming in v1.4)</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#drug-database-search">3.8. Drug Database Search</a></li>
+</ul>
 </li>
-<li>
-<p>Model then calls Storage to save changes to file through storeAddressBookChangedEvent()</p>
+<li><a href="#documentation">4. Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
+<li><a href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></li>
+<li><a href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></li>
+<li><a href="#site-template">4.6. Site Template</a></li>
+</ul>
 </li>
-<li>
-<p>Storage writes changes, and returns write/exit status to Model</p>
+<li><a href="#Testing">5. Testing</a>
+<ul class="sectlevel2">
+<li><a href="#running-tests">5.1. Running Tests</a></li>
+<li><a href="#types-of-tests">5.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
+</ul>
 </li>
-<li>
-<p>Model, which waits for this return value (Implemented as CompletableFuture object), forwards return value to EventsCenter as handle fileModification(String)</p>
+<li><a href="#dev-ops">6. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">6.1. Build Automation</a></li>
+<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
+<li><a href="#making-a-release">6.5. Making a Release</a></li>
+<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
+</ul>
 </li>
-<li>
-<p>EventsCenter handles file modification by writing to stdout</p>
+<li><a href="#GetStartedProgramming">Appendix A: Suggested Programming Tasks to Get Started</a>
+<ul class="sectlevel2">
+<li><a href="#GetStartedProgramming-EachComponent">A.1. Improving each component</a></li>
+<li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
+</ul>
 </li>
-</ol>
-</div>
-<div class="paragraph">
-<p>As information in the PatientBook is sensitive, all patients and appointments must have a form of direct addressability. This is achieved through IDs. This change has been tagged as Refactor-1.</p>
-</div>
-<div class="paragraph">
-<p><em>Refactor-1:</em></p>
-</div>
-<div class="paragraph">
-<p>Currently, every person is handled as a person object which is passed by list reference rather than person reference. If multiple people have the same name, the wrong person may be deleted.</p>
-</div>
-<div class="paragraph">
-<p>To fix this, the current Person object implementation will be kept, except HashMap&lt;Int, Person&gt; will be used to store the mapping between a person&#8217;s ID and information. The ID will then be passed from object to object. When listing in User mode, all Persons displayed will have their ID in front; e.g. [ID: p10512] Jeremy Tan.</p>
-</div>
-<div class="paragraph">
-<p>A similar implementation will be used for Calendar events.</p>
-</div>
-<div class="paragraph">
-<p>The IDs will follow the following format:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Patients: character p, followed by integer. Automatically assigned when patient iscreated. PatientID will act as primary key if patient data is stored in relationaldatabase in the future.</p>
-</li>
-<li>
-<p>Appointment: character a, followed by integer. Automatically assigned whenappointment is created. AppointmentID will act as primary key if calendar data isstored in relational database in the future.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Finally, PatientDisplay and CalendarDisplay will be packaged into a ResultDisplayManager, with the former two realized through the existing ResultDisplay class (which in turn contains ResultListPanel and BrowserPanel). ResultDisplayManager will handle which mode the application is currently in, as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Patient Management Mode: PatientDisplay</p>
-</li>
-<li>
-<p>Appointment Management Mode : CalendarDisplay</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>User Stories</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>As a doctor new to this software, I can view all possible operations by help command, so that Ican learn how to use it quickly.</p>
-</li>
-<li>
-<p>As an organized doctor, I can record health and body related information of a patient, so that Idon’t have to use pen to write it down.</p>
-</li>
-<li>
-<p>As a forgetful doctor, I can search the patient’s name by providing either his first name, lastname or middle name, so that I can recall his name easily.</p>
-</li>
-<li>
-<p>As a responsible doctor, I can edit any information of by patient by searching for his name or ID,so that I can make sure all data are updated.</p>
-</li>
-<li>
-<p>As a forgetful doctor, I can view the height, weight, BMI, medicine allergy and other healthrelated information of a patient by typing his name or ID, so that I can give diagnosis according to the information.</p>
-</li>
-<li>
-<p>As a forgetful doctor, I can view the patient name by typing a time-slot, so that I will know whowill be consulting me.</p>
-</li>
-<li>
-<p>As a responsible doctor, I can view the timeslot by typing a patient name or ID, so that I canaccess whether a patient is receiving enough guidance.</p>
-</li>
-<li>
-<p>As a busy doctor, I can view my current available time slots, so that I can make appointmentsmore easily.</p>
-</li>
-<li>
-<p>As an organized doctor, I can obtain an easily readable timetable for my appointments, so that Iknow how my schedule is like.</p>
-</li>
-<li>
-<p>As a responsible doctor, I can edit appointment details, so that in cases where there arechanges to an appointment, I can keep myself updated.</p>
-</li>
-<li>
-<p>As a caring doctor, I can find out the most dangerous patients using sort command, so that I cankeep track of their states actively.</p>
-</li>
-<li>
-<p>As an intern doctor, I can find the suggested prescription by entering the name of the disease,so that I can know how to give treatment when I forget.</p>
-</li>
-<li>
-<p>As an intern doctor, I can find the suggested possible diseases by entering the symptoms, sothat I can give diagnosis when I feel uncertain.</p>
-</li>
-<li>
-<p>As an intern doctor, I can calculate the dosing by inputting the patient’s disease and patient’s IDor name, so that I can know how to give prescription quantitatively.</p>
-</li>
-<li>
-<p>As a doctor who keeps learning, I can learn more about the different kinds of symptoms in thesymptom database anytime, so that I can perfect my relevant knowledge when I am free.</p>
-</li>
-<li>
-<p>As a responsible doctor, I can keep a record of patients who consulted me in the last week, sothat I can contact them to obtain feedback.</p>
-</li>
-<li>
-<p>As a time-saving doctor, I can filter my patients according to location, so that in case I need tovisit my patients, I can choose to visit those living in the same area at one go.</p>
-</li>
-<li>
-<p>As a forgetful doctor, I can list all the commands that I have entered by the history command,so that I can recall my previous operations.</p>
-</li>
-<li>
-<p>As a careful doctor, all the data will be saved in my disk automatically, so that I don’t need toworry about loss of data.</p>
-</li>
-<li>
-<p>As a doctor, I can receive a prompt for how to enter a command, so that if I accidentally entermy command in the wrong format, I can quickly recall the correct format.</p>
-</li>
-<li>
-<p>As a health-conscious doctor, I can view my workload for each week, so that I can make sure Ihave a good work-life balance.</p>
-</li>
-<li>
-<p>As a doctor, I can check whether a specific drug is available, so that I can ensure thatprescription I give has enough stocks.</p>
-</li>
-<li>
-<p>As a forward-looking doctor, I can delete the patients who have recovered, so that I don’t needto think of them anymore.</p>
-</li>
-<li>
-<p>As a doctor, I can enter my appointment details in natural language, so that I do not need tomemorize a strict format for this command.</p>
-</li>
-<li>
-<p>As a doctor, I can clear my timetable if there are many appointment changes, so that I canredesign my timetable from scratch.</p>
-</li>
-<li>
-<p>As a doctor, I can clear my patient book, so that I do not have to delete entry by entry.</p>
-</li>
-<li>
-<p>As a time-saving doctor, when I delete a specific patient, his corresponding appointment (if any)will also be cancelled from my timetable automatically, so that it saves my time from editing my timetable manually.</p>
-</li>
-<li>
-<p>As a diligent doctor, I can edit my saved prescriptions in case it requires an update, so that I canalways get the updated prescriptions when looking for solutions for a particular disease.</p>
-</li>
-<li>
-<p>As a hardworking doctor, I can print out the list of all my patients and hang it on my wall, sothat I am always motivated.</p>
-</li>
-<li>
-<p>As a forgetful doctor, I can append any note when I create an appointment, so that when I viewmy appointment I can quickly recall my purpose for the appointment.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Project Management</strong></p>
-</div>
-<div class="paragraph">
-<p>All: Refactoring code</p>
-</div>
-<div class="paragraph">
-<p>Feature 1 : ResultDisplayManager</p>
-</div>
-<div class="paragraph">
-<p>This Feature comprises the ResultDisplayManager class, which spawns PatientDisplay and Calendar Display (both of which extend ResultDisplay).</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>V1.0: Patients display correctly. Mark deleted patients correctly. Ensure that patient information and details show correctly in Browser panel upon selection. (Optional: appointments for a patient are listed in browser panel. Group note: this might not be feasible as it invokes functions that are usually done through CLI, unless BrowserPanel can invoke functions in its display as well. May require javascript embedding if we stick with HTML output. If we stick with java, then we have to find some way to format the output correctly)</p>
-</li>
-<li>
-<p>V1.1: Calendar displays correctly. Possibly include grid calendar under Browser panel, then displaying patient details directly to CLI output. Application has to be manually launched in patient OR calendar management mode.</p>
-</li>
-<li>
-<p>V1.2: Result Display Manager can switch between patient and calendar management mode correctly.</p>
-</li>
-<li>
-<p>V1.3: Modes are identified through a mapping given by HashMap&lt;UIMode, ResultDisplay&gt;, with UIMode being an Enum. This facilitates future expansion as we can add more UI elemetns. Automatically switching between the two is done through an interface methods governed by:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Switch to Patient Management mode: ResultDisplayManager.switch_ui_mode(UIMode.PATIENT)</p>
-</li>
-<li>
-<p>Switch to Calendar Management mode:ResultDisplayManager.switch_ui_mode(UIMode.CALENDAR)</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>V1.4: Complete Unit tests to ensure future updates will not break the behaviour. This can be done by ensuring that running certain commands will correctly switch between the two modes.</p>
+<li><a href="#product-scope">Appendix B: Product Scope</a></li>
+<li><a href="#user-stories">Appendix C: User Stories</a></li>
+<li><a href="#use-cases">Appendix D: Use Cases</a></li>
+<li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix F: Glossary</a></li>
+<li><a href="#product-survey">Appendix G: Product Survey</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
+<li><a href="#saving-data">H.3. Saving data</a></li>
+</ul>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Feature 2: Logic for adding/removing patients and appointments</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>V1.0: Morph existing AB4 code to accommodate patients</p>
-</li>
-<li>
-<p>V1.1: Make a new set of storage logic to accommodate appointments</p>
-</li>
-<li>
-<p>V1.2: Isolate Storage logic from EventsCenter as described in Refactor0. Ensure that files are written to/from storage correctly through Storage interface API calls.</p>
-</li>
-<li>
-<p>V1.3 Complete implementation of Refactor0 so that events are logged correctly through EventsCenter API calls. Write unit tests to ascertain this behaviour.</p>
-</li>
-<li>
-<p>V1.4: Complete unit tests to ensure that future updates will not break the behaviour.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Feature 3: Storage Logic and BrowserPanel Display</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>V1.0 Create Storage for appointments, morph AB4 logic to accommodate two separate sets of data.</p>
-</li>
-<li>
-<p>V1.1 Create interface API calls for I/O to storage. Create unit tests to ensure that these calls work correctly.</p>
-</li>
-<li>
-<p>V1.2 Modify EventsCenter API calls, and create modify/create calls to accommodate new logging information for storage I/O.</p>
-</li>
-<li>
-<p>V1.3 Format output for BrowserPanel. BrowserPanel will accept a person object (in the case of PatientDisplay) or an appointment object (in the case of Calendar display) and format the output appropriately either through Java or generating and displaying a temporary HTML document.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Feature 4: Natural Language Processing for appointment dates</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>V1.0 – V1.1: Create DateTimeParser API with ‘DateTime parseDateTime(String dateTimeInput)’ call.</p>
-</li>
-<li>
-<p>V1.2-V1.3: Create Unit Tests for DateTimeParser, including both commands which trigger DateTimeParser interface API calls and sample String inputs for the calls themselves.</p>
-</li>
-<li>
-<p>V1.4: Ensure that DateTimeParser works correctly with all commands which call it, ie. Correct strings are passed in. (Coordinate with Feature 2)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Feature 5: Integration of Static Dataset to map symptoms and diagnoses/prescriptions</p>
-</div>
-<div class="paragraph">
-<p>This feature will use the appointment details as the text used to map symptoms and diagnoses/prescriptions. Possible WebMD integration.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>V1.0 Create database which maps common symptoms and prescriptions</p>
-</li>
-<li>
-<p>V1.1 Implement Search/Pattern Matching: Create API call SymptomMap.getInfo(String), which returns diagnoses and recommended prescriptions.</p>
-</li>
-<li>
-<p>V1.3 Create unit tests which ensure that the mapping is accurate and repeatable. Perform simple reduction of search terms through omission of non-essential words from symptoms, and searching for keywords, then feeding it into the API method.</p>
-</li>
-<li>
-<p>V1.4 Create commands to instruct PatientBook to identify diagnoses and prescriptions based on symptoms given inside appointment details.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -394,7 +170,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 This will generate all resources required by the application and tests.</p>
 </li>
 <li>
-<p>Open <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson.java</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
+<p>Open <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -407,7 +183,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </li>
 <li>
-<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/commons/util/XmlUtilTest.java"><code>XmlUtilTest.java</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/commons/util/XmlUtilTest.java"><code>XmlUtilTest.java</code></a> and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
 </li>
 </ol>
 </div>
@@ -462,18 +238,15 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level4</code> repo.</p>
-</div>
-<div class="paragraph">
-<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>se-edu/addressbook-level4</code>), you should do the following:</p>
+<p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>CS2103-AY1819-T12-2/main</code>), you should do the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
+<p>Configure the <a href="#Docs-SiteWideDocSettings">site-wide documentation settings</a> in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/build.gradle"><code>build.gradle</code></a>, such as the <code>site-name</code>, to suit your own project.</p>
 </li>
 <li>
-<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
+<p>Replace the URL in the attribute <code>repoURL</code> in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/DeveloperGuide.adoc"><code>DeveloperGuide.adoc</code></a> and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/UserGuide.adoc"><code>UserGuide.adoc</code></a> with the URL of your fork.</p>
 </li>
 </ol>
 </div>
@@ -514,22 +287,6 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.4. Getting started with coding</a></h4>
-<div class="paragraph">
-<p>When you are ready to start coding,</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
-</li>
-<li>
-<p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Suggested Programming Tasks to Get Started</em></a>.</p>
-</li>
-</ol>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -554,21 +311,21 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializes the components in the correct sequence, and connecting them up with each other.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shutting down the components and invoking cleanup methods where necessary.</p>
 </li>
 </ul>
 </div>
@@ -581,7 +338,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <p><code>EventsCenter</code> : This class (written using <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a>) is used by components to communicate with other components using events (i.e. a form of <em>Event Driven</em> design)</p>
 </li>
 <li>
-<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+<p><code>LogsCenter</code> : This class is used by many classes to write log messages to the App&#8217;s log file.</p>
 </li>
 </ul>
 </div>
@@ -643,7 +400,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>AddressBookModel</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -664,7 +421,7 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
+Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>AddressBookModel</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 </td>
 </tr>
 </table>
@@ -682,13 +439,34 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI comprises two main interfaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MainWindow: Supports patient information management</p>
+</li>
+<li>
+<p>ScheduleMainWindow: Supports appointment management</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p><code>MainWindow</code> is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code>
+ etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p><code>ScheduleMainWindow</code> consists of parts as well, including its own copy of <code>CommandBox</code>, <code>ResultDisplay</code>,
+and a <code>ScheduleListPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are
+ in the <code>src/main/resources/view</code> folder. For example, the layout of the
+ <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in
+ <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -699,7 +477,8 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>Executes user commands using the <code>Logic</code> component.</p>
 </li>
 <li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+<p>Binds itself to some data in a <code>Model</code> (Either <code>AddressBookModel</code> or <code>ScheduleModel</code>) so that the UI can auto-update
+when data in the <code>Model</code> changes.</p>
 </li>
 <li>
 <p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
@@ -717,7 +496,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -754,7 +533,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -782,7 +561,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP addressBookModel, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a addressBookModel may look like is given below.<br>
 <br>
 <span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
 </td>
@@ -799,7 +578,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -830,145 +609,331 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<h3 id="on-the-fly-switching-between-modes"><a class="link" href="#on-the-fly-switching-between-modes">3.1. On-the-fly Switching between Modes</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>Switching between patient management and appointment management modes is implemted within the <code>UiManager</code> class.
+This class maintains an instance of both <code>MainWindow</code> and <code>ScheduleMainWindow</code> objects. A <code>ModeChangeEvent</code> will be
+raised and passed to the <code>EventCenter</code>, which calls <code>hide()</code> on the window associated with the current mode,
+and <code>show()</code> on that of the desired mode.</p>
+</div>
+<div class="paragraph">
+<p><code>MainWindow</code>, displaying the patient management interface, is shown on application startup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="natural-language-processing-for-scheduling"><a class="link" href="#natural-language-processing-for-scheduling">3.2. Natural Language Processing for Scheduling</a></h3>
+<div class="paragraph">
+<p>This feature facilitates scheduling, which enables the user to add appointments in the schedule system with user input phrased in natural language, and does so in a conversational process. It mainly implements a command parser which parses natural language user input, and creates the intended <code>ScheduleEvent</code> object to be stored.</p>
+</div>
+<div class="paragraph">
+<p>There are four steps involved in the processing of natural language commands:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>High-Level Parsing: Command-specific, user inputs are broken down into sub-fields</p>
+</li>
+<li>
+<p>Low-Level Parsing: Date/time specific, user inputs for date or duration are parsed into a <code>Pair&lt;Calendar, Calendar&gt;</code> object</p>
+</li>
+<li>
+<p>Further Prompting: User is prompted with a list of available time slots, and required to select a specific time slot</p>
+</li>
+<li>
+<p>Generating Event: The resulting <code>ScheduleEvent</code> object corresponding to the user input is created and sent to <code>Schedule</code> to be stored.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following is an example of a use case, and how the mechanism behaves:</p>
+</div>
+<div class="paragraph">
+<p>User Input: <code>schedule for David Lee next week</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Unlike other commands, the <code>schedule</code> command does not require prefixing each subsequent field. This is to simulate natural language, and eliminates the need for a prefix reference sheet when scheduling appointments for patients.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>High-Level Parsing: The entire string is passed into a <code>ScheduleCommandParser</code> object, and broken down into meaningful sub-strings:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>schedule</code> is the command word, and is discarded.</p>
+</li>
+<li>
+<p><code>David Lee</code> is the name of the patient. The corresponding patient&#8217;s <code>PersonID</code> will be obtained by searching through the list of patients stored in <code>PersonList</code>. Should there be multiple patients with the same name, the application will prompt the user to select the appropriate one. Once the <code>PersonID</code> is obtained, it is stored as an attribute in a new <code>ScheduleEvent</code> object.</p>
+</li>
+<li>
+<p><code>next week</code> is the date/duration keyword, and is carried forward to the next step for further parsing.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Low-Level Parsing: The date/duration string is parsed and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object to represent <code>next week</code>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The program executes a keyword search and invokes the method <code>getWeekDates(currentTime, 1)</code>, where it converts <code>next week</code> into a date range, by doing relevant calculations on a <code>Calendar</code> object which represents the current time. For instance, if the command is executed on 16/10/2018, <code>next week</code> becomes a datetime range from 22/10/2018 0859hrs to 28/10/2018 1801hrs. This range takes into consideration the doctor&#8217;s working hours.</p>
+</li>
+<li>
+<p>Two <code>Calendar</code> objects are created in the process to represent the start and end datetimes. These two objects are then placed in a <code>Pair</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Further Prompting: The user is presented with a list of suggested empty time slots for the appointment, from which one is chosen:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>DateTimeParser</code> finds a list of available time periods within the datetime range identified in low-level parsing, and passes the list as a <code>String</code> into <code>Prompt</code> and <code>UI</code> objects. These then display the results to the user.</p>
+</li>
+<li>
+<p>The user then inputs the desired time slot such as <code>22/10/2018 9:30-10:30</code>.</p>
+</li>
+<li>
+<p>The refined time selection is then passed back to <code>DateTimeParser</code> and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Generating Event: The <code>Pair</code> object from the previous step is added as an attribute in the <code>ScheduleEvent</code> object which is then returned.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Instead of using natural language, the user may also choose to enter a <code>schedule</code> command in a fixed format such as <code>schedule for David Lee <strong>on</strong> 22/10/2018 0930 <strong>to</strong> 1030</code> to create an appointment without further prompts.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrates this process, showing notable steps:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NaturalLanguageProcessingSequenceDiagram.png" alt="NaturalLanguageProcessingSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="diagnosis"><a class="link" href="#diagnosis">3.3. Diagnosis</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The diagnosis feature is facilitated by <code>Diagnosis</code> class. This class contains a private final attribute called
+<code>matchers</code> of type <code>HashMap&lt;Disease, Set&lt;Symptom&gt;&gt;</code>. Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>Diagnosis#hasDisease(Disease disease)</code> – Check if the application contains the disease input by users.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>Diagnosis#getSymptoms(Disease disease)</code> – Get all the related symptoms of a disease input by users</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>Diagnosis#addMatcher(Matcher matcher)</code> – Store a particular disease-symptom matcher input by users.</p>
+</li>
+<li>
+<p><code>Diagnosis#resetMatchers(HashMap&lt;Disease, Set&lt;Symptom&gt;&gt; matchers)</code> – Reset the private attribute with another
+<code>matchers</code>.</p>
+</li>
+<li>
+<p><code>Diagnosis#predictDisease(Set&lt;Symptom&gt;)</code> – Predict a disease for symptoms input by users.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the DiagnosisModel interface as <code>DiagnosisModel# hasDisease(Disease disease)</code>,
+<code>DiagnosisModel#getSymptoms(Disease disease)</code>, <code>DiagnosisModel#addMatcher(Matcher matcher)</code>,
+<code>DiagnosisModel#resetMatchers(HashMap&lt;Disease, Set&lt;Symptom&gt;&gt; matchers)</code> and
+<code>DiagnosisModel#predictDisease(Set&lt;Symptom&gt;)</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the diagnosis mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
+<p>Step 1. The user launches the application for the first time. The <code>Diagnosis</code> will be initialized with a
+<code>HashMap&lt;Disease,Set&lt;Symptom&gt;&gt; matchers</code> stored in the database.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
+<p>Step 2. The user executes <code>disease Influenza</code> command to get symptoms of “Influenza” stored in the patient book.
+The <code>disease</code> command calls <code>DiagnosisModel#hasDisease(Disease disease)</code> first, if the return <code>Boolean</code> value is false,
+the user will be notified with a message stating: “The disease you are looking for is not in our record,
+please add it with <code>addDisease</code> Command”. If the return value is true, it will continue to
+call <code>DiagnosisModel#getSymptoms(Disease disease)</code> and get all the symptoms related to “Influenza” in a <code>Set&lt;Symptom&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<p>Step 3. If the disease is not present in the database record, the user can execute
+<code>addDisease dis/Influenza sym/ncoordination sym/fever sym/pleuritic pain…</code> command to insert
+a disease-symptom matcher into the database record. Now, the <code>addDisease</code> command calls
+<code>DiagnosisModel#addMatcher(Matcher matcher)</code>. Inside the method, <code>Diagnosis#addMatcher(Matcher matcher)</code> will be
+invoked and will return a new <code>matchers</code> of type <code>HashMap</code>. Upon successful return, the system will continue to
+call <code>DiagnosisModel#resetMatchers(HashMap&lt;Disease, Set&lt;Symptom&gt;&gt; matchers&gt;)</code> to update the
+private attribute <code>matchers</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
+<p>Step 4. Now the user decides to execute the command <code>predict</code> to search for a disease in database
+that matches with input symptoms. This command calls <code>DiasnosisModel#predictDisease(Set&lt;Symptom&gt;)</code>
+which runs a searching algorithm to check if such diseases exist. The method returns a <code>set</code> of all
+potential diseases or <code>null</code> if it does not exist.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-disease-symptom-matching-data-structures"><a class="link" href="#aspect-disease-symptom-matching-data-structures">Aspect: Disease-symptom matching data structures</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code>HashMap</code> where the <code>key</code> and <code>value</code> are the disease and set of
+related symptoms respectively.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Better performance in terms of efficiency; duplicate values are also eliminated.</p>
+</li>
+<li>
+<p>Cons: Difficult for other developers to understand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Define a <code>Match</code> class with two private attributes representing the disease and a set of
+related symptoms, then maintain a <code>list</code> of <code>Match</code> objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for new developers to understand when disease-symptom pairs are encapsulated in an object.</p>
+</li>
+<li>
+<p>Cons: May take up more memory, leading to performance issues.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-searching-algorithm-to-support-disease-prediction-operation"><a class="link" href="#aspect-searching-algorithm-to-support-disease-prediction-operation">Aspect: Searching algorithm to support disease prediction operation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Do a linear search to find if a disease that matches all symptoms exists.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and easy for new developers to understand.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of lower efficiency.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+</li>
+<li>
+<p>Cons:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deletion-of-entries-from-working-dataset"><a class="link" href="#deletion-of-entries-from-working-dataset">3.4. Deletion of Entries from Working Dataset</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Instances of <code>Person</code> are currently being deleted via soft-delete: setting the instance variable <code>exists</code> to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instances of <code>ScheduleEvent</code> are currently being deleted directly: removing the objects themselves altogether from the
+data structure encapsulated within <code>Schedule</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-deletion-of-person-or-scheduleevent-entries"><a class="link" href="#aspect-deletion-of-person-or-scheduleevent-entries">Aspect: Deletion of Person or ScheduleEvent Entries</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Deletion is accomplished via soft-delete.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This was chosen for deleting patients from the address book in order to ensure that a patient can never be permanently removed. Preventing deletion ensures that even deceased patients may have their information accessed, and guarantees that accidental deletion will never lead to important patient data being lost. Implementation is done via the addition of an <code>exists</code> field in the Person class.</p>
+</li>
+<li>
+<p>Using this approach for deleting appointments from the schedule will work but is unnecessary as appointment information is not nearly as sensitive as patient data.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Person deletion is accomplished via actual deletion from the person list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Patient data is no longer recoverable after deletion (unless undo/redo is implemented). This is the approach chosen for deleting appointments from the schedule instead, since this information may easily be recovered and is not nearly as sensitive as a patient&#8217;s medical information.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-coming-in-v1-4"><a class="link" href="#undo-redo-coming-in-v1-4">3.5. Undo/Redo (Coming in v1.4)</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.5.1. Proposed Implementation</a></h4>
+<div class="paragraph">
+<p>Undo/Redo is accomplished using <code>VersionedAddressBook</code> and <code>VersionedSchedule</code>. This is encapsulated in the
+<code>ApplicationDataState</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect : How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book and schedule.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -985,7 +950,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person or event being deleted).</p>
 </li>
 <li>
 <p>Cons: We must ensure that the implementation of each individual command are correct.</p>
@@ -1001,14 +966,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book and schedule states.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update <code>HistoryManager</code>, <code>VersionedSchedule</code> and <code>VersionedAddressBook</code>.</p>
 </li>
 </ul>
 </div>
@@ -1032,20 +997,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1076,9 +1035,75 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="drug-database-search"><a class="link" href="#drug-database-search">3.8. Drug Database Search</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to view pharmacological information about medical drugs currently licensed for sale
+in Singapore. It has been partially implemented, but remains in the form of unused code modules at this time.</p>
+</div>
+<div class="sect3">
+<h4 id="currently-implemented"><a class="link" href="#currently-implemented">3.8.1. Currently Implemented</a></h4>
+<div class="paragraph">
+<p>The implementation is contained within a single code module, "DrugSearchUtility.java",
+which accesses a static database stored in "datasetForDrugs.csv", formatted in UTF-8.</p>
+</div>
+<div class="paragraph">
+<p>The database contains several categories of pharmacological metadata about each medical drug licensed for
+sale in Singapore as of September, 2018.</p>
+</div>
+<div class="paragraph">
+<p>The feature has been implemented using the OpenCSV library, which offers tools for manipulating
+.csv (Comma Separated Values) files.</p>
+</div>
+<div class="paragraph">
+<p>A keyword is provided by the user as input to the <code>search()</code> function of the program.
+This input keyword is first matched against a predetermined set of "generic" keywords which occur
+very commonly in the names of drugs, and would therefore make for an unsuitable search query
+(as it would match tens or even hundreds of drugs). For example,
+they keywords "tablet" or "injection" would be rejected as search queries,
+because they would produce hundreds of results.</p>
+</div>
+<div class="paragraph">
+<p>If the keyword passes the above check, it is then iteratively compared against all the
+entries in the drug database, and metadata of the drugs whose names contain the keyword
+are added to a cache.</p>
+</div>
+<div class="paragraph">
+<p>Finally certain metadata about each of the cached drugs - Name, Classification and Active Ingredients -
+are appended successively to a String, and the String is returned. Along with each drug, a message
+is also appended indicating the drug&#8217;s index in the cache, allowing the user to enter
+another command (referring to the index number of a particular search result) in order
+to see the entire pharmacological data (seven categories) for that particular drug. This has
+been done to ensure that search results are not excessively long and verbose.</p>
+</div>
+<div class="paragraph">
+<p>The cache is flushed at the initiation of a new search.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-be-implemented"><a class="link" href="#to-be-implemented">3.8.2. To Be Implemented</a></h4>
+<div class="paragraph">
+<p><strong>Commands:</strong> Commands for accessing the database have yet to be incorporated into the program.</p>
+</div>
+<div class="paragraph">
+<p>These commands will be <code>drug [keyword]</code> (to query the database for drugs matching
+the given keyword, and <code>moreinfo [index]</code> (to view full pharmacological metadata about
+any drug from the search results).</p>
+</div>
+<div class="paragraph">
+<p><strong>Link With Symptom Matcher:</strong> The feature may be integrated with the Symptom Matching feature,
+allowing the user to see recommended prescriptions for a given symptom.</p>
+</div>
+<div class="paragraph">
+<p><strong>Logging And Exception Handling:</strong> The feature currently has it&#8217;s own log file for errors. This will be modified so
+as to use the integrated central logging feature in Patient Book as a whole. Exception handling
+will be modified in this way too.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1148,7 +1173,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect2">
 <h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/se-edu/addressbook-level4/tree/master/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+<p>The <a href="https://github.com/CS2103-AY1819S1-T12-2/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1264,11 +1289,11 @@ One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutco
 <div class="sect2">
 <h3 id="site-template"><a class="link" href="#site-template">4.6. Site Template</a></h3>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
+<p>The files in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
 You can modify them to change some properties of the site&#8217;s design.</p>
 </div>
 <div class="paragraph">
-<p>The files in <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
+<p>The files in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
 These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
 </div>
 <div class="admonitionblock warning">
@@ -1279,7 +1304,7 @@ These template files are written in a mixture of <a href="https://www.ruby-lang.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Modifying the template files in <a href="https://github.com/se-edu/addressbook-level4/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+<p>Modifying the template files in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
 You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
 The SE-EDU team does not provide support for modified template files.</p>
 </div>
@@ -1450,7 +1475,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -1524,10 +1549,10 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
+<p>Just like we store each individual command word constant <code>COMMAND_WORD</code> inside <code>*Command.java</code> (e.g.  <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/commands/FindCommand.java"><code>FindCommand#COMMAND_WORD</code></a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/commands/DeleteCommand.java"><code>DeleteCommand#COMMAND_WORD</code></a>), you need a new constant for aliases as well (e.g. <code>FindCommand#COMMAND_ALIAS</code>).</p>
 </li>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
+<p><a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> is responsible for analyzing command words.</p>
 </li>
 </ul>
 </div>
@@ -1537,7 +1562,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the switch statement in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
+<p>Modify the switch statement in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser#parseCommand(String)</code></a> such that both the proper command word and alias can be used to execute the same intended command.</p>
 </li>
 <li>
 <p>Add new tests for each of the aliases that you have added.</p>
@@ -1560,7 +1585,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 </div>
 <h4 id="code-model-code-component" class="discrete"><code>Model</code> component</h4>
 <div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>model</code>. One day, the <code>logic</code>-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the model API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.</p>
+<p><strong>Scenario:</strong> You are in charge of <code>addressBookModel</code>. One day, the <code>logic</code>-in-charge approaches you for help. He wants to implement a command such that the user is able to remove a particular tag from everyone in the address book, but the addressBookModel API does not support such a functionality at the moment. Your job is to implement an API method, so that your teammate can use your API to implement his command.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1587,13 +1612,13 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
+<p>The <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/Model.java"><code>Model</code></a> and the <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
 </li>
 <li>
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -1603,10 +1628,10 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
 </li>
 <li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
+<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
 </li>
 <li>
 <p>Add new tests for each of the new public methods that you have added.</p>
@@ -1669,13 +1694,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>The tag labels are created inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
+<p>The tag labels are created inside <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/PersonCard.java">the <code>PersonCard</code> constructor</a> (<code>new Label(tag.tagName)</code>). <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Label.html">JavaFX&#8217;s <code>Label</code> class</a> allows you to modify the style of each Label, such as changing its color.</p>
 </li>
 <li>
 <p>Use the .css attribute <code>-fx-background-color</code> to add a color.</p>
 </li>
 <li>
-<p>You may wish to modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
+<p>You may wish to modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/resources/view/DarkTheme.css"><code>DarkTheme.css</code></a> to include some pre-defined colors using css, especially if you have experience with web-based css.</p>
 </li>
 </ul>
 </div>
@@ -1706,7 +1731,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> such that <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> can show a different style on error (currently it shows the same regardless of errors).</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -1732,10 +1757,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
+<p><a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> is raised by <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> which also knows whether the result is a success or failure, and is caught by <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay</code></a> which is where we want to change the style to.</p>
 </li>
 <li>
-<p>Refer to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
+<p>Refer to <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/CommandBox.java"><code>CommandBox</code></a> for an example on how to display an error.</p>
 </li>
 </ul>
 </div>
@@ -1745,10 +1770,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/commons/events/ui/NewResultAvailableEvent.java"><code>NewResultAvailableEvent</code></a> 's constructor so that users of the event can indicate whether an error has occurred.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/ResultDisplay.java"><code>ResultDisplay#handleNewResultAvailableEvent(NewResultAvailableEvent)</code></a> to react to this event appropriately.</p>
 </li>
 <li>
 <p>You can write two different kinds of tests to ensure that the functionality works:</p>
@@ -1758,7 +1783,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <p>The unit tests for <code>ResultDisplay</code> can be modified to include verification of the color.</p>
 </li>
 <li>
-<p>The system tests <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
+<p>The system tests <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest#assertCommandBoxShowsDefaultStyle() and AddressBookSystemTest#assertCommandBoxShowsErrorStyle()</code></a> to include verification for <code>ResultDisplay</code> as well.</p>
 </li>
 </ul>
 </div>
@@ -1782,7 +1807,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 </li>
 <li>
-<p>Modify the <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
+<p>Modify the <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to show the total number of people in the address book.</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -1808,10 +1833,10 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
+<p><a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/resources/view/StatusBarFooter.fxml"><code>StatusBarFooter.fxml</code></a> will need a new <code>StatusBar</code>. Be sure to set the <code>GridPane.columnIndex</code> properly for each <code>StatusBar</code> to avoid misalignment!</p>
 </li>
 <li>
-<p><a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
+<p><a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> needs to initialize the status bar on application start, and to update it accordingly whenever the address book is updated.</p>
 </li>
 </ul>
 </div>
@@ -1821,16 +1846,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
+<p>Modify the constructor of <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of persons when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of persons whenever there are new changes to the addressbook.</p>
 </li>
 <li>
-<p>For tests, modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
+<p>For tests, modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
+<p>For system tests, modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of persons status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -1874,10 +1899,10 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="ulist">
 <ul>
 <li>
-<p>Add the API method in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
+<p>Add the API method in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
 </li>
 <li>
-<p>Implement the logic in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
+<p>Implement the logic in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/XmlAddressBookStorage.java"><code>XmlAddressBookStorage</code></a> class.</p>
 </li>
 </ul>
 </div>
@@ -1943,10 +1968,10 @@ Removes the remark for the first person.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/commands/Command.java"><code>Command</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
+<p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/commands/Command.java"><code>Command</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1959,7 +1984,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandTest</code> that tests that <code>execute()</code> throws an Exception.</p>
 </li>
 <li>
-<p>Add new test method to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
+<p>Add new test method to <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1981,7 +2006,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
@@ -1998,7 +2023,7 @@ Removes the remark for the first person.</p>
 for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
 </li>
 </ol>
 </div>
@@ -2006,7 +2031,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
+<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each person later.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2014,10 +2039,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
+<p>Add a <code>Label</code> with any random text inside <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/resources/view/PersonListCard.fxml"><code>PersonListCard.fxml</code></a>.</p>
 </li>
 <li>
-<p>Add FXML annotation in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
+<p>Add FXML annotation in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> to tie the variable to the actual label.</p>
 </li>
 </ol>
 </div>
@@ -2027,7 +2052,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/guitests/guihandles/PersonCardHandle.java"><code>PersonCardHandle</code></a> so that future tests can read the contents of the remark label.</p>
 </li>
 </ol>
 </div>
@@ -2035,7 +2060,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
 <div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
+<p>We have to properly encapsulate the remark in our <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2043,7 +2068,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to addressBookModel component (you can copy from <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -2064,7 +2089,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2072,13 +2097,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a>.</p>
 </li>
 <li>
 <p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>addressBook.xml</code> so that the application will load the sample data when you launch it.)</p>
 </li>
 </ol>
 </div>
@@ -2086,7 +2111,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-xmladaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>XmlAdaptedPerson</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/storage/XmlAdaptedPerson.java"><code>XmlAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2112,7 +2137,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/addressBookModel/person/Person.java"><code>Person</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -2120,10 +2145,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
 </li>
 </ol>
 </div>
@@ -2131,7 +2156,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-7-ui-connect-code-remark-code-field-to-code-personcard-code"><a class="link" href="#step-7-ui-connect-code-remark-code-field-to-code-personcard-code">[Step 7] Ui: Connect <code>Remark</code> field to <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Our remark label in <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
+<p>Our remark label in <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> is still a placeholder. Let&#8217;s bring it to life by binding it with the actual <code>remark</code> field.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2139,7 +2164,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
 </li>
 </ol>
 </div>
@@ -2149,7 +2174,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
+<p>Modify <a href="https://github.com/CS2103-AY1819S1-T12-2/main/src/test/java/seedu/address/ui/testutil/GuiTestAssert.java"><code>GuiTestAssert#assertCardDisplaysPerson(&#8230;&#8203;)</code></a> so that it will compare the now-functioning remark label.</p>
 </li>
 </ol>
 </div>
@@ -2529,4 +2554,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-19 18:08:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-20 13:55:03 UTC</div></div></div></body></html>
