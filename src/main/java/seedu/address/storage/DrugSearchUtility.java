@@ -41,6 +41,7 @@ public class DrugSearchUtility {
     private static FileWriter f = setF();
     private static PrintWriter errorLog = new PrintWriter(new BufferedWriter(f));
 
+
     /**
      * Find in "dataSetForDrugs.csv" all drugs whose names
      * contain the given keyword.
@@ -53,9 +54,9 @@ public class DrugSearchUtility {
         resultsCache.clear(); //clearing cached results from previous search
 
         for (String i: tooGeneric) {
-            if (i.toLowerCase().contains(keyword.toLowerCase())) {
-                return "Your entered keyword " + keyword + " is too generic, and will lead to too many results."
-                        + "Try a longer keyword, or a more specific one.";
+            if(i.toLowerCase().contains(keyword.toLowerCase())) {
+                return "Your entered keyword " + keyword + " is too generic, and will lead to too many results. Try a longer keyword," +
+                        " or more specific phrase.";
             }
         }
 
