@@ -103,7 +103,7 @@ public class DrugSearchUtility {
     public static String readMore(int index) {
         String results = "";
         if (resultsCache.isEmpty()) {
-            return "Please carry out a search using \"drug [drugname]\" first.";
+            return null;
         }
 
         index--;
