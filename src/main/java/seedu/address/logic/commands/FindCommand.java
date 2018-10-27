@@ -19,6 +19,7 @@ import seedu.address.model.event.ScheduleEventMatchesPredicate;
 import seedu.address.model.person.MatchPersonPredicate;
 import seedu.address.model.symptom.Disease;
 import seedu.address.model.symptom.Symptom;
+import seedu.address.storage.DrugSearchUtility;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -28,10 +29,12 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "use 'find patient' or 'find disease' "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + "use 'find patient' "
             + "to find all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) or to find all symptoms related to a disease if it exists "
-            + "and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive), 'find symptom' "
+            + "to find all symptoms related to a disease, or 'find drug' "
+            + "to find all drugs licensed for sale in Singapore matching this name."
+            + "Results will be displayed as a list with index numbers.\n"
             + "Parameters to find persons: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: "
             + COMMAND_WORD
@@ -40,8 +43,13 @@ public class FindCommand extends Command {
             + "Parameter to find disease: DISEASE\n"
             + "Example: "
             + COMMAND_WORD
-            + " disease"
-            + " influenza\n";
+            + " symptom"
+            + " influenza\n"
+            + "Parameter to find drugs: DRUG\n"
+            + "Example: "
+            + COMMAND_WORD
+            + " drug"
+            + " Glycomet\n";
 
     private final String cmdType;
     private final String searchString;
@@ -87,7 +95,10 @@ public class FindCommand extends Command {
                     + disease.toString() + ":\n"
                     + "\n"
                     + FindCommand.convertListToString(symptomList);
-        } else {
+        } else if (this.cmdType.equals("drug")) {
+            cmdResult = DrugSearchUtility.find(searchString.trim());
+        }
+        else {
             throw new CommandException("Unexpected Values: Should have been caught in FindCommandParser.");
         }
 
