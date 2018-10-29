@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.model;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

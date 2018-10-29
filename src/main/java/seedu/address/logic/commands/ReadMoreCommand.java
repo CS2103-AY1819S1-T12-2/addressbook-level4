@@ -5,7 +5,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBookModel;
 import seedu.address.model.DiagnosisModel;
 import seedu.address.model.ScheduleModel;
-import seedu.address.storage.DrugSearchUtility;
+import seedu.address.model.DrugSearchUtility;
 
 import static java.util.Objects.requireNonNull;
 

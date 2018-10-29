@@ -19,7 +19,7 @@ import seedu.address.model.event.ScheduleEventMatchesPredicate;
 import seedu.address.model.person.MatchPersonPredicate;
 import seedu.address.model.symptom.Disease;
 import seedu.address.model.symptom.Symptom;
-import seedu.address.storage.DrugSearchUtility;
+import seedu.address.model.DrugSearchUtility;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -92,8 +92,8 @@ public class FindCommand extends Command {
             }
             List<Symptom> symptomList = diagnosisModel.getSymptoms(disease);
             cmdResult = disease.toString() + " is present in our record. Found the following symptoms matching "
-                    + disease.toString() + ":\n"
-                    + "\n"
+                    + disease.toString()
+                    + ":\n"
                     + FindCommand.convertListToString(symptomList);
         } else if (this.cmdType.equals("drug")) {
             cmdResult = DrugSearchUtility.find(searchString.trim());
