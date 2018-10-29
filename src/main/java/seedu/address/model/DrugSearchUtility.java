@@ -19,6 +19,7 @@ import com.opencsv.CSVReaderBuilder;
  */
 
 public class DrugSearchUtility {
+public class DrugSearchUtility {
     //filepath to drug dataset
 
     private static final String DATASET_PATH = "./src/main/resources/storage/datasetForDrugs.csv";
@@ -77,7 +78,7 @@ public class DrugSearchUtility {
                 results = results.concat("\nActive Ingredient(s): "
                        + currentRecord[10].replace("&&", ", "));
                 results = results.concat("\nClassification: " + currentRecord[4]);
-                results = results.concat("\n(for more information, enter \"moreinfo " + (i + 1) + "\"");
+                results = results.concat("\n(for more information, enter \"readmore " + (i + 1) + "\"");
                 results = results.concat("\n\n");
             }
 
