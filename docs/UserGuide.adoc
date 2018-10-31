@@ -15,7 +15,43 @@ endif::[]
 :repoURL: https://github.com/CS2103-AY1819S1-T12-2/main
 
 By: `Team T12-2`      Since: `Jun 2016`      Licence: `MIT`
+
+== Introduction
+
+PatientBook is an all-in-one convenience utility for medical professionals in Singapore. It is used to store and manage patient data as well as appointment schedules, and retrieve information about symptoms and drugs.
+
+Patientbook uses simple and intuitive “commands” to receive instructions from the user – this makes it speedy, lightweight and easy to pick up. Refer to Section 2, “Quick Start” to begin using PatientBook.
+
+== Quick Start
+
+. Ensure you have Java version 9 or later installed on your computer. If not, the latest version of Java can be downloaded
+http://www.java.com/en/download/[here].
+
+. Download the latest version of `patientbook.jar`
+https://github.com/CS2103-AY1819S1-T12-2/main/releases[here].
+
+. Copy the downloaded file to the folder you wish to use as the home folder for Patient Book.
+
+. Double-click the file to start PatientBook. The following GUI should appear in a few seconds.
+
+image::Ui.png[width="600"]
+
+[start = 5]
+. Try typing any command into the command box and press `Enter` to run it:
+- e.g. typing `help` and pressing `Enter` will open the help window.
+
+. Some other example commands you can try:
+- `mode patient` : switches to patient management mode
+- `mode appointment` : switches to appointment management mode
+- `add patient` : automatically switches to patient management mode, and creates a prompt for adding a new patient
+- `add disease d/Influenza s/Fever` : adds the disease "influenza" to the database, which has the symptom "fever"
+- `make appointment at 3pm next week` : schedules a 3 PM appointment for the following week
+- `delete appointment scheduled at 3pm next week` : removes appointment scheduled at 3 PM in the following week
+- `exit` : exits the app
+
+Refer to Section 3, “Features” for details about each command.
 [[Features]]
+
 == Features
 
 ====
