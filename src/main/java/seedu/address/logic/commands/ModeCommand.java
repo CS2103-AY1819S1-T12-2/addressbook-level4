@@ -1,8 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
+
 import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.SwitchToAppointmentEvent;
 import seedu.address.commons.events.ui.SwitchToPatientEvent;
-import seedu.address.commons.events.ui.SwitchToScheduleEvent;
 import seedu.address.logic.CommandHistory;
 // import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -10,9 +14,7 @@ import seedu.address.model.AddressBookModel;
 import seedu.address.model.DiagnosisModel;
 import seedu.address.model.ScheduleModel;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
-import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
+
 
 /**
  * Switch between Patient Mode and Calender Mode
@@ -30,11 +32,13 @@ public class ModeCommand extends Command {
 
     public static final String MESSAGE_CANNOT_SWITCH = "You are already in this mode.\n";
     private static final String MESSAGE_PATIENT_SWITCH_SUCCESS = "Switched to Patient Mode.\n";
-    private static final String MESSAGE_SCHEDULE_SWITCH_SUCCESS = "Switched to Schedule Mode.\n";
+    private static final String MESSAGE_SCHEDULE_SWITCH_SUCCESS = "Switched to Appointment Mode.\n";
 
     private final String cmdType;
 
-    public ModeCommand(String cmdType) { this.cmdType = cmdType; }
+    public ModeCommand(String cmdType) {
+        this.cmdType = cmdType;
+    }
 
     @Override
     public CommandResult execute(AddressBookModel addressBookModel, ScheduleModel scheduleModel,
@@ -46,7 +50,7 @@ public class ModeCommand extends Command {
             EventsCenter.getInstance().post(new SwitchToPatientEvent());
             return new CommandResult(MESSAGE_PATIENT_SWITCH_SUCCESS);
         } else if (this.cmdType.equals(CMDTYPE_APPOINTMENT)) {
-            EventsCenter.getInstance().post(new SwitchToScheduleEvent());
+            EventsCenter.getInstance().post(new SwitchToAppointmentEvent());
             return new CommandResult(MESSAGE_SCHEDULE_SWITCH_SUCCESS);
         } else {
             throw new CommandException("Unexpected command type: should have been caught in ModeCommandParser.");

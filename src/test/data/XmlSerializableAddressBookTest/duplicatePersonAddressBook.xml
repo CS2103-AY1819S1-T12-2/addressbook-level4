@@ -2,19 +2,23 @@
 <addressbook>
 
     <persons>
+        <personId>p1</personId>
         <name>Alice Pauline</name>
         <phone>94351253</phone>
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <tagged>friends</tagged>
+        <exists>true</exists>
     </persons>
 
-    <!-- Person with same identity as Alice Pauline -->
+    <!-- Person with same person ID as Alice Pauline -->
     <persons>
-        <name>Alice Pauline</name>
+        <personId>p1</personId>
+        <name>Bob Ross</name>
         <phone>94351253</phone>
         <email>pauline@example.com</email>
         <address>4th street</address>
+        <exists>true</exists>
     </persons>
 
 </addressbook>

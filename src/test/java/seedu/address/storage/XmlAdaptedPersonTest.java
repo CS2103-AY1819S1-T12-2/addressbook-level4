@@ -1,7 +1,9 @@
 package seedu.address.storage;
 
-//import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static seedu.address.storage.XmlAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.address.testutil.PersonUtil.matchProperties;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
 import java.util.ArrayList;
@@ -36,15 +38,15 @@ public class XmlAdaptedPersonTest {
             .map(XmlAdaptedTag::new)
             .collect(Collectors.toList());
 
-    /*
+
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
         XmlAdaptedPerson person = new XmlAdaptedPerson(BENSON);
-        assertEquals(BENSON, person.toModelType());
+        assertTrue(matchProperties(BENSON, person.toModelType()));
     }
-    */
 
-    /*
+
+
     @Test
     public void toModelType_invalidPersonID_throwsIllegalValueException() {
         XmlAdaptedPerson person =
@@ -53,7 +55,7 @@ public class XmlAdaptedPersonTest {
         String expectedMessage = Name.MESSAGE_NAME_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
-    */
+
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {

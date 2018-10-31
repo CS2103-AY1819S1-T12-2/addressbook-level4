@@ -1,5 +1,13 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.DiseaseMatcherCliSyntax.PREFIX_SYMPTOM;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ArgumentMultimap;
@@ -13,14 +21,6 @@ import seedu.address.model.ScheduleModel;
 import seedu.address.model.symptom.Disease;
 import seedu.address.model.symptom.Symptom;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.DiseaseMatcherCliSyntax.PREFIX_SYMPTOM;
 
 /**
  * Predicts a disease given a set of symptoms.
@@ -56,7 +56,14 @@ public class PredictCommand extends Command {
         try {
             Set<Symptom> symptomSet = ParserUtil.parseSymptoms(argMultimap.getAllValues(PREFIX_SYMPTOM));
             List<Disease> diseases = diagnosisModel.predictDisease(symptomSet);
-            String cmdResult = "The diseases that you may be looking for:\n" + diseases.toString();
+            if (diseases.isEmpty()) {
+                throw new CommandException("We cannot determine the identity of the disease.\nThe reason could"
+                        + " be possibly due to an invalid command format, please check your format again.\n"
+                        + "\n"
+                        + MESSAGE_USAGE);
+            }
+            String cmdResult = "The diseases that you may be looking for:\n"
+                    + CommandResult.convertListToString(diseases);
             return new CommandResult(cmdResult);
         } catch (ParseException e) {
             throw new CommandException("Unexpected Error: unacceptable values should have been prompted for.", e);

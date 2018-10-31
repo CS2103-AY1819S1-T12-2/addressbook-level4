@@ -1,16 +1,19 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_DETAILS;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_PERSON;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_TAGS;
+
+import java.util.Set;
+
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.model.event.ScheduleEvent;
 import seedu.address.model.tag.Tag;
 
-import java.util.Set;
 
-import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
-import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_DETAILS;
-import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_PERSON;
-import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_TAGS;
+
 
 /**
  * A utility class for ScheduleEvent.
@@ -60,5 +63,17 @@ public class ScheduleEventUtil {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * Since ScheduleEvents are uniquely identified by ID, testing requires us to compare everything but
+     * ID to ensure that other fields were added correctly. This method returns whether all fields match. IDs may
+     * match, but is not a requirement.
+     */
+    public static boolean matchEventProperties(ScheduleEvent event, ScheduleEvent otherEvent) {
+        return event.getDate().equals(otherEvent.getDate())
+                && event.getDetails().equals(otherEvent.getDetails())
+                && event.getPersonId().equals(otherEvent.getPersonId())
+                && event.getTags().equals(otherEvent.getTags());
     }
 }

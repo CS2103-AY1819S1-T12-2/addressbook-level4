@@ -15,7 +15,6 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.model.ReadOnlySchedule;
-import seedu.address.model.event.ScheduleEvent;
 
 
 /**

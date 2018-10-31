@@ -60,4 +60,17 @@ public class PersonUtil {
         }
         return sb.toString();
     }
+
+    /**
+     * Since Persons are uniquely identified by ID, testing requires us to compare everything but ID to ensure that
+     * other fields were added correctly. This method returns whether all fields match. ID may match, but is not a
+     * requirement.
+     */
+    public static boolean matchProperties(Person person, Person otherPerson) {
+        return person.getName().equals(otherPerson.getName())
+                && person.getPhone().equals(otherPerson.getPhone())
+                && person.getEmail().equals(otherPerson.getEmail())
+                && person.getAddress().equals(otherPerson.getAddress())
+                && person.getTags().equals(otherPerson.getTags());
+    }
 }

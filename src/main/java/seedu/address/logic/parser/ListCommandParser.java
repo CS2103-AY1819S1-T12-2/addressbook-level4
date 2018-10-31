@@ -4,7 +4,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_DISEASE;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
-import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_SYMPTOM;
 
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -12,7 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new ListCommand object
  */
-public class ListCommandParser {
+public class ListCommandParser implements Parser<ListCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand

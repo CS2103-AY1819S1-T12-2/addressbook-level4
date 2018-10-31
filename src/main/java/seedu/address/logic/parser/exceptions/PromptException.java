@@ -6,7 +6,7 @@ package seedu.address.logic.parser.exceptions;
 
 public class PromptException extends Exception {
 
-    public PromptException(String message){
+    public PromptException(String message) {
             super(message);
     }
 }

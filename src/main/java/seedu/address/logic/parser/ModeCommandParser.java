@@ -1,16 +1,17 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.ModeCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
 
+import seedu.address.logic.commands.ModeCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+
 /**
  * Parses input arguments and creates a new ModeCommand object
  */
-public class ModeCommandParser {
+public class ModeCommandParser implements Parser<ModeCommand> {
 
     /**
      * Parses the given {@code String} argument in the context of the ModeCommand

@@ -24,9 +24,14 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_DIAGNOSIS;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.PersonCliSyntax.PREFIX_TAG;
+import static seedu.address.testutil.PersonBuilder.SAMPLE_PERSONID;
+import static seedu.address.testutil.ScheduleEventBuilder.SAMPLE_EVENTID;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -53,17 +58,35 @@ public class EditCommandParserTest {
     private EditCommandParser parser = new EditCommandParser();
 
     @Test
+    public void parse_allArgsPresent_success() {
+        // for patient
+        assertParseSuccess(parser, EditCommand.COMMAND_WORD + " " + CMDTYPE_PATIENT + SAMPLE_PERSONID
+                + TAG_EMPTY,
+                new EditCommand(CMDTYPE_PATIENT, SAMPLE_PERSONID, ArgumentTokenizer.tokenize(TAG_EMPTY, PREFIX_TAG)));
+
+        // for appointment
+        assertParseSuccess(parser, EditCommand.COMMAND_WORD + " " + CMDTYPE_APPOINTMENT + SAMPLE_EVENTID
+                + TAG_EMPTY, new EditCommand(CMDTYPE_APPOINTMENT, SAMPLE_EVENTID,
+                        ArgumentTokenizer.tokenize(TAG_EMPTY, PREFIX_TAG)));
+    }
+    @Test
     public void parse_missingParts_failure() {
-        // no index specified
+        // too few arguments
         assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
 
+        // wrong command type
+        assertParseFailure(parser, CMDTYPE_DIAGNOSIS + " " + "test string", MESSAGE_INVALID_FORMAT);
+
+        /*
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
+        */
     }
 
+    /*
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
@@ -208,4 +231,5 @@ public class EditCommandParserTest {
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
+    */
 }

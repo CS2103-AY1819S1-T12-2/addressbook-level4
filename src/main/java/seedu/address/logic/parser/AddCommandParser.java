@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
-import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_DIAGNOSIS;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_DISEASE;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
 
@@ -42,7 +41,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
         /*if (cmdType.equals("patient")) {
             ArgumentMultimap argMultimap =
-                    ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                    ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_ADDRESS, PREFIX_TAG);
 
             if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                     || !argMultimap.getPreamble().isEmpty()) {

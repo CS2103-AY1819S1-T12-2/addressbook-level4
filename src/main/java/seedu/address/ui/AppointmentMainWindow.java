@@ -26,9 +26,9 @@ import seedu.address.model.UserPrefs;
 /**
  * Encapsulates schedule main window.
  */
-public class ScheduleMainWindow extends UiPart {
-    private static final String FXML = "ScheduleMainWindow.fxml";
-    private static final String modeTitle = " : Schedule Mode";
+public class AppointmentMainWindow extends UiPart {
+    private static final String FXML = "AppointmentMainWindow.fxml";
+    private static final String modeTitle = " : Appointment Mode";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -37,10 +37,14 @@ public class ScheduleMainWindow extends UiPart {
     private boolean isShowing;
 
     // Independent Ui parts residing in this Ui container
+    private BrowserPanel browserPanel;
     private AppointmentPanel appointmentPanel;
     private Config config;
     private UserPrefs prefs;
     private HelpWindow helpWindow;
+
+    @FXML
+    private StackPane browserPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -57,7 +61,7 @@ public class ScheduleMainWindow extends UiPart {
     @FXML
     private StackPane statusbarPlaceholder;
 
-    public ScheduleMainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
+    public AppointmentMainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -113,6 +117,9 @@ public class ScheduleMainWindow extends UiPart {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        browserPanel = new BrowserPanel();
+        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+
         appointmentPanel = new AppointmentPanel(logic.getFilteredEventList());
         appointmentPanelPlaceholder.getChildren().add(appointmentPanel.getRoot());
 
@@ -183,7 +190,7 @@ public class ScheduleMainWindow extends UiPart {
     }
 
     public AppointmentPanel getAppointmentPanel() {
-        return appointmentPanel ;
+        return appointmentPanel;
     }
 
     @Subscribe

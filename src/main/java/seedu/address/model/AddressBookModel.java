@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;

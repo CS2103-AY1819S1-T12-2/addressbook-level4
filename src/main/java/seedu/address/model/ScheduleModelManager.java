@@ -151,6 +151,9 @@ public class ScheduleModelManager extends ComponentManager implements ScheduleMo
         return schedule.equals(other.schedule);
     }
 
+    /**
+     *
+     */
     public class ScheduleEventComparator implements Comparator<ScheduleEvent> {
         @Override
         public int compare(ScheduleEvent first, ScheduleEvent second) {

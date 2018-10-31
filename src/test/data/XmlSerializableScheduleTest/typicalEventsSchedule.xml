@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule>
+    <events>
+        <eventId>e0</eventId>
+        <datetimeStart>30/10/2018 09:00</datetimeStart>
+        <datetimeEnd>30/10/2018 10:00</datetimeEnd>
+        <personId>p58</personId>
+        <details>some details</details>
+    </events>
+    <events>
+        <eventId>e2</eventId>
+        <datetimeStart>01/11/2018 14:27</datetimeStart>
+        <datetimeEnd>01/11/2018 15:53</datetimeEnd>
+        <personId>p57</personId>
+        <details>other details</details>
+        <tagged>some</tagged>
+    </events>
+    <events>
+        <eventId>e3</eventId>
+        <datetimeStart>10/11/2018 09:00</datetimeStart>
+        <datetimeEnd>10/11/2018 10:00</datetimeEnd>
+        <personId>p47</personId>
+        <details>more details</details>
+    </events>
+    <events>
+        <eventId>e4</eventId>
+        <datetimeStart>10/11/2018 11:00</datetimeStart>
+        <datetimeEnd>10/11/2018 13:00</datetimeEnd>
+        <personId>p51</personId>
+        <details>test details</details>
+    </events>
+    <events>
+        <eventId>e5</eventId>
+        <datetimeStart>10/11/2018 14:00</datetimeStart>
+        <datetimeEnd>10/11/2018 15:00</datetimeEnd>
+        <personId>p51</personId>
+        <details>details</details>
+    </events>
+</schedule>

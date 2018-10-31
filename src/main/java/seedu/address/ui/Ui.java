@@ -11,7 +11,7 @@ public interface Ui {
     void start(Stage primaryStage, Stage secondaryStage);
 
     /** Switches the UI to the Schedule Mode */
-    void switchToSchedule();
+    void switchToAppointment();
 
     /** Switches the UI to the Patient Mode */
     void switchToPatient();

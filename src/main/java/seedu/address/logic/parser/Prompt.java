@@ -11,7 +11,8 @@ import seedu.address.ui.PromptWindow;
 public class Prompt {
 
 
-    public static final String MESSAGE_PROMPT_NOTES = "Any additional notes?\n\n";
+    public static final String MESSAGE_PROMPT_NOTES = "Any additional notes for this appointment?\n\n";
+    public static final String MESSAGE_PROMPT_TAGS = "Any tags for this appointment?\n\n";
     public static final String MESSAGE_PROMPT_TIMESLOT = "Please enter a time slot in DD/MM/YYYY hh:mm - hh:mm: \n\n";
     public static final String MESSAGE_PROMPT_ID = "Please enter the ID of the patient you want to schedule for: \n\n";
     public static final String MESSAGE_PROMPT_TIMESLOT_FORMAT = "Expected format: DD/MM/YYYY hh:mm - hh:mm, "
@@ -27,14 +28,15 @@ public class Prompt {
      * @param messageToUser message to be displayed
      * @return input by the user
      */
-    public String promptForMoreInput (String leadingMessage, String messageToUser, boolean isInputCompulsory) throws PromptException {
+    public String promptForMoreInput (String leadingMessage, String messageToUser, boolean isInputCompulsory)
+            throws PromptException {
         promptWindow = mainApp.showPromptWindow(leadingMessage + messageToUser);
         if (promptWindow.isEnterClicked()) {
             if (!promptWindow.getInput().equals("")) {
                 return promptWindow.getInput();
             } else {
                 if (isInputCompulsory) {
-                    throw new PromptException(MESSAGE_PROMPT_CANCEL); // not typing anything for a compulsory field is treated as cancelling the command
+                    throw new PromptException(MESSAGE_PROMPT_CANCEL); // treated as cancelling the command
                 } else {
                     return EMPTY_RESPONSE;
                 }

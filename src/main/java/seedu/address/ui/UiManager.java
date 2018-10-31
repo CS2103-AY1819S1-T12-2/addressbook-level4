@@ -14,8 +14,8 @@ import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
+import seedu.address.commons.events.ui.SwitchToAppointmentEvent;
 import seedu.address.commons.events.ui.SwitchToPatientEvent;
-import seedu.address.commons.events.ui.SwitchToScheduleEvent;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
@@ -38,7 +38,7 @@ public class UiManager extends ComponentManager implements Ui {
     private Config config;
     private UserPrefs prefs;
     private MainWindow mainWindow;
-    private ScheduleMainWindow scheduleMainWindow;
+    private AppointmentMainWindow appointmentMainWindow;
     private Stage secondaryStage;
     public UiManager(Logic logic, Config config, UserPrefs prefs) {
         super();
@@ -55,9 +55,9 @@ public class UiManager extends ComponentManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            scheduleMainWindow = new ScheduleMainWindow(secondaryStage, config, prefs, logic);
-            scheduleMainWindow.fillInnerParts();
-            scheduleMainWindow.hide();
+            appointmentMainWindow = new AppointmentMainWindow(secondaryStage, config, prefs, logic);
+            appointmentMainWindow.fillInnerParts();
+            appointmentMainWindow.hide();
             mainWindow = new MainWindow(primaryStage, config, prefs, logic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.setShowing(true);
@@ -70,12 +70,12 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     @Override
-    public void switchToSchedule() {
-        logger.info("Switching to Schedule Mode");
+    public void switchToAppointment() {
+        logger.info("Switching to Appointment Mode");
 
         try {
-            scheduleMainWindow.show();
-            scheduleMainWindow.setShowing(true);
+            appointmentMainWindow.show();
+            appointmentMainWindow.setShowing(true);
             mainWindow.hide();
             mainWindow.setShowing(false);
         } catch (Throwable e) {
@@ -89,8 +89,8 @@ public class UiManager extends ComponentManager implements Ui {
         logger.info("Switching to Patient Mode");
 
         try {
-            scheduleMainWindow.hide();
-            scheduleMainWindow.setShowing(false);
+            appointmentMainWindow.hide();
+            appointmentMainWindow.setShowing(false);
             mainWindow.show();
             mainWindow.setShowing(true);
         } catch (Throwable e) {
@@ -157,9 +157,9 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     @Subscribe
-    private void handleSwitchToScheduleEvent (SwitchToScheduleEvent event) {
+    private void handleSwitchToAppointmentEvent(SwitchToAppointmentEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        switchToSchedule();
+        switchToAppointment();
     }
 
     @Subscribe

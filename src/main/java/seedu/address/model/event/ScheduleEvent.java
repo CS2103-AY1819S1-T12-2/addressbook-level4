@@ -75,6 +75,14 @@ public class ScheduleEvent {
         return (new Pair<>((Calendar) returnedDate.getKey(), (Calendar) returnedDate.getValue()));
     }
 
+    public String getDateToString() {
+        StringBuilder dateBuilder = new StringBuilder();
+        dateBuilder.append(STORAGE_SDF.format(getDate().getKey().getTime()))
+                   .append(" to ")
+                   .append(STORAGE_SDF.format(getDate().getValue().getTime()));
+        return dateBuilder.toString();
+    }
+
     public PersonId getPersonId() {
         return (PersonId) this.attributes.get(ScheduleEventProperty.PERSONID);
     }
@@ -102,6 +110,27 @@ public class ScheduleEvent {
 
         return otherEvent != null
                 && otherEvent.getId().equals(getId());
+    }
+
+    /**
+     * Returns true if the event clashes with a given duration
+     */
+    public boolean isClashing(Pair<Calendar> duration) {
+        boolean isClashing = false;
+        Calendar thisStart = this.getDate().getKey();
+        Calendar thisEnd = this.getDate().getValue();
+        Calendar otherStart = duration.getKey();
+        Calendar otherEnd = duration.getValue();
+        if (thisStart.equals(otherStart)) { // if two start times are the same, they will clash definitely
+            isClashing = true;
+        }
+        if (thisStart.before(otherStart) && otherStart.before(thisEnd)) {
+            isClashing = true;
+        }
+        if (otherStart.before(thisStart) && thisStart.before(otherEnd)) {
+            isClashing = true;
+        }
+        return isClashing;
     }
 
     /**

@@ -5,11 +5,14 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAY
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_MATCH_BY_NAME_FAIL;
 import static seedu.address.logic.parser.Prompt.MESSAGE_PROMPT_ID;
 import static seedu.address.logic.parser.Prompt.MESSAGE_PROMPT_NOTES;
+import static seedu.address.logic.parser.Prompt.MESSAGE_PROMPT_TAGS;
 import static seedu.address.logic.parser.Prompt.MESSAGE_PROMPT_TIMESLOT;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.util.Pair;
 import seedu.address.logic.commands.AddCommand;
@@ -21,7 +24,7 @@ import seedu.address.model.event.ScheduleEvent;
 import seedu.address.model.person.MatchPersonPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonId;
-
+import seedu.address.model.tag.Tag;
 
 
 /**
@@ -51,8 +54,9 @@ public class ScheduleEventParser {
         String dateInput = generateDateInput(splitInput, dateInputStartAt);
         PersonId patientId = parseNameInput(nameInput);
         Pair<Calendar> timeSlot = parseDateInput(dateInput);
+        Set<Tag> tags = promptForTags();
         String notes = promptForNotes();
-        return new ScheduleEvent(timeSlot, patientId, notes, ParserUtil.parseTags(Arrays.asList("a")));
+        return new ScheduleEvent(timeSlot, patientId, notes, tags);
     }
 
     /**
@@ -113,9 +117,16 @@ public class ScheduleEventParser {
             String timeSlotInput = new Prompt().promptForMoreInput(MESSAGE_PROMPT_TIMESLOT, availableTimeSlots, true);
             Pair<Calendar> timeSlot = dateTimeParser.parseTimeSlot(timeSlotInput.trim());
             if (isTimeSlotWithinRange(timeSlot, dateInterval)) {
+                for (ScheduleEvent appt: scheduledAppts) {
+                    if (appt.isClashing(timeSlot)) {
+                        throw new ParseException(String.format(DateTimeParser.MESSAGE_INVALID_SLOT,
+                                DateTimeParser.MESSAGE_SLOT_CLASHING));
+                    }
+                }
                 return timeSlot; // where do we check clashing time slots??
             } else {
-                throw new ParseException(String.format(DateTimeParser.MESSAGE_INVALID_SLOT, DateTimeParser.MESSAGE_SLOT_NOT_WITHIN_RANGE));
+                throw new ParseException(String.format(DateTimeParser.MESSAGE_INVALID_SLOT,
+                        DateTimeParser.MESSAGE_SLOT_NOT_WITHIN_RANGE));
             }
         } catch (ParseException | PromptException e) {
             throw new ParseException(e.getMessage());
@@ -129,20 +140,56 @@ public class ScheduleEventParser {
      */
     private PersonId parseNameInput(String[] nameInput) throws ParseException {
         try {
-            List<Person> nameMatchedPersons = addressBookModel.internalGetFromPersonList
+            List<Person> matchedPersons = addressBookModel.internalGetFromPersonList
                     (new MatchPersonPredicate(Arrays.asList(nameInput)));
-            if (nameMatchedPersons.isEmpty()){
+            if (matchedPersons.isEmpty()) {
                 throw new ParseException(MESSAGE_PERSONS_MATCH_BY_NAME_FAIL);
             }
-            String personsToDisplay = displayPersonListAsString (nameMatchedPersons);
-            String personIdInput = new Prompt().promptForMoreInput(MESSAGE_PROMPT_ID, personsToDisplay, true);
-            List<Person> finalizedPerson = addressBookModel.internalGetFromPersonList
-                    (new MatchPersonPredicate(Arrays.asList(personIdInput)));
-            if (finalizedPerson.size() == 1) {
-                return finalizedPerson.get(0).getId();
+            Set<PersonId> choosablePersonIds = getChoosablePersonIds(matchedPersons);
+            while (matchedPersons.size() != 1) {
+                String displayablePersons = displayPersonListAsString(matchedPersons);
+                String personIdInput = new Prompt().promptForMoreInput(MESSAGE_PROMPT_ID, displayablePersons, true);
+                String[] splitString = personIdInput.split("\\s+");
+                matchedPersons = addressBookModel.internalGetFromPersonList
+                        (new MatchPersonPredicate(Arrays.asList(splitString))); // now match by ID
+                if (matchedPersons.isEmpty()) {
+                    throw new ParseException(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                }
+                for (Person person: matchedPersons) {
+                    if (!choosablePersonIds.contains(person.getId())) {
+                        throw new ParseException(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                    }
+                }
             }
-            throw new ParseException(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            return matchedPersons.get(0).getId();
         } catch (PromptException e) {
+            throw new ParseException(e.getMessage());
+        }
+    }
+
+    private Set<PersonId> getChoosablePersonIds(List<Person> matchedPersons) {
+        Set<PersonId> choosableIds = new HashSet<>();
+        for (Person person: matchedPersons) {
+            choosableIds.add(person.getId());
+        }
+        return choosableIds;
+    }
+
+    /**
+     *
+     * @return
+     * @throws ParseException
+     */
+    private Set<Tag> promptForTags() throws ParseException {
+        try {
+            String tags = new Prompt().promptForMoreInput(MESSAGE_PROMPT_TAGS, "", false);
+            if (tags.equals("")) {
+                return new HashSet<>();
+            } else {
+                String[] splitString = tags.split("\\s+");
+                return ParserUtil.parseTags(Arrays.asList(splitString));
+            }
+        } catch (PromptException | ParseException e) {
             throw new ParseException(e.getMessage());
         }
     }

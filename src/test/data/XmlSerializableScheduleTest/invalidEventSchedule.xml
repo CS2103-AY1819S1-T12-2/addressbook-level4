@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule>
+
+    <persons>
+        <personId>e0</personId>
+        <datetimeStart>30/10/2018 09:00</datetimeStart>
+        <personId>58</personId>
+    </persons>
+
+</schedule>

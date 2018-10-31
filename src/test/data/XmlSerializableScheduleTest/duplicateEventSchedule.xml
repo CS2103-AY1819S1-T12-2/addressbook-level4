@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule>
+
+    <persons>
+        <personId>e0</personId>
+        <datetimeStart>30/10/2018 09:00</datetimeStart>
+        <datetimeEnd>30/10/2018 10:00</datetimeEnd>
+        <personId>p58</personId>
+        <details>some details</details>
+    </persons>
+
+    <!-- Event with identical ID, even though details differ -->
+    <events>
+        <eventId>e0</eventId>
+        <datetimeStart>01/11/2018 14:27</datetimeStart>
+        <datetimeEnd>01/11/2018 15:53</datetimeEnd>
+        <personId>p57</personId>
+        <details>other details</details>
+    </events>
+
+</schedule>

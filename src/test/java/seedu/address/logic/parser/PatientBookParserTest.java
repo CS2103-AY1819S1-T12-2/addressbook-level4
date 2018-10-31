@@ -4,11 +4,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.ListCommand.GET_ALL_WORD;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_APPOINTMENT;
 import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
+import static seedu.address.logic.parser.PersonCliSyntax.*;
+import static seedu.address.logic.parser.PersonCliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_PERSON;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_DETAILS;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_TAGS;
+import static seedu.address.logic.parser.ScheduleEventCliSyntax.PREFIX_DATETIME;
 import static seedu.address.testutil.PersonBuilder.DEFAULT_NAME;
 import static seedu.address.testutil.ScheduleEventBuilder.SAMPLE_EVENTID;
-import static seedu.address.testutil.ScheduleEventBuilder.SAMPLE_VALID_DATETIME_EXPRESSION;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,16 +24,12 @@ import seedu.address.logic.commands.AddCommand;
 
 import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.event.ScheduleEvent;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonId;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 import seedu.address.testutil.ScheduleEventBuilder;
-import seedu.address.testutil.ScheduleEventUtil;
 
 public class PatientBookParserTest {
     @Rule
@@ -85,18 +87,37 @@ public class PatientBookParserTest {
     @Test
     public void parseCommand_findAppointment() throws Exception {
         FindCommand command = (FindCommand) parser.parseCommand(FindCommand.COMMAND_WORD + " "
-                + CMDTYPE_APPOINTMENT + " " + SAMPLE_VALID_DATETIME_EXPRESSION);
-        assertEquals(new FindCommand(CMDTYPE_APPOINTMENT, SAMPLE_VALID_DATETIME_EXPRESSION), command);
+                + CMDTYPE_APPOINTMENT + " " + SAMPLE_EVENTID);
+        assertEquals(new FindCommand(CMDTYPE_APPOINTMENT, SAMPLE_EVENTID), command);
     }
 
     @Test
-    public void parseCommand_edit() throws Exception {
+    public void parseCommand_editPatient() throws Exception {
         Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(
-                EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize("", PREFIX_NAME, PREFIX_PHONE,
+                PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+
+        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+                + CMDTYPE_PATIENT + " " + person.getId().toString() + " ");
+        assertEquals(new EditCommand(CMDTYPE_PATIENT,
+                person.getId().toString(), argMultimap), command);
+    }
+
+    @Test
+    public void parseCommand_editAppointment() throws Exception {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize("", PREFIX_PERSON, PREFIX_DATETIME,
+                PREFIX_DETAILS, PREFIX_TAGS);
+
+        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+                + CMDTYPE_APPOINTMENT + " " + SAMPLE_EVENTID + " ");
+        assertEquals(new EditCommand(CMDTYPE_APPOINTMENT, SAMPLE_EVENTID, argMultimap), command);
+    }
+
+    @Test
+    public void parseCommand_mode() throws Exception {
+        ModeCommand command = (ModeCommand) parser.parseCommand(ModeCommand.COMMAND_WORD + " "
+                + CMDTYPE_PATIENT);
+        assertEquals(new ModeCommand(CMDTYPE_PATIENT), command);
     }
 
     @Test
@@ -137,18 +158,10 @@ public class PatientBookParserTest {
 
     @Test
     public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+        ListCommand command = (ListCommand) parser.parseCommand(ListCommand.COMMAND_WORD + " "
+                + CMDTYPE_PATIENT);
+        assertEquals(new ListCommand(CMDTYPE_PATIENT, GET_ALL_WORD), command);
     }
-
-    /*
-    @Test
-    public void parseCommand_select() throws Exception {
-        SelectCommand command = (SelectCommand) parser.parseCommand(
-                SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
-    }
-    */
 
     @Test
     public void parseCommand_clearPatient_throwsParseException() throws Exception {
@@ -187,6 +200,21 @@ public class PatientBookParserTest {
         thrown.expectMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         parser.parseCommand(FindCommand.COMMAND_WORD + " " + "invalid");
     }
+
+    @Test
+    public void parseCommand_edit_invalidInput_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        thrown.expectMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        parser.parseCommand(EditCommand.COMMAND_WORD + " " + "invalid");
+    }
+
+    @Test
+    public void parseCommand_list_invalidInput_throwsParseException() throws Exception {
+        thrown.expect(ParseException.class);
+        thrown.expectMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+        parser.parseCommand(ListCommand.COMMAND_WORD + " " + "invalid");
+    }
+
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() throws Exception {
         thrown.expect(ParseException.class);

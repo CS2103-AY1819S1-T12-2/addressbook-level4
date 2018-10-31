@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.Optional;
 import java.util.logging.Logger;
-import java.io.*;
 
 import com.google.common.eventbus.Subscribe;
 
@@ -26,7 +25,17 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.AddressBookModel;
+import seedu.address.model.AddressBookModelManager;
+import seedu.address.model.DiagnosisModel;
+import seedu.address.model.DiagnosisModelManager;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySchedule;
+import seedu.address.model.Schedule;
+import seedu.address.model.ScheduleModel;
+import seedu.address.model.ScheduleModelManager;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
@@ -36,7 +45,6 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.XmlAddressBookStorage;
 import seedu.address.storage.XmlScheduleStorage;
-import seedu.address.ui.MainWindow;
 import seedu.address.ui.PromptWindow;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -58,7 +66,7 @@ public class MainApp extends Application {
     protected DiagnosisModel diagnosisModel;
     protected Config config;
     protected UserPrefs userPrefs;
-    protected Stage secondaryStage= new Stage();
+    protected Stage secondaryStage = new Stage();
 
     @Override
     public void init() throws Exception {
@@ -220,7 +228,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting PatientBook " + MainApp.VERSION);
-        ui.start(primaryStage,secondaryStage);
+        ui.start(primaryStage, secondaryStage);
     }
 
     /**
@@ -239,22 +247,22 @@ public class MainApp extends Application {
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the Prompt Window Stage.
-            Stage PromptStage = new Stage();
-            PromptStage.setTitle("Prompt Window");
-            PromptStage.initModality(Modality.WINDOW_MODAL);
-            PromptStage.initOwner(null);
+            Stage promptStage = new Stage();
+            promptStage.setTitle("Prompt Window");
+            promptStage.initModality(Modality.WINDOW_MODAL);
+            promptStage.initOwner(null);
             Scene scene = new Scene(page);
-            PromptStage.setScene(scene);
+            promptStage.setScene(scene);
 
             // Set the input into the controller.
             PromptWindow controller = loader.getController();
-            controller.setPromptStage(PromptStage);
+            controller.setPromptStage(promptStage);
             controller.setDisplay(input);
             scene.getAccelerators().put(controller.getEnter(), controller.getPressEnter());
             scene.getAccelerators().put(controller.getCancel(), controller.getPressCancel());
 
             // Show the dialog and wait until the user closes it
-            PromptStage.showAndWait();
+            promptStage.showAndWait();
 
             return controller;
         } catch (IOException e) {

@@ -11,7 +11,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.PatientBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AddressBookModel;
-import seedu.address.model.Diagnosis;
 import seedu.address.model.DiagnosisModel;
 import seedu.address.model.ScheduleModel;
 import seedu.address.model.event.ScheduleEvent;
@@ -54,7 +53,9 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public ObservableList<ScheduleEvent> getFilteredEventList() { return scheduleModel.getFilteredEventList(); }
+    public ObservableList<ScheduleEvent> getFilteredEventList() {
+        return scheduleModel.getFilteredEventList();
+    }
 
     @Override
     public ListElementPointer getHistorySnapshot() {

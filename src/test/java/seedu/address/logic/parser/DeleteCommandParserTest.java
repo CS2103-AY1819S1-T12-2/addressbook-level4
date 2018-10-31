@@ -1,9 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CmdTypeCliSyntax.CMDTYPE_PATIENT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.PersonBuilder.SAMPLE_PERSONID;
 
 import org.junit.Test;
 
@@ -22,12 +23,27 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
-        assertParseSuccess(parser, "1", new DeleteCommand(INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, CMDTYPE_PATIENT + SAMPLE_PERSONID,
+                new DeleteCommand(CMDTYPE_PATIENT, SAMPLE_PERSONID));
+    }
+
+    @Test
+    public void parse_tooFewArgs_throwsParseException() {
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, CMDTYPE_PATIENT,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 DeleteCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_extraArgs_throwsParseException() {
+        assertParseFailure(parser, CMDTYPE_PATIENT + SAMPLE_PERSONID + " invalid",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 }

@@ -5,7 +5,7 @@ import seedu.address.commons.events.BaseEvent;
 /**
  * Represents a request to switch to schedule mode
  */
-public class SwitchToScheduleEvent extends BaseEvent {
+public class SwitchToAppointmentEvent extends BaseEvent {
 
     @Override
     public String toString() {

@@ -17,6 +17,8 @@ public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
     public static final String MESSAGE_SUCCESS = "Schedule has been cleared!";
+    public static final String MESSAGE_UNEXPECTED_PARAMETER = "Unexpected command parameter: "
+            + "Should have been caught in ClearCommandParser.";
     public static final String MESSAGE_USAGE = "Can only clear schedule.";
 
     private final String cmdType;
@@ -33,7 +35,7 @@ public class ClearCommand extends Command {
         if (this.cmdType.equals(CMDTYPE_APPOINTMENT)) {
             scheduleModel.resetData(new Schedule());
         } else {
-            throw new CommandException("Unexpected command parameter: Should have been caught in ClearCommandParser.");
+            throw new CommandException(MESSAGE_UNEXPECTED_PARAMETER);
         }
         return new CommandResult(MESSAGE_SUCCESS);
     }
