@@ -13,29 +13,29 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#switching-to-patient-management-mode-code-mode-user-patient-code">3.2. Switching to patient management mode : <code>mode {user/patient}</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#switching-to-appointment-management-mode-code-mode-appointment-cal-calendar-appt-code">3.4. Switching to appointment management mode : <code>mode {appointment/cal/calendar/appt}</code></a></li>
-<li><a href="#adding-a-patient-code-add-patient-code">3.5. Adding a patient : <code>add patient</code></a></li>
-<li><a href="#creating-an-appointment-code-make-appointment-code">3.6. Creating an appointment : <code>make appointment</code></a></li>
-<li><a href="#listing-all-persons-code-list-patients-code">3.7. Listing all persons : <code>list patients</code></a></li>
-<li><a href="#listing-all-appointments-code-list-appointments-code">3.8. Listing all appointments : <code>list appointments</code></a></li>
-<li><a href="#editing-patient-information-code-change-patient-code">3.9. Editing patient information : <code>change patient</code></a></li>
-<li><a href="#editing-an-appointment-code-change-appointment-code">3.10. Editing an appointment : <code>change appointment</code></a></li>
-<li><a href="#locating-patients-by-name-code-find-patient-code">3.11. Locating patients by name : <code>find patient</code></a></li>
-<li><a href="#locating-an-appointment-code-find-appointment-code">3.12. Locating an appointment : <code>find appointment</code></a></li>
-<li><a href="#deleting-a-patient-record-code-delete-patient-code">3.13. Deleting a patient record : <code>delete patient</code></a></li>
-<li><a href="#deleting-an-appointment-code-delete-appointment-code">3.14. Deleting an appointment : <code>delete appointment</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.15. Listing entered commands : <code>history</code></a></li>
-<li><a href="#clearing-the-calendar-code-clear-calendar-code">3.16. Clearing the calendar : <code>clear calendar</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.18. Saving the data</a></li>
+<li><a href="#view-help-code-help-code">3.1. View help : <code>help</code></a></li>
+<li><a href="#switch-to-patient-management-mode-code-mode-patient-code">3.2. Switch to patient management mode : <code>mode patient</code></a></li>
+<li><a href="#switch-to-appointment-management-mode-code-mode-appointment-code">3.3. Switch to appointment management mode : <code>mode appointment</code></a></li>
+<li><a href="#add-a-patient-code-add-patient-code">3.4. Add a patient : <code>add patient</code></a></li>
+<li><a href="#edit-patient-information-code-edit-patient-code">3.5. Edit patient information : <code>edit patient</code></a></li>
+<li><a href="#list-all-patients-code-list-patient-code">3.6. List all patients : <code>list patient</code></a></li>
+<li><a href="#locate-patients-code-find-patient-code">3.7. Locate patients : <code>find patient</code></a></li>
+<li><a href="#delete-a-patient-record-code-delete-patient-code">3.8. Delete a patient record : <code>delete patient</code></a></li>
+<li><a href="#add-an-appointment-code-add-appointment-code">3.9. Add an appointment : <code>add appointment</code></a></li>
+<li><a href="#edit-appointment-information-code-edit-appointment-code">3.10. Edit appointment information : <code>edit appointment</code></a></li>
+<li><a href="#list-all-appointments-code-list-appointment-code">3.11. List all appointments : <code>list appointment</code></a></li>
+<li><a href="#locate-appointments-code-find-appointment-code">3.12. Locate appointments : <code>find appointment</code></a></li>
+<li><a href="#delete-an-appointment-code-delete-appointment-code">3.13. Delete an appointment : <code>delete appointment</code></a></li>
+<li><a href="#clear-all-appointments-code-clear-schedule-code">3.14. Clear all appointments : <code>clear schedule</code></a></li>
+<li><a href="#add-a-disease-code-add-disease-code">3.15. Add a disease : <code>add disease</code></a></li>
+<li><a href="#list-all-diseases-code-list-disease-code">3.16. List all diseases : <code>list disease</code></a></li>
+<li><a href="#locate-diseases-code-find-disease-code">3.17. Locate diseases  : <code>find disease</code></a></li>
+<li><a href="#predict-disease-code-predict-code">3.18. Predict disease  : <code>predict</code></a></li>
+<li><a href="#list-entered-commands-code-history-code">3.19. List entered commands : <code>history</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">3.20. Exit the program : <code>exit</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
-<li><a href="#glossary">6. Glossary</a></li>
+<li><a href="#command-summary">4. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -43,7 +43,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>PatientBook is a desktop application for medical professionals to manage their patient information as well as scheduling their appointments. More importantly, PatientBook is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, PatientBook will allow the user to manage and access their patient information, as well as schedule their appointments more efficiently than using a traditional GUI-based application. Refer to Section 2, “Quick Start” to begin.</p>
+<p>PatientBook is an all-in-one convenience utility for medical professionals in Singapore. It is used to store and manage patient data as well as appointment schedules. It can also be used to retrieve information about disease, symptoms and drugs.
+Patientbook uses simple and intuitive “commands” to receive instructions from the user – this makes it speedy, lightweight and easy to pick up. Refer to Section 2, “Quick Start” to begin using PatientBook.</p>
 </div>
 </div>
 </div>
@@ -53,19 +54,21 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
+<p>Ensure you have Java version 9 or later installed on your computer. If not, the latest version of Java can be downloaded
+<a href="http://www.java.com/en/download/">here</a>.</p>
 </li>
 <li>
-<p>Download the latest <code>patientbook.jar</code> <a href="https://github.com/CS2103-AY1819S1-T12-2/main/releases">here</a>.</p>
+<p>Download the latest version of <code>patientbook.jar</code>
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Patient Book.</p>
+<p>Copy the downloaded file to the folder you wish to use as the home folder for PatientBook.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start PatientBook. The following GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/PatientMode.PNG" alt="PatientMode" width="790">
 </div>
 </div>
 </li>
@@ -78,28 +81,25 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>mode user</code></strong> or <strong><code>mode patient</code></strong> : switches to patient management mode</p>
+<p><strong><code>mode patient</code></strong> : switches to patient management mode.</p>
 </li>
 <li>
-<p><strong><code>mode calender</code></strong> or <strong><code>mode cal</code></strong> : switches to appointment management mode</p>
+<p><strong><code>mode appointment</code></strong> : switches to appointment management mode.</p>
 </li>
 <li>
-<p><strong><code>add patient</code></strong> : automatically switches to patient management mode and begins a dialog to create a new entry in the patient database</p>
+<p><strong><code>add patient n/David Lee p/99998888 a/Utown e/davlee@gmail.com</code></strong> : automatically switches to patient management mode and add patient David Lee into the patient record, with the details provided.</p>
 </li>
 <li>
-<p><strong><code>delete p301</code></strong> : deletes patient with ID '301'</p>
+<p><strong><code>delete patient p0</code></strong> : deletes patient with patient ID 'p0'.</p>
 </li>
 <li>
-<p><strong><code>delete a40</code></strong> : deletes appointment with ID '40'</p>
+<p><strong><code>add appointment for Lee next week</code></strong> : automatically switches to patient management mode, and schedules an appointment for patient whose name matches Lee some time next week.</p>
 </li>
 <li>
-<p><strong><code>delete appointment scheduled at 3pm next week</code></strong> : removes appointment scheduled for 3pm next week</p>
+<p><strong><code>delete appointment e0</code></strong> : deletes appointment with appointment ID 'e0'.</p>
 </li>
 <li>
-<p><strong><code>make appointment at 3pm next week</code></strong> : schedules an appointment at 3pm next week</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the app.</p>
 </li>
 </ul>
 </div>
@@ -125,18 +125,70 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Commands are, in general, case sensitive.</p>
 </li>
 <li>
-<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user, eg. in <code>add patient n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are parameters to be supplied by the user. eg. in <code>add patient n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional.<br>
-e.g. <code>make appointment [at 3pm] [next week]</code> will cause the program to prompt for further details.</p>
+eg. in <code>add patient [t/TAG]</code>, <code>TAG</code> is an optional parameter.</p>
 </li>
 <li>
-<p>Parameters may be specified in any order, eg. <code>make appointment next week at 3pm</code> is also acceptable.</p>
+<p>Parameters with prefixes may be specified in any order, eg. all parameters for <code>add patient</code>, such as <code>n/NAME</code> and <code>a/ADDRESS</code> can be specified in any order</p>
 </li>
 </ol>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="view-help-code-help-code"><a class="link" href="#view-help-code-help-code">3.1. View help : <code>help</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>help</code></p>
+</div>
+<div class="paragraph">
+<p>Opens this user guide to display information on how to use PatientBook. Help command works in both patient management
+mode and appointment management mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-to-patient-management-mode-code-mode-patient-code"><a class="link" href="#switch-to-patient-management-mode-code-mode-patient-code">3.2. Switch to patient management mode : <code>mode patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>mode patient</code></p>
+</div>
+<div class="paragraph">
+<p>Switches the application to patient management mode. In this mode, you can view and manage patients’ data. When you
+enter a valid command regarding patient in appointment management mode, the application will switch to patient management
+mode automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PatientMode.PNG" alt="PatientMode" width="600">
+</div>
+<div class="title">Figure 1. Patient Mode</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-to-appointment-management-mode-code-mode-appointment-code"><a class="link" href="#switch-to-appointment-management-mode-code-mode-appointment-code">3.3. Switch to appointment management mode : <code>mode appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>mode appointment</code></p>
+</div>
+<div class="paragraph">
+<p>Switches the application to appointment management mode. In this mode, you can view and manage your patient&#8217;s appointments.
+When you enter a valid command regarding appointment in patient management mode, the application will switch to
+appointment management mode automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AppointmentMode.PNG" alt="AppointmentMode" width="600">
+</div>
+<div class="title">Figure 2. Appointment Mode</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-a-patient-code-add-patient-code"><a class="link" href="#add-a-patient-code-add-patient-code">3.4. Add a patient : <code>add patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>add patient n/NAME p/PHONE a/ADDRESS e/EMAIL [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Creates a new patient record and saves it in the list of all patient records. If necessary, switches the application to patient management mode.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -145,52 +197,44 @@ e.g. <code>make appointment [at 3pm] [next week]</code> will cause the program t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-In some places in this guide, you will find that two or more commands have been placed within curly brackets and separated by forward-slashes. This indicates that the commands are equivalent. For example, <code>{schedule/make} appointment</code> indicates that <code>schedule appointment</code> and <code>make appointment</code> are both equally valid._
+Any number of tags may be included, or none at all.
 </td>
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>help</code></p>
+<p>Examples:</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="switching-to-patient-management-mode-code-mode-user-patient-code"><a class="link" href="#switching-to-patient-management-mode-code-mode-user-patient-code">3.2. Switching to patient management mode : <code>mode {user/patient}</code></a></h3>
-<div class="paragraph">
-<p>Switching the application to patient management mode. In this mode, you can view and manage your patient details and information.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>mode {user/patient}</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
-<div class="paragraph">
-<p>Showing a list of all persons in the address book.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>list</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add patient n/John Smith p/90516038 a/New Smith Street, Singapore 519321 e/johnsmith@gmail.com</code></p>
+</li>
+<li>
+<p><code>add patient n/Alice Barker p/62353535 a/4 Pizza Road, Singapore 941023 e/alice_barker@yahoo.com.sg t/friend t/groupmate</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-to-appointment-management-mode-code-mode-appointment-cal-calendar-appt-code"><a class="link" href="#switching-to-appointment-management-mode-code-mode-appointment-cal-calendar-appt-code">3.4. Switching to appointment management mode : <code>mode {appointment/cal/calendar/appt}</code></a></h3>
+<h3 id="edit-patient-information-code-edit-patient-code"><a class="link" href="#edit-patient-information-code-edit-patient-code">3.5. Edit patient information : <code>edit patient</code></a></h3>
 <div class="paragraph">
-<p>Switching the application to appointment management mode. In this mode, you can view and manage your appointments scheduled.<br></p>
+<p><strong>Format:</strong> <code>edit patient PATIENT_ID [n/NAME] [p/PHONE] [a/ADDRESS] [e/EMAIL] [t/TAG]</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>mode {appointment/cal/calendar/appt}</code></p>
+<p>Edits an existing patient record. If necessary, switches the application to patient management mode.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-patient-code-add-patient-code"><a class="link" href="#adding-a-patient-code-add-patient-code">3.5. Adding a patient : <code>add patient</code></a></h3>
-<div class="paragraph">
-<p>Adding a new patient to the address book.
-Switching the application to patient management mode automatically.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>add [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BLOOD_TYPE] [t/TAG] …</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At least one of the optional fields must be provided.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -199,13 +243,72 @@ Switching the application to patient management mode automatically.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags, including 0
+Editing tags will remove all existing tags from the patient and replace them with the new tags. To remove all tags from a patient, use <code>t/</code> without any further input after the <code>/</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Not all fields have to be filled in initially when executing the command. The program will automatically prompt for more information on the person where necessary. All fields but tags are mandatory to create a new patient record.</p>
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit patient p229 n/Bob Ross p/95106202</code></p>
+</li>
+<li>
+<p><code>edit patient p24 t/replacedTag t/friend</code></p>
+</li>
+<li>
+<p><code>edit patient p510 a/New Address Road, Singapore 401914 t/</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-patients-code-list-patient-code"><a class="link" href="#list-all-patients-code-list-patient-code">3.6. List all patients : <code>list patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>list patient [all]</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all patients in the patient record. Using <code>all</code> will display all patients deleted in the past. If necessary, switches the application to appointment management mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-patients-code-find-patient-code"><a class="link" href="#locate-patients-code-find-patient-code">3.7. Locate patients : <code>find patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find patient KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative Format:</strong> <code>find patient PATIENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Notable Behaviour:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive, eg. <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of keywords do not matter, eg. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only names in the patient record are searched</p>
+</li>
+<li>
+<p>Patients which are marked as deleted can only be found by looking up their Patient ID explicitly. They may not be found via keyword search</p>
+</li>
+<li>
+<p>Only full words will be searched, eg. <code>Han</code> will <strong>not</strong> match <code>Hans</code></p>
+</li>
+<li>
+<p>Patient which match at least one of the keywords will be displayed after running the search, eg. <code>Hans Bo</code> will match <code>Hans Gruber</code> and <code>Bo Yang</code></p>
+</li>
+<li>
+<p>Finding a patient via their ID will match and display patients who have the exact same ID as the search term, unless the ID is for some reason part of another patient&#8217;s name, in which case they will be displayed as well</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -213,22 +316,21 @@ A person can have any number of tags, including 0
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/97019231 e/johnd@example.com a/51 John Street b/O-</code></p>
+<p><code>find patient john</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/criminal e/betsycrowe@example.com a/Newgate Prison p/91501231 t/critical</code></p>
+<p><code>find patient Alice bob</code></p>
+</li>
+<li>
+<p><code>find patient p510</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-an-appointment-code-make-appointment-code"><a class="link" href="#creating-an-appointment-code-make-appointment-code">3.6. Creating an appointment : <code>make appointment</code></a></h3>
+<h3 id="delete-a-patient-record-code-delete-patient-code"><a class="link" href="#delete-a-patient-record-code-delete-patient-code">3.8. Delete a patient record : <code>delete patient</code></a></h3>
 <div class="paragraph">
-<p>Creating a new appointment and places it in the calendar where appropriate.
-Switching the application to appointment management mode automatically.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>{schedule/make} {appointment /appt} for {PATIENT ID/PATIENT NAME} [DATE AND TIME] [;] …</code></p>
+<p><strong>Format:</strong> <code>delete patient PATIENT_ID</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -237,7 +339,7 @@ Switching the application to appointment management mode automatically.<br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Command parses natural expressions for <code>[DATE AND TIME]</code>. Anything after the optional semicolon is saved directly as details for the appointment and will be displayed when the appointment is selected in appointment management mode.
+Patient records will only be marked as deleted, rather than being removed altogether. This is due to the sensitive nature of patient information
 </td>
 </tr>
 </table>
@@ -248,30 +350,21 @@ Command parses natural expressions for <code>[DATE AND TIME]</code>. Anything af
 <div class="ulist">
 <ul>
 <li>
-<p><code>make appt for p1205 at 4pm next Tuesday ; Routine Checkup</code></p>
+<p><code>delete patient p510</code></p>
 </li>
 <li>
-<p><code>schedule appointment for John Doe on 14/8/2018 at 3pm</code></p>
+<p><code>delete patient p29</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-patients-code"><a class="link" href="#listing-all-persons-code-list-patients-code">3.7. Listing all persons : <code>list patients</code></a></h3>
+<h3 id="add-an-appointment-code-add-appointment-code"><a class="link" href="#add-an-appointment-code-add-appointment-code">3.9. Add an appointment : <code>add appointment</code></a></h3>
 <div class="paragraph">
-<p>Switching to patient management mode automatically, and listing all patients in the patient record.<br></p>
+<p><strong>Format:</strong> <code>add appointment for NAME DATE/DURATION</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>list patient/patients</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-appointments-code-list-appointments-code"><a class="link" href="#listing-all-appointments-code-list-appointments-code">3.8. Listing all appointments : <code>list appointments</code></a></h3>
-<div class="paragraph">
-<p>Switching to appointment management mode automatically, and listing all appointments from now in the record.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>list {appointments/appointment/appt/appts} [all]</code></p>
+<p>Creates a new appointment and places it in the schedule. If necessary, switches the application to appointment management mode.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -280,99 +373,173 @@ Command parses natural expressions for <code>[DATE AND TIME]</code>. Anything af
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Using <code>all</code> will also display all past appointments.
+Unlike other commands, this command does not require any prefixing.
 </td>
 </tr>
 </table>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-patient-information-code-change-patient-code"><a class="link" href="#editing-patient-information-code-change-patient-code">3.9. Editing patient information : <code>change patient</code></a></h3>
 <div class="paragraph">
-<p>Editing an existing patient in the address book. Automatically switching to patient management mode. Restoring the address book to the state before the previous <em>undoable</em> command was executed.<br></p>
+<p>For <code>DATE/DURATION</code> parameter, user may choose to use natural expressions to indicate the time or period where the appointment is to be scheduled. The list of natural expressions for <code>DATE/DURATION</code>
+which are accepted by the program include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tomorrow</code> or <code>tmr</code></p>
+</li>
+<li>
+<p><code>the day after tomorrow</code> or <code>the day after tmr</code></p>
+</li>
+<li>
+<p><code>in * day</code> or <code>in * days</code></p>
+</li>
+<li>
+<p><code>in * week</code> or <code>in * weeks</code></p>
+</li>
+<li>
+<p><code>in * month</code> or <code>in * months</code></p>
+</li>
+<li>
+<p><code>this week</code> or <code>next week</code></p>
+</li>
+<li>
+<p><code>this month</code> or <code>next month</code></p>
+</li>
+<li>
+<p><code>this Monday</code> <code>this Tuesday</code> <code>this Wednesday</code> <code>this Thursday</code> <code>this Friday</code> <code>this Saturday</code> or <code>this Sunday</code></p>
+</li>
+<li>
+<p><code>next Monday</code> <code>next Tuesday</code> <code>next Wednesday</code> <code>next Thursday</code> <code>next Friday</code> <code>next Saturday</code> or <code>next Sunday</code></p>
+</li>
+<li>
+<p><code>soon</code></p>
+</li>
+<li>
+<p><code>recently</code></p>
+</li>
+<li>
+<p><code>in a few days</code></p>
+</li>
+<li>
+<p>in <code>DD/MM/YYYY</code> format</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asterisk (*) denotes any positive integer number.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>{change/edit} patient {PATIENT_NAME/PATIENT_ID} [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] [b/BLOOD TYPE]</code></p>
+<p>After the initial input is processed by the programme, user may encounter a maximum of four prompt windows for further input, including:</p>
 </div>
-<div class="sidebarblock">
+<div class="ulist">
+<ul>
+<li>
+<p>A prompt window where user is required to choose the correct patient to schedule for, if the name provided in the initial input can be matched to multiple patients in the record. <code>Patient_ID</code> of the intended patient is to be entered.</p>
+</li>
+<li>
+<p>A prompt window where user is required to provide a specific time slot for the appointment, from a list of available time periods, in <code>DD/MM/YYYY hh:mm - hh:mm</code> format.</p>
+</li>
+<li>
+<p>A prompt window where user may choose to provide any additional notes for the appointment.</p>
+</li>
+<li>
+<p>A prompt window where user may choose to provide any tags for the appointment.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>Command entered: <code>add appointment for Xinze tomorrow</code></p>
+</div>
+<div class="paragraph">
+<p>1) There are multiple individuals named <code>Xinze</code> in the patient record, the program will request for a specific patient ID in a form similar to the following:</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Editing the person specified by <code>PATIENT_NAME</code> or <code>PATIENT_ID</code>. If the application has any uncertainties, e.g. patients having the same name, a prompt will appear to select the appropriate person.</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Input values will be used to update the existing values.</p>
-</li>
-<li>
-<p>When editing tags, all tags for the person will be removed and replaced with tags supplied.</p>
-</li>
-<li>
-<p>You can remove all the person’s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
+<img src="images/promptName.png" alt="promptName" width="600">
 </div>
-</div>
+<div class="title">Figure 3. Prompt Window for Patient ID</div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>2) Once <code>Xinze</code> is matched to a unique patient in the patient record, the program will display a list of available time periods during <code>tomorrow</code>, based on the current time at which the command is executed, in another prompt window similar to the following:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit John Doe p/5192310 e/johnd@example.com</code></p>
-</li>
-<li>
-<p><code>change p5102 n/Betsy Crower t/</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-an-appointment-code-change-appointment-code"><a class="link" href="#editing-an-appointment-code-change-appointment-code">3.10. Editing an appointment : <code>change appointment</code></a></h3>
-<div class="paragraph">
-<p>Entering appointment management mode automatically, then editing an existing appointment in the calendar.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>{change/edit} {appointment/appt} {DATE AND TIME/APPOINTMENT_ID} NEW_DETAILS</code></p>
-</div>
-<div class="paragraph">
-<p>Editing the details for the appointment.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-patients-by-name-code-find-patient-code"><a class="link" href="#locating-patients-by-name-code-find-patient-code">3.11. Locating patients by name : <code>find patient</code></a></h3>
-<div class="paragraph">
-<p>Automatically enters patient management mode, then find persons whose names contain any of the given keywords.<br></p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>find {patient/person} [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
+<div class="imageblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive; e.g. 'hans' will match with 'Hans'.</p>
-</li>
-<li>
-<p>The order of keywords does not matter; e.g. 'Hans Bo' will match with 'Bo Hans'.</p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. 'Han' will not match 'Hans'.</p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. 'OR' search); e.g. 'Hans Bo' will return 'Hans Gruber' as well as 'Bo Yang'.</p>
-</li>
-</ul>
+<img src="images/promptTimeSlot.png" alt="promptTimeSlot" width="600">
+</div>
+<div class="title">Figure 4. Prompt Window for Time Slot</div>
+</div>
+<div class="paragraph">
+<p>3) User further input: <code>31/10/2018 9:30 - 10:30</code>. Program proceeds to request for tags to be attached to the appointment, in another prompt window similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/promptTag.png" alt="promptTag" width="600">
+</div>
+<div class="title">Figure 5. Prompt Window for Tags</div>
+</div>
+<div class="paragraph">
+<p>4) User may choose to provide or not provide any tags. In this case, the user does not wish to attach any tags. After that, program proceeds to request for additional notes for the appointment, in another prompt window similar to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/promptNotes.png" alt="promptNotes" width="600">
+</div>
+<div class="title">Figure 6. Prompt Window for Additional Notes</div>
+</div>
+<div class="paragraph">
+<p>5) User may choose to provide or not provide any additional notes. In this case, the user does not wish to add any additional notes. Upon completion, program creates the appointment as indicated in the schedule, and displays the following message to the user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New appointment added: Appointment ID: e3 scheduled for patient ID: p7 during: 31/10/2018 09:30 to 31/10/2018 10:30
+Details:
+Tags:</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="edit-appointment-information-code-edit-appointment-code"><a class="link" href="#edit-appointment-information-code-edit-appointment-code">3.10. Edit appointment information : <code>edit appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>edit appointment APPOINTMENT_ID [p/PATIENT_ID] [t/TIME] [d/NOTES] [s/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an existing appointment with the given field in the schedule.  If necessary, switches the application to appointment management mode.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At least one of the optional fields must be provided.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in <code>DD/MM/YYYY hh:mm - hh:mm</code> format
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -380,83 +547,232 @@ Using <code>all</code> will also display all past appointments.
 <div class="ulist">
 <ul>
 <li>
-<p><code>find patient John</code><br>
-Returns patient 'John'.</p>
+<p><code>edit appointment e1 s/SecondVisit</code></p>
 </li>
 <li>
-<p><code>find person Betsy Tim John</code><br>
-Returns any person whose name contain 'Betsy', 'Tim' or 'John'.</p>
+<p><code>edit appointment e1031 p/p5</code></p>
+</li>
+<li>
+<p><code>edit appointment e41032 t/30/10/2019 4:00 - 5:30</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-an-appointment-code-find-appointment-code"><a class="link" href="#locating-an-appointment-code-find-appointment-code">3.12. Locating an appointment : <code>find appointment</code></a></h3>
+<h3 id="list-all-appointments-code-list-appointment-code"><a class="link" href="#list-all-appointments-code-list-appointment-code">3.11. List all appointments : <code>list appointment</code></a></h3>
 <div class="paragraph">
-<p>Entering appointment management mode automatically, then finding appointments a person or in a given date range.</p>
+<p><strong>Format:</strong> <code>list appointment [all]</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Format 1:</strong> <code>find [all] {appointment/appointments/appt/appts} [for] {PATIENT_ID/PATIENT_NAME}</code></p>
+<p>Shows a list of all future appointments scheduled, based on the current time at which the command is executed. Using <code>all</code> will display past appointments in the list as well. If necessary, switches the application to appointment management mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-appointments-code-find-appointment-code"><a class="link" href="#locate-appointments-code-find-appointment-code">3.12. Locate appointments : <code>find appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find appointment APPOINTMENT_ID</code></p>
 </div>
 <div class="paragraph">
-<p>The above format finds all appointments from now for patient specified by <code>PATIENT_ID/PATIENT_NAME</code> and displays them. Including <code>all</code> will display past appointments as well.</p>
+<p>Shows the appointment as indicated by the <code>APPOINTMENT_ID</code>. If necessary, switches the application to appointment management mode.</p>
 </div>
 <div class="paragraph">
-<p><strong>Format 2:</strong> <code>find {appointment/appointments/appt/appts} from [DATE_AND_TIME] {to/till} [DATE_AND_TIME]</code></p>
-</div>
-<div class="paragraph">
-<p>The above format locates all appointments in the given range of dates.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find all appt John Doe</code><br>
-Returning all appointments for John Doe, including past appointments.</p>
-</li>
-<li>
-<p><code>find appointments from last Monday till now</code><br>
-Returning all appointments from last Monday (defaults to 12am) to the time now.</p>
+<p><code>find appointment e2</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-patient-record-code-delete-patient-code"><a class="link" href="#deleting-a-patient-record-code-delete-patient-code">3.13. Deleting a patient record : <code>delete patient</code></a></h3>
+<h3 id="delete-an-appointment-code-delete-appointment-code"><a class="link" href="#delete-an-appointment-code-delete-appointment-code">3.13. Delete an appointment : <code>delete appointment</code></a></h3>
 <div class="paragraph">
-<p>Deleting a patient. Automatically entering patient management mode. Due to the nature of medical records, patient records will only be marked as deleted, and displayed as such. They will never disappear completely.<br></p>
+<p><strong>Format:</strong> <code>delete appointment APPOINTMENT_ID</code></p>
 </div>
 <div class="paragraph">
-<p>Deleted patients will not surface on search/list commands and cannot be interacted with in future commands.</p>
+<p>Deletes an appointment as indicated by the <code>APPOINTMENT_ID</code>. If necessary, switches the application to appointment management mode.</p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>delete {patient/person} {PATIENT_ID/PATIENT_NAME}</code></p>
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete appointment e2</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-appointment-code-delete-appointment-code"><a class="link" href="#deleting-an-appointment-code-delete-appointment-code">3.14. Deleting an appointment : <code>delete appointment</code></a></h3>
+<h3 id="clear-all-appointments-code-clear-schedule-code"><a class="link" href="#clear-all-appointments-code-clear-schedule-code">3.14. Clear all appointments : <code>clear schedule</code></a></h3>
 <div class="paragraph">
-<p>Deleting an appointment. Automatically entering appointment management mode.</p>
+<p><strong>Format:</strong> <code>clear schedule</code></p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>delete {appointment/appt} [APPOINTMENT_ID]</code></p>
-</div>
-<div class="paragraph">
-<p>The above format searches the appointment using <code>find appointment</code> in order to delete.</p>
-</div>
-<div class="paragraph">
-<p><em>In a future update, it will be possible to delete appointments via date and time.</em></p>
+<p>Clears all appointments scheduled in the record. If necessary, switches the application to appointment management mode.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.15. Listing entered commands : <code>history</code></a></h3>
+<h3 id="add-a-disease-code-add-disease-code"><a class="link" href="#add-a-disease-code-add-disease-code">3.15. Add a disease : <code>add disease</code></a></h3>
 <div class="paragraph">
-<p>Lists=ing all commands that you have entered in reverse chronological order.</p>
+<p><strong>Format:</strong> <code>add disease d/DISEASE s/SYMPTOM</code></p>
 </div>
+<div class="paragraph">
+<p>Adds a new disease to the patient book.</p>
+</div>
+<div class="paragraph">
+<p>You must include one and only one <code>DISEASE</code> parameter with prefix <code>d/</code> and at least one <code>SYMPTOM</code> for that disease
+with prefix <code>s/</code>. Duplicate symptoms can be included but only one will be added into the patient book.</p>
+</div>
+<div class="paragraph">
+<p>When you try to add an existing disease into the patient book, the following error message will be shown to you:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ErrorMessageForAddingExistingDisease.png" alt="ErrorMessageForAddingExistingDisease" width="600">
+</div>
+<div class="title">Figure 7. Error Message for Duplicate Diseases</div>
+</div>
+<div class="paragraph">
+<p>Hence, you may try command <code>find disease NAME</code> to find related symptoms of this existing disease.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add disease d/acne s/pustules s/blackheads</code></p>
+</li>
+<li>
+<p><code>add disease d/alcohol misuse s/stroke s/stroke s/mouth cancer</code><br>
+Symptom 'stroke' will be included once in our record.</p>
+</li>
+<li>
+<p><code>add disease d/obesity d/obesities</code><br>
+This is an invalid command due to multiple occurrence of disease and zero occurrence of symptom. Hence, you will
+be prompted to enter a correct command:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ErrorMessageForWrongAddDiseaseCommand.png" alt="ErrorMessageForWrongAddDiseaseCommand" width="600">
+</div>
+<div class="title">Figure 8. Error Message for Wrong Add Disease Format</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-diseases-code-list-disease-code"><a class="link" href="#list-all-diseases-code-list-disease-code">3.16. List all diseases : <code>list disease</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>list disease</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all diseases in the patient book.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-diseases-code-find-disease-code"><a class="link" href="#locate-diseases-code-find-disease-code">3.17. Locate diseases  : <code>find disease</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find disease NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Finds the disease which its name is specified in the command and return its related symptoms
+displayed in alphabetic order.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive; e.g. ‘HIV’, ‘hIV’ and ‘hiv’ are all equivalent.</p>
+</li>
+<li>
+<p>Only full words will be matched; e.g. ‘confus’ will not match ‘confusion’.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find disease influenza</code><br>
+Returns all the symptoms related to disease ‘influenza’:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindDiseaseInfluenza.png" alt="FindDiseaseInfluenza" width="600">
+</div>
+<div class="title">Figure 9. Result for Command 'find disease influenza'</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="predict-disease-code-predict-code"><a class="link" href="#predict-disease-code-predict-code">3.18. Predict disease  : <code>predict</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>predict s/SYMPTOM</code></p>
+</div>
+<div class="paragraph">
+<p>You must include at least one <code>SYMPTOM</code> parameter with prefix <code>s/</code> to predict a disease. All
+diseases that contain the set of symptoms will be returned and displayed in alphabetic order.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>SYMPTOM</code> parameter is case insensitive; e.g. ‘fever’ will match ‘FeVER’.</p>
+</li>
+<li>
+<p>Only diseases containing all the symptoms given in the command will be returned; e.g.
+For command <code>predict s/fever s/blackout</code>, even if disease ‘bacteremia’ contains symptom ‘fever’,
+it will not be returned since it does not contain symptom ‘blackout’.</p>
+</li>
+<li>
+<p>If none of diseases contain the given set of symptoms, an error message will be shown to you:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>predict s/fever s/blackout</code><br>
+Returns diseases which contain the two symptoms:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PredictDiseaseValidDemo.png" alt="PredictDiseaseValidDemo" width="600">
+</div>
+<div class="title">Figure 10. Result for Valid Command 'predict s/fever s/blackout'</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>predict s/cry</code><br>
+Returns an error message:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PredictInvalidDemo.png" alt="PredictInvalidDemo" width="600">
+</div>
+<div class="title">Figure 11. Error Message for Invalid Command 'predict s/cry'</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">3.19. List entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>history</code></p>
+</div>
+<div class="paragraph">
+<p>Lists all commands that you have entered in reverse chronological order.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -472,110 +788,82 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-the-calendar-code-clear-calendar-code"><a class="link" href="#clearing-the-calendar-code-clear-calendar-code">3.16. Clearing the calendar : <code>clear calendar</code></a></h3>
-<div class="paragraph">
-<p>Emptying out all appointments scheduled from the calendar.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>clear {calendar/cal/appointments/appts}</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.17. Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exiting the program.</p>
-</div>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.20. Exit the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>exit</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.18. Saving the data</a></h3>
 <div class="paragraph">
-<p>All patient and calendar data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
+<p>Exits the program.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another device?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous PatientBook folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>View Help</strong> : <code>help</code><br></p>
+<p><strong>Add a disease</strong> : <code>add disease</code><br></p>
 </li>
 <li>
-<p><strong>Switch To Patient Management Mode:</strong> : <code>mode {user/patient}</code><br></p>
+<p><strong>Add a patient</strong> : <code>add patient</code><br></p>
 </li>
 <li>
-<p><strong>Switch To Appointment Management Mode</strong> : <code>mode {appointment/cal/calendar/appt}</code><br></p>
+<p><strong>Add an appointment</strong> : <code>add appointment</code><br></p>
 </li>
 <li>
-<p><strong>Add A Patient</strong> : <code>add patient</code><br></p>
+<p><strong>Clear All appointments</strong> : <code>clear schedule</code><br></p>
 </li>
 <li>
-<p><strong>Create An Appointment</strong> : <code>make appointment</code><br></p>
+<p><strong>Delete a patient</strong> : <code>delete patient</code><br></p>
 </li>
 <li>
-<p><strong>List All Patients</strong> : <code>list patients</code><br></p>
+<p><strong>Delete an appointment</strong> : <code>delete appointment</code><br></p>
 </li>
 <li>
-<p><strong>List All Appointments</strong> : <code>list appointments</code><br></p>
+<p><strong>Edit appointment information</strong> : <code>edit appointment</code><br></p>
 </li>
 <li>
-<p><strong>Edit Patient Information</strong> : <code>change patient</code><br></p>
+<p><strong>Edit patient information</strong> : <code>edit patient</code><br></p>
 </li>
 <li>
-<p><strong>Edit Appointment Information</strong> : <code>change appointment</code></p>
+<p><strong>Exit the program</strong> : <code>exit</code><br></p>
 </li>
 <li>
-<p><strong>Locate Patients By Name</strong> : <code>find patient</code></p>
+<p><strong>List all appointments</strong> : <code>list appointment</code><br></p>
 </li>
 <li>
-<p><strong>Locate An Appointment</strong> : <code>find appointment</code></p>
+<p><strong>List all diseases</strong> : <code>list disease</code><br></p>
 </li>
 <li>
-<p><strong>Delete A Patient Record (Mark As Absent)</strong> : <code>delete patient</code></p>
+<p><strong>List all patients</strong> : <code>list patient</code><br></p>
 </li>
 <li>
-<p><strong>Delete An Appointment</strong> : <code>delete appointment</code></p>
+<p><strong>View command history</strong> : <code>history</code><br></p>
 </li>
 <li>
-<p><strong>View Command History</strong> : <code>history</code></p>
+<p><strong>Locate appointments</strong> : <code>find appointment</code><br></p>
 </li>
 <li>
-<p><strong>Clear The Calendar</strong> : <code>clear {cal/calendar/appointments/appts}</code></p>
+<p><strong>Locate diseases</strong> : <code>find disease</code><br></p>
 </li>
 <li>
-<p><strong>Exit The Program</strong> : <code>exit</code></p>
+<p><strong>Locate patients</strong> : <code>find patient</code><br></p>
+</li>
+<li>
+<p><strong>Predict disease</strong> : <code>predict</code><br></p>
+</li>
+<li>
+<p><strong>Switch to appointment management mode</strong> : <code>mode appointment</code><br></p>
+</li>
+<li>
+<p><strong>Switch to patient management mode:</strong> : <code>mode patient</code><br></p>
+</li>
+<li>
+<p><strong>View help</strong> : <code>help</code><br></p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">6. Glossary</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Calendar Mode:</strong>
-Same as <code>Appointment Mode</code>. It is the mode which allows users to view their current appointments with the patients.
-Users can switch to the Calendar mode using <code>mode</code> command by adding <code>calendar</code>, <code>cal</code>, <code>appointment</code> or <code>appt</code> after
-the command.</p>
-</div>
-<div class="paragraph">
-<p><strong>Patient Mode:</strong>
-Same as <code>User Mode</code>. It is the mode which allows users to view the patients and their personal medical details .
-Users can switch to the Patient mode using <code>mode</code> command by adding <code>patient</code> or <code>user</code> after the command.</p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-21 08:13:33 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-31 14:54:19 UTC</div></div></div></body></html>
