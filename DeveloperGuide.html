@@ -30,7 +30,7 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#on-the-fly-switching-between-modes">3.1. On-the-fly Switching between Modes</a></li>
-<li><a href="#natural-language-processing-for-scheduling">3.2. Natural Language Processing for Scheduling</a></li>
+<li><a href="#natural-language-processing-for-adding-an-appointment">3.2. Natural Language Processing for Adding an Appointment</a></li>
 <li><a href="#diagnosis">3.3. Diagnosis</a></li>
 <li><a href="#deletion-of-entries-from-working-dataset">3.4. Deletion of Entries from Working Dataset</a></li>
 <li><a href="#undo-redo-coming-in-v1-4">3.5. Undo/Redo (Coming in v1.4)</a></li>
@@ -621,113 +621,94 @@ and <code>show()</code> on that of the desired mode.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="natural-language-processing-for-scheduling"><a class="link" href="#natural-language-processing-for-scheduling">3.2. Natural Language Processing for Scheduling</a></h3>
+<h3 id="natural-language-processing-for-adding-an-appointment"><a class="link" href="#natural-language-processing-for-adding-an-appointment">3.2. Natural Language Processing for Adding an Appointment</a></h3>
 <div class="paragraph">
-<p>This feature facilitates scheduling, which enables the user to add appointments in the schedule system with user input phrased in natural language, and does so in a conversational process. It mainly implements a command parser which parses natural language user input, and creates the intended <code>ScheduleEvent</code> object to be stored.</p>
+<p>This feature facilitates scheduling, which enables the user to add appointments into the schedule system with user input phrased in natural expressions, and does so in a conversational process enabled by several prompt windows. It mainly implements a <code>ScheduleEvent</code> parser which parses natural language user input, and creates the intended <code>ScheduleEvent</code> object to be stored.</p>
 </div>
 <div class="paragraph">
-<p>There are four steps involved in the processing of natural language commands:</p>
+<p>There are five steps involved in the processing of this feature:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>High-Level Parsing: Command-specific, user inputs are broken down into sub-fields</p>
-</li>
-<li>
-<p>Low-Level Parsing: Date/time specific, user inputs for date or duration are parsed into a <code>Pair&lt;Calendar, Calendar&gt;</code> object</p>
-</li>
-<li>
-<p>Further Prompting: User is prompted with a list of available time slots, and required to select a specific time slot</p>
-</li>
-<li>
-<p>Generating Event: The resulting <code>ScheduleEvent</code> object corresponding to the user input is created and sent to <code>Schedule</code> to be stored.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Step 1. Breaking Down: User input is broken down into sub-fields, namely, name and date/duration.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Patient Parsing:  User input for patient name is parsed into the corresponding <code>PersonId</code> object.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Date/duration Parsing:  User input for date/duration is parsed into a <code>Pair&lt;Calendar, Calendar&gt;</code> object.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Further Prompting: User is prompted with two prompt windows where tags and additional notes can be added.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Generating Appointment: The resulting <code>ScheduleEvent</code> object corresponding to all user input is created.</p>
 </div>
 <div class="paragraph">
 <p>The following is an example of a use case, and how the mechanism behaves:</p>
 </div>
 <div class="paragraph">
-<p>User Input: <code>schedule for David Lee next week</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Unlike other commands, the <code>schedule</code> command does not require prefixing each subsequent field. This is to simulate natural language, and eliminates the need for a prefix reference sheet when scheduling appointments for patients.
-</td>
-</tr>
-</table>
+<p>User Input: <code>add appointment for David Lee next week</code>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>High-Level Parsing: The entire string is passed into a <code>ScheduleCommandParser</code> object, and broken down into meaningful sub-strings:</p>
+<p>Breaking Down: The user input string, starting with <code>for</code>, is passed into a <code>ScheduleEventParser</code> object, and broken down into meaningful substrings for name and date/duration respectively:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>schedule</code> is the command word, and is discarded.</p>
+<p>Programme starts with assuming that the substring for name is only one word long, and the remaining string following the name word all the way to the end of the string is the input for date/duration. In this case, <code>David</code> is the assumed name substring and <code>Lee next week</code> is the assumed date/duration substring.</p>
 </li>
 <li>
-<p><code>David Lee</code> is the name of the patient. The corresponding patient&#8217;s <code>PersonID</code> will be obtained by searching through the list of patients stored in <code>PersonList</code>. Should there be multiple patients with the same name, the application will prompt the user to select the appropriate one. Once the <code>PersonID</code> is obtained, it is stored as an attribute in a new <code>ScheduleEvent</code> object.</p>
+<p>It takes the assumed date/duration substring,<code>Lee next week</code>, and checks if it is a valid date/duration expression.</p>
 </li>
 <li>
-<p><code>next week</code> is the date/duration keyword, and is carried forward to the next step for further parsing.</p>
+<p>As a match cannot be found, it means that the assumed demarcation between name and date/duration inputs is incorrect. Programme makes another attempt by assuming the name substring is longer by one word (i.e. <code>David Lee</code>) and the date/duration substring is shorter by one word (i.e. <code>next week</code>). It takes the new assumed date/duration substring and checks its validity again.</p>
+</li>
+<li>
+<p>As a match is found this time, it indicates that the assumption is correct. <code>David Lee</code> will be carried forward to the Patient Parsing step while <code>next week</code> will be carried forward to the Date/duration Parsing step.</p>
+</li>
+<li>
+<p>In other cases where a match cannot be found after all assumptions have been tested, an exception will be thrown indicating that the user has not used an accepted expression.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Low-Level Parsing: The date/duration string is parsed and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object to represent <code>next week</code>:</p>
+<p>Patient Parsing: The string <code>David Lee</code> is parsed and converted into the corresponding <code>PersonId</code> object:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>The program executes a keyword search and invokes the method <code>getWeekDates(currentTime, 1)</code>, where it converts <code>next week</code> into a date range, by doing relevant calculations on a <code>Calendar</code> object which represents the current time. For instance, if the command is executed on 16/10/2018, <code>next week</code> becomes a datetime range from 22/10/2018 0859hrs to 28/10/2018 1801hrs. This range takes into consideration the doctor&#8217;s working hours.</p>
-</li>
-<li>
-<p>Two <code>Calendar</code> objects are created in the process to represent the start and end datetimes. These two objects are then placed in a <code>Pair</code>.</p>
+<p>TO-DO</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Further Prompting: The user is presented with a list of suggested empty time slots for the appointment, from which one is chosen:</p>
+<p>Date/duration Parsing: The string <code>next week</code> is passed to a <code>DateTimeParser</code> object where it is parsed and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object to represent the user&#8217;s chosen time slot for the appointment:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><code>DateTimeParser</code> finds a list of available time periods within the datetime range identified in low-level parsing, and passes the list as a <code>String</code> into <code>Prompt</code> and <code>UI</code> objects. These then display the results to the user.</p>
+<p>Programme executes a keyword search and invokes the method <code>getWeekDates(currentTime, 1)</code>, where it converts <code>next week</code> into a datetime range, by doing relevant calculations on the <code>Calendar</code> object which represents the current time. For instance, if the command is executed on 16/10/2018, <code>next week</code> becomes a datetime range from 22/10/2018 09:00 - 28/10/2018 18:00. This range takes into consideration the doctor&#8217;s working hours.</p>
 </li>
 <li>
-<p>The user then inputs the desired time slot such as <code>22/10/2018 9:30-10:30</code>.</p>
+<p>Programme searches the list of already scheduled appointments within the datetime range obtained. It finds a list of available time periods by taking the complement within that range, and passes the list as a <code>String</code> into a <code>Prompt</code> object, where the list is displayed to the user in a <code>PromptWindow</code>.</p>
 </li>
 <li>
-<p>The refined time selection is then passed back to <code>DateTimeParser</code> and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object.</p>
+<p>User inputs a specific time slot from the list of available time periods. For instance, user inputs <code>22/10/2018 09:00 - 10:00</code>. The refined time slot string is then passed back to <code>DateTimeParser</code> and converted into a <code>Pair&lt;Calendar, Calendar&gt;</code> object that represents this time slot, by invoking the method <code>parseTimeSlot(timeSlotString)</code>.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Generating Event: The <code>Pair</code> object from the previous step is added as an attribute in the <code>ScheduleEvent</code> object which is then returned.</p>
+<p>Further Prompting: The user is presented with two more <code>PromptWindow</code>, where they can provide further inputs for tag and additional notes for the appointment. This is done through a simple I/O mechanism.</p>
+</li>
+<li>
+<p>Generating Appointment: Results from the previous steps are used to fill the attributes of a newly created <code>ScheduleEvent</code> object which is then returned.</p>
 </li>
 </ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Instead of using natural language, the user may also choose to enter a <code>schedule</code> command in a fixed format such as <code>schedule for David Lee <strong>on</strong> 22/10/2018 0930 <strong>to</strong> 1030</code> to create an appointment without further prompts.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below illustrates this process, showing notable steps:</p>
+<p>The sequence diagram below illustrates this process, showing notable steps: (DIAGRAM TO BE CHANGED)</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2548,4 +2529,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-04 09:43:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-05 16:56:46 UTC</div></div></div></body></html>
