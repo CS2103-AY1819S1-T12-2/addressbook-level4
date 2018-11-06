@@ -17,22 +17,24 @@
 <li><a href="#switch-to-patient-management-mode-code-mode-patient-code">3.2. Switch to patient management mode : <code>mode patient</code></a></li>
 <li><a href="#switch-to-appointment-management-mode-code-mode-appointment-code">3.3. Switch to appointment management mode : <code>mode appointment</code></a></li>
 <li><a href="#add-a-patient-code-add-patient-code">3.4. Add a patient : <code>add patient</code></a></li>
-<li><a href="#edit-patient-information-code-edit-patient-code">3.5. Edit patient information : <code>edit patient</code></a></li>
-<li><a href="#list-all-patients-code-list-patient-code">3.6. List all patients : <code>list patient</code></a></li>
-<li><a href="#locate-patients-code-find-patient-code">3.7. Locate patients : <code>find patient</code></a></li>
-<li><a href="#delete-a-patient-record-code-delete-patient-code">3.8. Delete a patient record : <code>delete patient</code></a></li>
-<li><a href="#add-an-appointment-code-add-appointment-code">3.9. Add an appointment : <code>add appointment</code></a></li>
-<li><a href="#edit-appointment-information-code-edit-appointment-code">3.10. Edit appointment information : <code>edit appointment</code></a></li>
-<li><a href="#list-all-appointments-code-list-appointment-code">3.11. List all appointments : <code>list appointment</code></a></li>
-<li><a href="#locate-appointments-code-find-appointment-code">3.12. Locate appointments : <code>find appointment</code></a></li>
-<li><a href="#delete-an-appointment-code-delete-appointment-code">3.13. Delete an appointment : <code>delete appointment</code></a></li>
-<li><a href="#clear-all-appointments-code-clear-appointment-code">3.14. Clear all appointments : <code>clear appointment</code></a></li>
-<li><a href="#add-a-disease-code-add-disease-code">3.15. Add a disease : <code>add disease</code></a></li>
-<li><a href="#list-all-diseases-code-list-disease-code">3.16. List all diseases : <code>list disease</code></a></li>
-<li><a href="#locate-diseases-code-find-disease-code">3.17. Locate diseases  : <code>find disease</code></a></li>
-<li><a href="#predict-disease-code-predict-code">3.18. Predict disease  : <code>predict</code></a></li>
-<li><a href="#list-entered-commands-code-history-code">3.19. List entered commands : <code>history</code></a></li>
-<li><a href="#exit-the-program-code-exit-code">3.20. Exit the program : <code>exit</code></a></li>
+<li><a href="#select-a-patient-code-select-patient-code">3.5. Select a patient : <code>select patient</code></a></li>
+<li><a href="#edit-patient-information-code-edit-patient-code">3.6. Edit patient information : <code>edit patient</code></a></li>
+<li><a href="#list-all-patients-code-list-patient-code">3.7. List all patients : <code>list patient</code></a></li>
+<li><a href="#locate-patients-code-find-patient-code">3.8. Locate patients : <code>find patient</code></a></li>
+<li><a href="#delete-a-patient-record-code-delete-patient-code">3.9. Delete a patient record : <code>delete patient</code></a></li>
+<li><a href="#add-an-appointment-code-add-appointment-code">3.10. Add an appointment : <code>add appointment</code></a></li>
+<li><a href="#select-an-appointment-code-select-appointment-code">3.11. Select an appointment : <code>select appointment</code></a></li>
+<li><a href="#edit-appointment-information-code-edit-appointment-code">3.12. Edit appointment information : <code>edit appointment</code></a></li>
+<li><a href="#list-all-appointments-code-list-appointment-code">3.13. List all appointments : <code>list appointment</code></a></li>
+<li><a href="#locate-appointments-code-find-appointment-code">3.14. Locate appointments : <code>find appointment</code></a></li>
+<li><a href="#delete-an-appointment-code-delete-appointment-code">3.15. Delete an appointment : <code>delete appointment</code></a></li>
+<li><a href="#clear-all-appointments-code-clear-appointment-code">3.16. Clear all appointments : <code>clear appointment</code></a></li>
+<li><a href="#add-a-disease-code-add-disease-code">3.17. Add a disease : <code>add disease</code></a></li>
+<li><a href="#list-all-diseases-code-list-disease-code">3.18. List all diseases : <code>list disease</code></a></li>
+<li><a href="#locate-diseases-code-find-disease-code">3.19. Locate diseases  : <code>find disease</code></a></li>
+<li><a href="#predict-disease-code-predict-code">3.20. Predict disease  : <code>predict</code></a></li>
+<li><a href="#list-entered-commands-code-history-code">3.21. List entered commands : <code>history</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">3.22. Exit the program : <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -217,7 +219,41 @@ Any number of tags may be included, or none at all.
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-patient-information-code-edit-patient-code"><a class="link" href="#edit-patient-information-code-edit-patient-code">3.5. Edit patient information : <code>edit patient</code></a></h3>
+<h3 id="select-a-patient-code-select-patient-code"><a class="link" href="#select-a-patient-code-select-patient-code">3.5. Select a patient : <code>select patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select patient PATIENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Selects an existing patient and its information will display on the right. If necessary, switches the application to patient management mode.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Select command is different from clicking the patient card in the window. It enables you to select the patients who were soft deleted
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select patient p0</code></p>
+</li>
+<li>
+<p><code>select patient p29</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-patient-information-code-edit-patient-code"><a class="link" href="#edit-patient-information-code-edit-patient-code">3.6. Edit patient information : <code>edit patient</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>edit patient PATIENT_ID [n/NAME] [p/PHONE] [a/ADDRESS] [e/EMAIL] [t/TAG]</code></p>
 </div>
@@ -266,7 +302,7 @@ Editing tags will remove all existing tags from the patient and replace them wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-all-patients-code-list-patient-code"><a class="link" href="#list-all-patients-code-list-patient-code">3.6. List all patients : <code>list patient</code></a></h3>
+<h3 id="list-all-patients-code-list-patient-code"><a class="link" href="#list-all-patients-code-list-patient-code">3.7. List all patients : <code>list patient</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list patient [all]</code></p>
 </div>
@@ -275,7 +311,7 @@ Editing tags will remove all existing tags from the patient and replace them wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-patients-code-find-patient-code"><a class="link" href="#locate-patients-code-find-patient-code">3.7. Locate patients : <code>find patient</code></a></h3>
+<h3 id="locate-patients-code-find-patient-code"><a class="link" href="#locate-patients-code-find-patient-code">3.8. Locate patients : <code>find patient</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>find patient KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
@@ -328,7 +364,7 @@ Editing tags will remove all existing tags from the patient and replace them wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-a-patient-record-code-delete-patient-code"><a class="link" href="#delete-a-patient-record-code-delete-patient-code">3.8. Delete a patient record : <code>delete patient</code></a></h3>
+<h3 id="delete-a-patient-record-code-delete-patient-code"><a class="link" href="#delete-a-patient-record-code-delete-patient-code">3.9. Delete a patient record : <code>delete patient</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>delete patient PATIENT_ID</code></p>
 </div>
@@ -359,7 +395,7 @@ Patient records will only be marked as deleted, rather than being removed altoge
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-an-appointment-code-add-appointment-code"><a class="link" href="#add-an-appointment-code-add-appointment-code">3.9. Add an appointment : <code>add appointment</code></a></h3>
+<h3 id="add-an-appointment-code-add-appointment-code"><a class="link" href="#add-an-appointment-code-add-appointment-code">3.10. Add an appointment : <code>add appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>add appointment for NAME TIME</code></p>
 </div>
@@ -525,7 +561,41 @@ Tags:</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-appointment-information-code-edit-appointment-code"><a class="link" href="#edit-appointment-information-code-edit-appointment-code">3.10. Edit appointment information : <code>edit appointment</code></a></h3>
+<h3 id="select-an-appointment-code-select-appointment-code"><a class="link" href="#select-an-appointment-code-select-appointment-code">3.11. Select an appointment : <code>select appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select appointment APPOINTMENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Selects an existing appointment and its details will display on the right. If necessary, switches the application to appointment management mode.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Select command is different from clicking the appointment card in the window. It enables you to select the appointment in the past.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select appointment e0</code></p>
+</li>
+<li>
+<p><code>select appointment e29</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-appointment-information-code-edit-appointment-code"><a class="link" href="#edit-appointment-information-code-edit-appointment-code">3.12. Edit appointment information : <code>edit appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>edit appointment APPOINTMENT_ID [p/PATIENT_ID] [t/TIME] [d/NOTES] [s/TAG]</code></p>
 </div>
@@ -574,7 +644,7 @@ To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-all-appointments-code-list-appointment-code"><a class="link" href="#list-all-appointments-code-list-appointment-code">3.11. List all appointments : <code>list appointment</code></a></h3>
+<h3 id="list-all-appointments-code-list-appointment-code"><a class="link" href="#list-all-appointments-code-list-appointment-code">3.13. List all appointments : <code>list appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list appointment [all]</code></p>
 </div>
@@ -583,7 +653,7 @@ To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-appointments-code-find-appointment-code"><a class="link" href="#locate-appointments-code-find-appointment-code">3.12. Locate appointments : <code>find appointment</code></a></h3>
+<h3 id="locate-appointments-code-find-appointment-code"><a class="link" href="#locate-appointments-code-find-appointment-code">3.14. Locate appointments : <code>find appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>find appointment APPOINTMENT_ID</code></p>
 </div>
@@ -602,7 +672,7 @@ To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-an-appointment-code-delete-appointment-code"><a class="link" href="#delete-an-appointment-code-delete-appointment-code">3.13. Delete an appointment : <code>delete appointment</code></a></h3>
+<h3 id="delete-an-appointment-code-delete-appointment-code"><a class="link" href="#delete-an-appointment-code-delete-appointment-code">3.15. Delete an appointment : <code>delete appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>delete appointment APPOINTMENT_ID</code></p>
 </div>
@@ -621,7 +691,7 @@ To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-appointments-code-clear-appointment-code"><a class="link" href="#clear-all-appointments-code-clear-appointment-code">3.14. Clear all appointments : <code>clear appointment</code></a></h3>
+<h3 id="clear-all-appointments-code-clear-appointment-code"><a class="link" href="#clear-all-appointments-code-clear-appointment-code">3.16. Clear all appointments : <code>clear appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>clear appointment</code></p>
 </div>
@@ -630,7 +700,7 @@ To edit the time of the appointment, <code>[t/TIME]</code> has to be entered in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-a-disease-code-add-disease-code"><a class="link" href="#add-a-disease-code-add-disease-code">3.15. Add a disease : <code>add disease</code></a></h3>
+<h3 id="add-a-disease-code-add-disease-code"><a class="link" href="#add-a-disease-code-add-disease-code">3.17. Add a disease : <code>add disease</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>add disease d/DISEASE s/SYMPTOM</code></p>
 </div>
@@ -680,7 +750,7 @@ be prompted to enter a correct command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-all-diseases-code-list-disease-code"><a class="link" href="#list-all-diseases-code-list-disease-code">3.16. List all diseases : <code>list disease</code></a></h3>
+<h3 id="list-all-diseases-code-list-disease-code"><a class="link" href="#list-all-diseases-code-list-disease-code">3.18. List all diseases : <code>list disease</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>list disease</code></p>
 </div>
@@ -689,7 +759,7 @@ be prompted to enter a correct command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locate-diseases-code-find-disease-code"><a class="link" href="#locate-diseases-code-find-disease-code">3.17. Locate diseases  : <code>find disease</code></a></h3>
+<h3 id="locate-diseases-code-find-disease-code"><a class="link" href="#locate-diseases-code-find-disease-code">3.19. Locate diseases  : <code>find disease</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>find disease NAME</code></p>
 </div>
@@ -726,7 +796,7 @@ Returns all the symptoms related to disease ‘influenza’:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="predict-disease-code-predict-code"><a class="link" href="#predict-disease-code-predict-code">3.18. Predict disease  : <code>predict</code></a></h3>
+<h3 id="predict-disease-code-predict-code"><a class="link" href="#predict-disease-code-predict-code">3.20. Predict disease  : <code>predict</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>predict s/SYMPTOM</code></p>
 </div>
@@ -782,7 +852,7 @@ Returns an error message:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">3.19. List entered commands : <code>history</code></a></h3>
+<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">3.21. List entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>history</code></p>
 </div>
@@ -803,7 +873,7 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.20. Exit the program : <code>exit</code></a></h3>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.22. Exit the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>exit</code></p>
 </div>
@@ -870,6 +940,12 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 <p><strong>Predict disease</strong> : <code>predict</code><br></p>
 </li>
 <li>
+<p><strong>Select a patient</strong> : <code>select patient</code><br></p>
+</li>
+<li>
+<p><strong>Select an appointment</strong> : <code>select appointment</code><br></p>
+</li>
+<li>
 <p><strong>Switch to appointment management mode</strong> : <code>mode appointment</code><br></p>
 </li>
 <li>
@@ -881,4 +957,4 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 08:46:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 10:20:49 UTC</div></div></div></body></html>
