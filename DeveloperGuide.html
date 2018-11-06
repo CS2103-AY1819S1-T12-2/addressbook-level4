@@ -727,51 +727,58 @@ and <code>show()</code> on that of the desired mode.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Diagnosis#hasDisease(Disease disease)</code> – Check if the application contains the disease input by users.</p>
+<p><code>Diagnosis#hasDisease(Disease disease)</code> – Check if the application contains the <code>disease</code> input by users</p>
 </li>
 <li>
-<p><code>Diagnosis#getSymptoms(Disease disease)</code> – Get all the related symptoms of a disease input by users</p>
+<p><code>Diagnosis#getSymptoms(Disease disease)</code> – Return a <code>list</code> of all the related <code>symptoms</code> of a <code>disease</code> input by users</p>
 </li>
 <li>
-<p><code>Diagnosis#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> – Store a particular disease-symptom matcher input by users.</p>
+<p><code>Diagnosis#getDiseases()</code> – Return a <code>list</code> of existing <code>diseases</code> from the database</p>
 </li>
 <li>
-<p><code>Diagnosis#predictDisease(Set&lt;Symptom&gt; symptoms)</code> – Predict a disease for symptoms input by users.</p>
+<p><code>Diagnosis#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> – Store a particular <code>disease</code> with its set of <code>symptoms</code> in database.</p>
+</li>
+<li>
+<p><code>Diagnosis#predictDisease(Set&lt;Symptom&gt; symptoms)</code> – Predict a <code>disease</code> for a set of <code>symptoms</code> input by users.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the DiagnosisModel interface as <code>DiagnosisModel# hasDisease(Disease disease)</code>,
-<code>DiagnosisModel#getSymptoms(Disease disease)</code>, <code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code>, and
+<p>These operations are exposed in the <code>DiagnosisModel</code> interface as
+<code>DiagnosisModel# hasDisease(Disease disease)</code>,
+<code>DiagnosisModel#getSymptoms(Disease disease)</code>, <code>DiagnosisModel#getDiseases()</code>,
+<code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> and
 <code>DiagnosisModel#predictDisease(Set&lt;Symptom&gt; symptoms)</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the diagnosis mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the <code>diagnosis</code> mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>Diagnosis</code> will be initialized with a
-<code>HashMap&lt;Disease,Set&lt;Symptom&gt;&gt; matcher</code> stored in the database.</p>
+<p>Step 1. The user launches the application for the first time. The <code>Diagnosis</code> will be instantiated and its
+private attribute <code>matcher</code> will be initialized by calling the <code>static</code> method <code>Diagnosis#readDataFromCsvFile()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>disease Influenza</code> command to get symptoms of “Influenza” stored in the patient book.
-The <code>disease</code> command calls <code>DiagnosisModel#hasDisease(Disease disease)</code> first, if the return <code>Boolean</code> value is false,
-the user will be notified with a message stating: “The disease you are looking for is not in our record,
-please add it with <code>addDisease</code> Command”. If the return value is true, it will continue to
-call <code>DiagnosisModel#getSymptoms(Disease disease)</code> and get all the symptoms related to “Influenza” in a <code>Set&lt;Symptom&gt;</code>.</p>
+<p>Step 2. The user executes <code>find disease Influenza</code> command to get symptoms of “Influenza” stored in the patient book.
+The <code>find disease</code> command calls <code>DiagnosisModel#hasDisease(Disease disease)</code> first, if the return <code>Boolean</code> value is <code>false</code>,
+the user will be notified with a <code>command exception</code> thrown . If the return value is <code>true</code>, it will continue to call
+<code>DiagnosisModel#getSymptoms(Disease disease)</code> and get all the <code>symptoms</code> related to “Influenza” in a <code>List&lt;Symptom&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. If the disease is not present in the database record, the user can execute
-<code>addDisease dis/Influenza sym/ncoordination sym/fever sym/pleuritic pain…</code> command to insert
-a disease-symptom matcher into the database record. Now, the <code>addDisease</code> command calls
-<code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code>.
-Inside the method, <code>Diagnosis#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> will be
-invoked and reset the private attribute <code>matcher</code>.</p>
+<code>add disease d/Influenza s/ncoordination s/fever s/pleuritic pain…</code> command to insert the data into the database record.
+Now, the <code>add disease</code> command calls <code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code>.
+Now it will call the <code>static</code> method <code>writeDataFromCsvFile(Disease disease, Set&lt;Symptom&gt; symptoms)</code> which returns
+a <code>Hashmap</code> of type <code>HashMap&lt;Disease, Set&lt;Symptom&gt;&gt;</code> and assigns it to <code>this.matcher</code> to update the <code>private</code> attribute.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. Now the user decides to execute the command <code>predict</code> to search for a disease in database
-that matches with input symptoms. This command calls <code>DiasnosisModel#predictDisease(Set&lt;Symptom&gt; symptoms)</code>
-which runs a searching algorithm to check if such diseases exist. The method returns a <code>set</code> of all
-potential diseases or <code>null</code> if it does not exist.</p>
+<p>Step 4. The user executes <code>list disease</code> command to get a list of diseases stored in the patient book.
+The <code>list disease</code> command calls <code>DiagnosisModel#getDiseases()</code> which returns a <code>list</code> of diseases present in the
+<code>key set of matcher</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Now the user decides to execute the command <code>predict</code> to search for a <code>disease</code> in database that
+matches with input symptoms. This command calls <code>DiasnosisModel#predictDisease(Set&lt;Symptom&gt;)</code> which returns a <code>list</code>
+of diseases that are mapped to a set of symptoms containing the given set.</p>
 </div>
 </div>
 <div class="sect3">
@@ -816,7 +823,7 @@ related symptoms, then maintain a <code>list</code> of <code>Match</code> object
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Do a linear search to find if a disease that matches all symptoms exists.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>stream</code> to search and collect all potential diseases.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -829,14 +836,15 @@ related symptoms, then maintain a <code>list</code> of <code>Match</code> object
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong></p>
+<p><strong>Alternative 2:</strong> Use a more systematic way to determine the suitability of each disease by
+calculating the similarity of its pre-existing set of symptoms and the set of symptoms given by users.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros:</p>
+<p>Pros: More accurate in determining the correct diseases.</p>
 </li>
 <li>
-<p>Cons:</p>
+<p>Cons: Hard to implement and understand.</p>
 </li>
 </ul>
 </div>
@@ -2529,4 +2537,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 10:20:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 10:41:44 UTC</div></div></div></body></html>
