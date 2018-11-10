@@ -11,5 +11,6 @@ public class CmdTypeCliSyntax {
     public static final String CMDTYPE_DISEASE = "disease";
     public static final String CMDTYPE_SYMPTOM = "symptom";
     public static final String CMDTYPE_DIAGNOSIS = "diagnosis";
+    public static final String CMDTYPE_DRUG = "drug";
 
 }
