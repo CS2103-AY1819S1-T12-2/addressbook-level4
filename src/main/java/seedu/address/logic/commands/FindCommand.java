@@ -31,7 +31,8 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_UNEXPECTED_PARAMETER = "Unexpected Values: "
             + "Should have been caught in FindCommandParser.";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "Use 'find patient'"
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Use 'find patient'"
             + "to find all persons whose names contain any of "
             + "the specified keywords (case-insensitive), use 'find disease' "
             + "to find all symptoms related to a disease if it exists "
