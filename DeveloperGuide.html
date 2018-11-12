@@ -1089,20 +1089,21 @@ matches with input symptoms. This command calls <code>DiasnosisModel#predictDise
 of diseases that are mapped to a set of symptoms containing the given set.</p>
 </div>
 <div class="listingblock">
+<div class="title">Predict Command Code Snippet</div>
 <div class="content">
-<pre>    /**
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="comment">/**
      * Predicts a disease with a given set of symptoms.
      *
      * @param symptoms symptoms input.
      * @return a list of qualified diseases.
-     */
-    public List&lt;Disease&gt; predictDisease(Set&lt;Symptom&gt; symptoms) {
+     */</span>
+    <span class="directive">public</span> <span class="predefined-type">List</span>&lt;Disease&gt; predictDisease(<span class="predefined-type">Set</span>&lt;Symptom&gt; symptoms) {
         requireAllNonNull(symptoms);
-        List&lt;Disease&gt; diseases = this.matcher.keySet().stream()
-                .filter(disease -&gt; this.matcher.get(disease).containsAll(symptoms)).collect(Collectors.toList());
-        diseases.sort(Comparator.comparing(Disease::toString));
-        return diseases;
-    }</pre>
+        <span class="predefined-type">List</span>&lt;Disease&gt; diseases = <span class="local-variable">this</span>.matcher.keySet().stream()
+                .filter(disease -&gt; <span class="local-variable">this</span>.matcher.get(disease).containsAll(symptoms)).collect(Collectors.toList());
+        diseases.sort(<span class="predefined-type">Comparator</span>.comparing(Disease::toString));
+        <span class="keyword">return</span> diseases;
+    }</code></pre>
 </div>
 </div>
 </div>
@@ -3507,4 +3508,4 @@ Expected: No list of diseases is displayed. The error message will be shown in t
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:34:32 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:45:12 UTC</div></div></div></body></html>
