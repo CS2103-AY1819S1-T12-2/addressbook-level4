@@ -1272,65 +1272,207 @@ data structure encapsulated within <code>Schedule</code>.</p>
 <h3 id="drug-database-search"><a class="link" href="#drug-database-search">3.8. Drug Database Search</a></h3>
 <div class="paragraph">
 <p>This feature allows the user to view pharmacological information about medical drugs currently licensed for sale
-in Singapore. It has been partially implemented, but remains in the form of unused code modules at this time.</p>
+in Singapore.</p>
 </div>
 <div class="sect3">
-<h4 id="currently-implemented"><a class="link" href="#currently-implemented">3.8.1. Currently Implemented</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The implementation is contained within a single code module, "DrugSearchUtility.java",
-which accesses a static database stored in "datasetForDrugs.csv", formatted in UTF-8.</p>
+<p>The execution of a drug database search via the <code>find drug</code> command takes place in the following manner:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user enters the command <code>find drug [drugname]</code>, which is parsed by <code>FindCommandParser</code>
+to ensure that it has a single argument only - <code>[drugname]</code> - and that the argument contains
+only uppercase and lowercase alphabets.</p>
+</li>
+<li>
+<p>If errors are found in the input, a <code>ParseException</code> is thrown and the user sees an error message
+containing the proper command syntax.
+If the input is valid, a <code>FindCommand</code> is generated with a trimmed, lowercase version of
+<code>[drugname]</code> as its search string,
+and <code>DRUG</code> as its command type.</p>
+</li>
+<li>
+<p><code>FindCommand</code> is executed through its <code>execute()</code> method, and
+calls the static <code>DrugSearch.find()</code> method with the search string as an argument.</p>
+</li>
+<li>
+<p>The <code>DrugSearch.find()</code> method ensures that the search string does <em>not</em> match any of a
+list of generic words like "syrup" or "tablet" which are not suitable search phrases,
+as they would generate hundreds of results. If the check fails, a specific error string
+is returned, whereupon the <code>FindCommand</code> object throws a command exception, notifying the user
+that their search string is too generic.</p>
+</li>
+<li>
+<p>If the check passes, the <code>DrugSearch.find()</code> method creates a <code>DrugCsvUtil</code> object as a local
+variable, passing in the search string as an input to its constructor. The <code>DrugCsvUtil</code> object now corresponds
+to that search string only.</p>
+</li>
+<li>
+<p>The <code>DrugCsvUtil</code> contains a <code>nextMatchingResult</code> method which reads a static drug database stored in "datasetForDrugs.csv" (formatted in UTF-8)
+from top to bottom, and each time it is called, it returns the <em>next</em> matching result from
+the database in the form of a <code>String[]</code>. Once there are no matching results, it begins to return
+<code>null</code>.</p>
+</li>
+<li>
+<p>The DrugSearch.find() method adds the matching results returned by the <code>DrugCsvUtil</code> to a static
+cache, one after the other. Once it receives <code>null</code> as a return value,
+it formats just the <em>Name, Classification and Active Ingredients</em> of the drug results in the cache
+into a <code>String</code> of search results and returns it to <code>FindCommand</code>, which
+displays them. The full information can be displayed using the <code>moreinfo</code> command (discussed later).
+If the cache is empty (i.e. there were no matches in the database), <code>DrugSearch.find()</code> returns a specific error String instead,
+whereupon <code>FindCommand</code> throws a <code>CommandException</code>, and the user sees an error message
+indicating that no results were found.</p>
+</li>
+<li>
+<p>The cache is <em>not</em> cleared at the end of the search: instead, it is cleared when a _new_search
+is initiated, in order to accommodate the <code>moreinfo</code> command.</p>
+</li>
+<li>
+<p>When the results are displayed to the user in the form of a numbered list, they have the option
+of entering the command <code>moreinfo [RESULTNO]</code> to view more information about any of the results.</p>
+</li>
+<li>
+<p>The argument of the command is parsed by <code>MoreInfoCommandParser</code> to ensure that it is numeric,
+not less than or equal to zero, and not larger than 10,000.
+If the parse fails, a <code>ParseException</code> is thrown and the user sees the
+error message that corresponds to the problem with their input.</p>
+</li>
+<li>
+<p>If the parse is successful, a <code>MoreInfoCommand</code> object is created, which executes through its
+<code>execute()</code> method, and calls <code>DrugSearch.moreInfo()</code> with the index number as its argument.</p>
+</li>
+<li>
+<p><code>DrugSearch.moreInfo()</code> checks that the index is in the cache of results from the most recent
+search. If the cache is empty, this means that the user has not carried out a single drug
+search yet, or that the most recent drug search turned up no results. In these cases,
+a specific error string is returned, and <code>MoreInfoCommand</code> throws a <code>CommandException</code>, and
+the user sees the appropriate error message.</p>
+</li>
+<li>
+<p>If the index is contained in the cache, the full information about the corresponding drug
+(seven categories of information) is formatted into a <code>String</code> result and returned, which
+is then displayed.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The database contains several categories of pharmacological metadata about each medical drug licensed for
-sale in Singapore as of September, 2018.</p>
+<p><em>Note</em>: The drug database is updated as of September, 2018.</p>
 </div>
 <div class="paragraph">
 <p>The feature has been implemented using the OpenCSV library, which offers tools for manipulating
 .csv (Comma Separated Values) files.</p>
 </div>
-<div class="paragraph">
-<p>A keyword is provided by the user as input to the <code>search()</code> function of the program.
-This input keyword is first matched against a predetermined set of "generic" keywords which occur
-very commonly in the names of drugs, and would therefore make for an unsuitable search query
-(as it would match tens or even hundreds of drugs). For example,
-they keywords "tablet" or "injection" would be rejected as search queries,
-because they would produce hundreds of results.</p>
-</div>
-<div class="paragraph">
-<p>If the keyword passes the above check, it is then iteratively compared against all the
-entries in the drug database, and metadata of the drugs whose names contain the keyword
-are added to a cache.</p>
-</div>
-<div class="paragraph">
-<p>Finally certain metadata about each of the cached drugs - Name, Classification and Active Ingredients -
-are appended successively to a String, and the String is returned. Along with each drug, a message
-is also appended indicating the drug&#8217;s index in the cache, allowing the user to enter
-another command (referring to the index number of a particular search result) in order
-to see the entire pharmacological data (seven categories) for that particular drug. This has
-been done to ensure that search results are not excessively long and verbose.</p>
-</div>
-<div class="paragraph">
-<p>The cache is flushed at the initiation of a new search.</p>
-</div>
 </div>
 <div class="sect3">
-<h4 id="to-be-implemented"><a class="link" href="#to-be-implemented">3.8.2. To Be Implemented</a></h4>
-<div class="paragraph">
-<p><strong>Commands:</strong> Commands for accessing the database have yet to be incorporated into the program.</p>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.8.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-format-search-results"><a class="link" href="#aspect-how-to-format-search-results">Aspect : How to format search results</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Displays only partial information about each drug in the
+initial search results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Prevents search results from being several pages long, and verbose.</p>
+</li>
+<li>
+<p>Cons: Requires a separate command to be implemented for full information about
+any particular result to be displayed</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>These commands will be <code>drug [keyword]</code> (to query the database for drugs matching
-the given keyword, and <code>moreinfo [index]</code> (to view full pharmacological metadata about
-any drug from the search results).</p>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Display all seven categories of information about each drug in the initial
+results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Results will be very long, and contain information that the user may not actually need.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p><strong>Link With Symptom Matcher:</strong> The feature may be integrated with the Symptom Matching feature,
-allowing the user to see recommended prescriptions for a given symptom.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p><strong>Logging And Exception Handling:</strong> The feature currently has it&#8217;s own log file for errors. This will be modified so
-as to use the integrated central logging feature in Patient Book as a whole. Exception handling
-will be modified in this way too.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-to-read-the-drug-database"><a class="link" href="#aspect-how-to-read-the-drug-database">Aspect : How to read the drug database</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a separate I/O utility class (<code>DrugCsvUtil</code>) to read
+directly from the file each time a search is carried out</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Runs fast, and is modular.</p>
+</li>
+<li>
+<p>Cons: Filepath-related code can break if the working directory changes upon packaging into jar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Read contents of file onto memory in the form of a <code>HashMap&lt;&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: File only has to be read once, and the contents can be easy manipulated since they
+are in the form of mapped pairs stored as a class variable.</p>
+</li>
+<li>
+<p>Cons: Causes the program to become very slow, as 2MB of data must be read into memory.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-code-moreinfo-code-works"><a class="link" href="#aspect-how-code-moreinfo-code-works">Aspect : How <code>moreinfo</code> works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> <code>moreinfo</code> can be used repeatedly, but only on one result
+at a time.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May cause user to have to recall a long list of index numbers if they want to
+see more information about multiple results.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>moreinfo</code> accepts multiple indices in a single run of the command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will create efficiency for the user.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, particularly if a mix of valid and invalid indices are entered
+as arguments.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -3107,4 +3249,4 @@ Expected: No list of diseases is displayed. The error message will be shown in t
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:26:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:35:59 UTC</div></div></div></body></html>
