@@ -1057,6 +1057,27 @@ Now, the <code>add disease</code> command calls <code>DiagnosisModel#addMatcher(
 Now it will call the <code>static</code> method <code>writeDataFromCsvFile(Disease disease, Set&lt;Symptom&gt; symptoms)</code> which returns
 a <code>Hashmap</code> of type <code>HashMap&lt;Disease, Set&lt;Symptom&gt;&gt;</code> and assigns it to <code>this.matcher</code> to update the <code>private</code> attribute.</p>
 </div>
+<div class="listingblock">
+<div class="title">Add Command Code Snippet</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="comment">/**
+     * Adds a disease and its related symptoms into the database
+     *
+     * @param disease  disease input.
+     * @param symptoms related symptoms.
+     */</span>
+
+
+    <span class="directive">public</span> <span class="type">void</span> addMatcher(Disease disease, <span class="predefined-type">Set</span>&lt;Symptom&gt; symptoms) {
+        requireNonNull(disease);
+        requireAllNonNull(symptoms);
+        <span class="type">boolean</span> hasDisease = <span class="local-variable">this</span>.hasDisease(disease);
+        <span class="keyword">if</span> (!hasDisease) {
+            <span class="local-variable">this</span>.matcher = writeDataToCsvFile(disease, symptoms);
+        }
+    }</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Step 4. The user executes <code>list disease</code> command to get a list of diseases stored in the patient book.
 The <code>list disease</code> command calls <code>DiagnosisModel#getDiseases()</code> which returns a <code>list</code> of diseases present in the
@@ -1066,6 +1087,23 @@ The <code>list disease</code> command calls <code>DiagnosisModel#getDiseases()</
 <p>Step 5. Now the user decides to execute the command <code>predict</code> to search for a <code>disease</code> in database that
 matches with input symptoms. This command calls <code>DiasnosisModel#predictDisease(Set&lt;Symptom&gt;)</code> which returns a <code>list</code>
 of diseases that are mapped to a set of symptoms containing the given set.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    /**
+     * Predicts a disease with a given set of symptoms.
+     *
+     * @param symptoms symptoms input.
+     * @return a list of qualified diseases.
+     */
+    public List&lt;Disease&gt; predictDisease(Set&lt;Symptom&gt; symptoms) {
+        requireAllNonNull(symptoms);
+        List&lt;Disease&gt; diseases = this.matcher.keySet().stream()
+                .filter(disease -&gt; this.matcher.get(disease).containsAll(symptoms)).collect(Collectors.toList());
+        diseases.sort(Comparator.comparing(Disease::toString));
+        return diseases;
+    }</pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -3469,4 +3507,4 @@ Expected: No list of diseases is displayed. The error message will be shown in t
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:30:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:34:32 UTC</div></div></div></body></html>
