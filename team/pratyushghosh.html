@@ -1,0 +1,573 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Pratyush Ghosh - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Pratyush Ghosh - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-patientbook"><a class="link" href="#project-patientbook">PROJECT: PatientBook</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PatientBook is an all-in-one convenience utility for medical professionals in Singapore. It is used to store and manage patient data as well as appointment schedules. It can also be used to retrieve information about disease, symptoms and drugs.
+PatientBook uses simple and intuitive “commands” to receive instructions from the user – this makes it speedy, lightweight and easy to pick up.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Added <strong>a Drug Database Search.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Shows the user a list of all Singapore-licensed medicines whose names partially or fully match
+the entered keyword, including detailed pharmacological information.</p>
+</li>
+<li>
+<p>Justification: This feature is immensely convenient for medical professionals, who regularly face situations
+where:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>They are unfamiliar with the particular brand name of a medicine their patient
+is taking, and need to check the active ingredient.</p>
+</li>
+<li>
+<p>They need to check the different strengths (250mg, 625ml, etc.)
+and formulations (capsule, syrup, etc.) of a medication that are available.</p>
+</li>
+<li>
+<p>Need to know the classification of a drug (over-the-counter, prescription-only, etc.) so
+they can determine if a prescription or particular pharmacy is needed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The search feature takes into account keywords that might be too generic, e.g. "tablet",
+and warns the user if such a keyword is used that it may generate too many results.</p>
+</li>
+<li>
+<p>The search features takes readability into account, by first displaying a list of compact information
+about each drug, and giving the user the option of seeing more information about any particular
+result.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored parts of the <code>find</code> command to make it readable and consistent,
+and modified several error messages for clarity.</p>
+</li>
+<li>
+<p>Wrote tests to cover all code related to Drug Search.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=pratyushghosh">Code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Created team repository and forked the necessary codebase.</p>
+</li>
+<li>
+<p>Created team in repository, and assigned read/write privileges.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote the Introduction section of the User Guide, and documented the entire Drug Search
+Feature.</p>
+</li>
+<li>
+<p>Documented the entire Drug Search feature in the Developer Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/CS2103-AY1819S1-W14-3/main/issues/163">1</a>, <a href="https://github.com/CS2103-AY1819S1-W14-3/main/issues/166)">2</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library (OpenCSV) to the project: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/43)">OpenCSV</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="introduction"><a class="link" href="#introduction">Introduction</a></h3>
+<div class="paragraph">
+<p>PatientBook is an all-in-one convenience utility for medical professionals in Singapore. It is used to store and manage patient data as well as appointment schedules. It can also be used to retrieve information about disease, symptoms and drugs.
+PatientBook uses simple and intuitive “commands” to receive instructions from the user – this makes it speedy, lightweight and easy to pick up. Refer to Section 2, “Quick Start” to begin using PatientBook.</p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="locate-drug-code-find-drug-code"><a class="link" href="#locate-drug-code-find-drug-code">Locate drug  : <code>find drug</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find drug NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Searches a database of drugs licensed for sale in Singapore, and returns
+basic pharmacological information about all drugs whose names contain the given
+search phrase. Results are displayed in the form of a numbered, scrollable list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case-insensitive; e.g. <code>find drug GLYCOMET</code>, is  equivalent to <code>find drug glycomet</code>.</p>
+</li>
+<li>
+<p>Partial matches will be included as results; e.g. <code>find drug lyri</code> will
+return the drug "Lyrica" as one of the results.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find drug panadol</code><br>
+Returns all drugs with names containing "Panadol" as results.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DrugSearchExample.png" alt="DrugSearchExample" width="600">
+</div>
+<div class="title">Figure 1. Result for Command 'find drug panadol'</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="read-more-about-drug-code-moreinfo-code"><a class="link" href="#read-more-about-drug-code-moreinfo-code">Read more about drug  : <code>moreinfo</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>moreinfo [INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Displays full pharmacological information about any drug in the list
+of search results that are produced by the <code>find drug</code> command.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only positive integers are accepted as inputs; eg. <code>moreinfo 2</code></p>
+</li>
+<li>
+<p><code>moreinfo</code> can be used repeatedly to view information about multiple results</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>moreinfo 3</code> (immediately after <code>find drug panadol</code>)</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MoreInfoBefore.png" alt="MoreInfoBefore" width="600">
+</div>
+<div class="title">Figure 2. Before Command 'moreinfo'</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MoreInfoAfter.png" alt="MoreInfoAfter" width="600">
+</div>
+<div class="title">Figure 3. After Command 'moreinfo'</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="drug-database-search"><a class="link" href="#drug-database-search">Drug Database Search</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to view pharmacological information about medical drugs currently licensed for sale
+in Singapore.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The execution of a drug database search via the <code>find drug</code> command takes place in the following manner:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user enters the command <code>find drug [drugname]</code>, which is parsed by <code>FindCommandParser</code>
+to ensure that it has a single argument only - <code>[drugname]</code> - and that the argument contains
+only uppercase and lowercase alphabets.</p>
+</li>
+<li>
+<p>If errors are found in the input, a <code>ParseException</code> is thrown and the user sees an error message
+containing the proper command syntax.
+If the input is valid, a <code>FindCommand</code> is generated with a trimmed, lowercase version of
+<code>[drugname]</code> as its search string,
+and <code>DRUG</code> as its command type.</p>
+</li>
+<li>
+<p><code>FindCommand</code> is executed through its <code>execute()</code> method, and
+calls the static <code>DrugSearch.find()</code> method with the search string as an argument.</p>
+</li>
+<li>
+<p>The <code>DrugSearch.find()</code> method ensures that the search string does <em>not</em> match any of a
+list of generic words like "syrup" or "tablet" which are not suitable search phrases,
+as they would generate hundreds of results. If the check fails, a specific error string
+is returned, whereupon the <code>FindCommand</code> object throws a command exception, notifying the user
+that their search string is too generic.</p>
+</li>
+<li>
+<p>If the check passes, the <code>DrugSearch.find()</code> method creates a <code>DrugCsvUtil</code> object as a local
+variable, passing in the search string as an input to its constructor. The <code>DrugCsvUtil</code> object now corresponds
+to that search string only.</p>
+</li>
+<li>
+<p>The <code>DrugCsvUtil</code> contains a <code>nextMatchingResult</code> method which reads a static drug database stored in "datasetForDrugs.csv" (formatted in UTF-8)
+from top to bottom, and each time it is called, it returns the <em>next</em> matching result from
+the database in the form of a <code>String[]</code>. Once there are no matching results, it begins to return
+<code>null</code>.</p>
+</li>
+<li>
+<p>The DrugSearch.find() method adds the matching results returned by the <code>DrugCsvUtil</code> to a static
+cache, one after the other. Once it receives <code>null</code> as a return value,
+it formats just the <em>Name, Classification and Active Ingredient(s)</em> of the drug results in the cache
+into a <code>String</code> of search results and returns it to <code>FindCommand</code>, which
+displays them. The full information can be displayed using the <code>moreinfo</code> command (discussed later).
+If the cache is empty (i.e. there were no matches in the database), <code>DrugSearch.find()</code> returns a specific error String instead,
+whereupon <code>FindCommand</code> throws a <code>CommandException</code>, and the user sees an error message
+indicating that no results were found.</p>
+</li>
+<li>
+<p>The cache is <em>not</em> cleared at the end of the search: instead, it is cleared when a _new_search
+is initiated, in order to accommodate the <code>moreinfo</code> command.</p>
+</li>
+<li>
+<p>When the results are displayed to the user in the form of a numbered list, they have the option
+of entering the command <code>moreinfo [RESULTNO]</code> to view more information about any of the results.</p>
+</li>
+<li>
+<p>The argument of the command is parsed by <code>MoreInfoCommandParser</code> to ensure that it is numeric,
+not less than or equal to zero, and is less than 10,000.
+If the parse fails, a <code>ParseException</code> is thrown and the user sees the
+error message that corresponds to the problem with their input.</p>
+</li>
+<li>
+<p>If the parse is successful, a <code>MoreInfoCommand</code> object is created, which executes through its
+<code>execute()</code> method, and calls <code>DrugSearch.moreInfo()</code> with the index number as its argument.</p>
+</li>
+<li>
+<p><code>DrugSearch.moreInfo()</code> checks that the index is in the cache of results from the most recent
+search. If the cache is empty, this means that the user has not carried out a single drug
+search yet, or that the most recent drug search turned up no results. In these cases,
+a specific error string is returned, and <code>MoreInfoCommand</code> throws a <code>CommandException</code>, and
+the user sees the appropriate error message.</p>
+</li>
+<li>
+<p>If the index is contained in the cache, the full information about the corresponding drug
+(seven categories of information) is formatted into a <code>String</code> result and returned, which
+is then displayed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note</em>: The drug database is updated as of September, 2018.</p>
+</div>
+<div class="paragraph">
+<p>The feature has been implemented using the OpenCSV library, which offers tools for manipulating
+.csv (Comma Separated Values) files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-format-search-results"><a class="link" href="#aspect-how-to-format-search-results">Aspect : How to format search results</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Displays only partial information about each drug in the
+initial search results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Prevents search results from being several pages long, and verbose.</p>
+</li>
+<li>
+<p>Cons: Requires a separate command to be implemented for full information about
+any particular result to be displayed</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Display all seven categories of information about each drug in the initial
+results.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Results will be very long, and contain information that the user may not actually need.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-to-read-the-drug-database"><a class="link" href="#aspect-how-to-read-the-drug-database">Aspect : How to read the drug database</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a separate I/O utility class (<code>DrugCsvUtil</code>) to read
+directly from the file each time a search is carried out</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Runs fast, and is modular.</p>
+</li>
+<li>
+<p>Cons: Filepath-related code can break if the working directory changes upon packaging into jar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Read contents of file onto memory in the form of a <code>HashMap&lt;&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: File only has to be read once, and the contents can be easy manipulated since they
+are in the form of mapped pairs stored as a class variable.</p>
+</li>
+<li>
+<p>Cons: Causes the program to become very slow, as 2MB of data must be read into memory.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-code-moreinfo-code-works"><a class="link" href="#aspect-how-code-moreinfo-code-works">Aspect : How <code>moreinfo</code> works</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> <code>moreinfo</code> can be used repeatedly, but only on one result
+at a time.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May cause user to have to recall a long list of index numbers if they want to
+see more information about multiple results.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>moreinfo</code> accepts multiple indices in a single run of the command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will create efficiency for the user.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, particularly if a mix of valid and invalid indices are entered
+as arguments.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find"><a class="link" href="#find">Find</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>finding drugs</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find drug Lyrica</code><br>
+Expected: This displays a list of search results, consisting of the
+Name, Classification and Active Ingredient(s) of all matching drugs.</p>
+</li>
+<li>
+<p>Test case: <code>find drug syrup</code>
+Expected: This displays the error message
+'Your search keyword is too generic. It will lead to hundreds of results.
+Try a more specific keyword instead.'</p>
+</li>
+<li>
+<p>Test case: <code>find drug somedrug123</code>
+Expected: This displays the error message 'Invalid command format!' followed
+by instructions on how to use the <code>find</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>find drug dfvwlub</code>
+Expected: This displays the error message 'No results found. Try again
+with a different query.'</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="seeing-more-information-about-drugs"><a class="link" href="#seeing-more-information-about-drugs">Seeing More Information About Drugs</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Seeing more information about a search result</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following test case will hold true only if the most recent drug searched
+produced at least one result. In this example,
+<code>find drug Glycomet</code> has been assumed to be the most recent drug search.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo 1</code>
+Expected: This displays additional information about the first search result.</p>
+</li>
+<li>
+<p>Test case: <code>moreinfo 3</code>
+Expected: This displays the error message 'This result is not in the list'.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following two test cases will hold true regardless of what command
+was entered immediately prior.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo -1</code>
+Expected: This displays the error message 'Invalid command format! followed
+by instructions on how to use the <code>moreinfo</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>moreinfo 10000</code>
+Expected: This displays the error message 'Invalid command format! followed
+by instructions on how to use the <code>moreinfo</code> command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following test case will hold true either if no drug search has been carried
+out since the program was started, or if the most recent drug search produced no results
+or was unsuccessful. In this example, <code>find drug Niacin</code> has been assumed to be
+the most recent drug search.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo 1</code>
+Expected: This displays the error message 'Please carry out a search
+using "find drug [drugname]" first.'.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-patientbook-2"><a class="link" href="#project-patientbook-2">PROJECT: PatientBook</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:00:43 UTC</div></div></div></body></html>
