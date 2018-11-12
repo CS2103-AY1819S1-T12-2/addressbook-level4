@@ -72,28 +72,18 @@ appointment without breaking the existing functionality.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Minor enhancement 1: added a <code>prompt window</code> that allows the application to acquire additional information from users
+<p>Added a <code>prompt window</code> that allows the application to acquire additional information from users
 (if needed) during appointment addition. The prompt window is a general feature and hence can be used in other means if
 there will be any further enhancements.</p>
 </li>
 <li>
-<p>Minor enhancement 2: added a <code>person browse panel</code> for <code>patient management mode</code> and a <code>appointment
+<p>Added a <code>person browse panel</code> for <code>patient management mode</code> and a <code>appointment
 browse panel</code> for <code>patient management m to replace the original `display panel</code>. The patient information and appointment notes can be displayed
 accordingly without accessing the Internet.</p>
 </li>
 <li>
-<p>Minor enhancement 3: added <code>select command</code> which supports the CLI functionality of the product. Select command allows
+<p>Added <code>select command</code> which supports the CLI functionality of the product. Select command allows
 users to select any patient card or appointment card without actually clicking the card.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -165,12 +155,6 @@ users to select any patient card or appointment card without actually clicking t
 enter a valid command regarding patient in appointment management mode, the application will switch to patient management
 mode automatically.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/mode_patient.PNG" alt="mode patient" width="600">
-</div>
-<div class="title">Figure 1. Patient Mode</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="switch-to-appointment-management-mode-code-mode-appointment-code"><a class="link" href="#switch-to-appointment-management-mode-code-mode-appointment-code">Switch to appointment management mode : <code>mode appointment</code></a></h3>
@@ -193,12 +177,6 @@ By default, the list panel only displays appointments in the future.
 </td>
 </tr>
 </table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/mode_appointment.PNG" alt="mode appointment" width="600">
-</div>
-<div class="title">Figure 2. Appointment Mode</div>
 </div>
 </div>
 <div class="sect2">
@@ -239,7 +217,7 @@ You may select a deleted patient by first typing <code>list patient all</code>.
 <div class="content">
 <img src="../images/select_command_patient.PNG" alt="select command patient" width="600">
 </div>
-<div class="title">Figure 3. Select a patient</div>
+<div class="title">Figure 1. Select a patient</div>
 </div>
 </div>
 <div class="sect2">
@@ -280,7 +258,7 @@ You may select a past appointment by first typing <code>list appointment all</co
 <div class="content">
 <img src="../images/select_command_appointment.PNG" alt="select command appointment" width="600">
 </div>
-<div class="title">Figure 4. Select an appointment</div>
+<div class="title">Figure 2. Select an appointment</div>
 </div>
 </div>
 </div>
@@ -302,9 +280,9 @@ You may select a past appointment by first typing <code>list appointment all</co
 <h3 id="ui-component"><a class="link" href="#ui-component">UI component</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
+<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="600">
 </div>
-<div class="title">Figure 5. Structure of the UI Component</div>
+<div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -378,12 +356,51 @@ patient window is shown as it is the default mode.</p>
 <p>Step 1. Event Post: When user types in a <code>mode command</code>,the ModeCommand will post a switchToPatientEvent or
 SwitchToAppointmentEvent to the event center.</p>
 </div>
+<div class="listingblock">
+<div class="title">Mode Command Code Snippet</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute(AddressBookModel addressBookModel, ScheduleModel scheduleModel,
+                                 DiagnosisModel diagnosisModel, CommandHistory history) <span class="directive">throws</span> CommandException {
+        requireNonNull(addressBookModel);
+        requireNonNull(scheduleModel);
+        <span class="keyword">if</span> (<span class="local-variable">this</span>.cmdType.equals(CMDTYPE_PATIENT)) {
+            EventsCenter.getInstance().post(<span class="keyword">new</span> SwitchToPatientEvent());
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_PATIENT_SWITCH_SUCCESS);
+        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">this</span>.cmdType.equals(CMDTYPE_APPOINTMENT)) {
+            EventsCenter.getInstance().post(<span class="keyword">new</span> SwitchToAppointmentEvent());
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SCHEDULE_SWITCH_SUCCESS);
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unexpected command type: should have been caught in ModeCommandParser.</span><span class="delimiter">&quot;</span></span>);
+        }
+    }</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Step 2. Event Handle: UiManager is registered as an event handler. It subscribes from the events center and call
 relevant method (switchToPatient or switchToAppointment).</p>
 </div>
 <div class="paragraph">
 <p>Step 3. Handle Switch: Inside the switch methods, the current window will be hided and the other window will be shown.</p>
+</div>
+<div class="listingblock">
+<div class="title">UiManager Code Snippet</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> switchToAppointment() {
+        logger.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Switching to Appointment Mode</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">try</span> {
+            appointmentMainWindow.show();
+            appointmentMainWindow.setShowing(<span class="predefined-constant">true</span>);
+            appointmentMainWindow.setNotePanelToDefault();
+            mainWindow.hide();
+            mainWindow.setShowing(<span class="predefined-constant">false</span>);
+        } <span class="keyword">catch</span> (<span class="predefined-type">Throwable</span> e) {
+            logger.severe(StringUtil.getDetails(e));
+            showFatalErrorDialogAndShutdown(<span class="string"><span class="delimiter">&quot;</span><span class="content">Fatal error during switching</span><span class="delimiter">&quot;</span></span>, e);
+        }
+    }</code></pre>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -411,7 +428,7 @@ if user switch from one mode to the same mode, an exception will be thrown. This
 <div class="content">
 <img src="../images/mode_command_sequence.PNG" alt="mode command sequence" width="800">
 </div>
-<div class="title">Figure 6. Sequence diagram when user inputs "mode appointment"</div>
+<div class="title">Figure 4. Sequence diagram when user inputs "mode appointment"</div>
 </div>
 </div>
 <div class="sect3">
@@ -478,16 +495,106 @@ already in this mode.</p>
 <p>Pros: It can respond more accurately when user wish to switch mode.</p>
 </li>
 <li>
-<p>Cons: It increases dependency on the code unnecessarily.
+<p>Cons: It increases dependency on the code unnecessarily.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mode"><a class="link" href="#mode">Mode</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching to appointment management mode</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mode appointment</code><br>
+Expected: Software is switched to appointment management mode. Success message is shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>mode damith</code><br>
+Expected: Software remains at the current mode. Error details are shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Switching to patient management mode</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mode patient</code><br>
+Expected: Software is switched to patient management mode. Success message is shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>mode damith</code><br>
+Expected: Software remains at the current mode. Error details are shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="select"><a class="link" href="#select">Select</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Selecting a patient（Assume that <strong>only</strong> patient p0 is present in the person list panel）</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>select patient p0</code><br>
+Expected: Patient p0 is selected. Its card lights up with a blue color. The details of patient p0 are shown in the
+person browse panel. Success message is shown in the display panel. Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>select p0</code><br>
+Expected: No patient is being selected. Error details are shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Other incorrect select patient commands to try: <code>select patient 0</code>, <code>select patient p1</code>, <code>select patient e0</code><br>
+Expected: Similar to previous</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Selecting an appointment（Assume that <strong>only</strong> appointment e0 is present in the appointment panel）</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>select appointment e0</code>
+Expected: Appointment e0 is selected. Its card lights up with a blue color. The note of appointment e0 are shown in
+the appointment note panel. Success message is shown in the display panel. Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Test case: <code>select e0</code>
+Expected: Expected: No appointment is being selected. Error details are shown in the display panel.
+Timestamp in the status bar is not updated.</p>
+</li>
+<li>
+<p>Other incorrect select patient commands to try: <code>select appointment 0</code>, <code>select appointment e1</code>, <code>select appointment p0</code>
+   Expected: Similar to previous
 ---</p>
 </li>
-</ul>
+</ol>
 </div>
 </li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:24:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:30:49 UTC</div></div></div></body></html>
