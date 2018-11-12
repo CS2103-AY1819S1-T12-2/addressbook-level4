@@ -7,51 +7,71 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="1-overview"><a class="link" href="#1-overview">1. Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This Project Portfolio is used to document the role and contribution of <code>LI XINZE</code> to this project, <code>Patient Book</code>.</p>
 </div>
 <div class="paragraph">
-<p>The introductory statement clearly and concisely describes the purpose of the portfolio (to document the writer’s contributions to the project).</p>
+<p>The project <code>Patient Book</code> is a student project done by 5 NUS Year 2 Computer Science students. I am one member of
+this project team, <code>T12-2</code> of AY2018-19 Semester 1. In this team, I am in charge of the User Interface (UI), including
+the design, the function and the connection between UI and other components.</p>
 </div>
 <div class="paragraph">
-<p>It clearly and concisely describes the project and the team.</p>
+<p>The project <code>Patient Book</code> is a desktop application for doctors. It is an all-in-one software that helps doctors to
+manage patient and appointment data. In addition, it assists doctor to make diagnosis by providing information of
+symptoms, diseases and drugs. The user interacts with it using a <code>Command Line Interface</code> (CLI), which means users can
+enter all the commands by typing. It also has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.</p>
 </div>
 <div class="paragraph">
-<p>There is a clear and concise description of the application (X is a what that does what…, includes mention of desktop application and CLI in terms that a 3rd party would understand).</p>
-</div>
-<div class="paragraph">
-<p>There is a list of main features.</p>
+<p>There is a list of main features. TODO</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="2-summary-of-contributions"><a class="link" href="#2-summary-of-contributions">2. Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>This section records the enhancements and contributions of <code>LI XINZE</code> to the project.</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong> : added the <strong>appointment management mode</strong> and the <strong>switching feature between different modes</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: Allows appointment related data to be displayed. Allows users to switch between the patient management
+mode and the appointment management mode. Helps the users to switch the mode automatically when they key in the command
+in the wrong mode.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature significantly improves the product because user can clearly separate the data of patients
+and data of appointments by using the respective mode. The auto-switching feature contributes to the user-friendliness
+of the product.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement adds an entire set of UI on top of the original implementation.
+It required an in-depth understanding of the work flow of UI and how it can be linked to other components.
+The auto-switching implementation was challenging as it required enhancement on each command related to patient or
+appointment without breaking the existing functionality.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement 1</strong>: added a <code>prompt window</code> that allows the application to acquire additional information from users
+(if needed) during appointment addition. The prompt window is a general feature and hence can be used in other means if
+there will be any further enhancements.</p>
+</li>
+<li>
+<p><strong>Minor enhancement 2</strong>: added a <code>person browse panel</code> for <code>patient management mode</code> and a <code>appointment
+browse panel</code> for <code>patient management m to replace the original `display panel</code>. The patient information and appointment notes can be displayed
+accordingly without accessing the Internet.</p>
+</li>
+<li>
+<p><strong>Minor enhancement 3</strong>: added <code>select command</code> which supports the CLI functionality of the product. Select command allows
+users to select any patient card or appointment card without actually clicking the card.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
@@ -65,7 +85,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -75,10 +95,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Modify the title and icon of application.(Pull requests
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/111">#111</a>,
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/146">#146</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features (Pull requests
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/158">#158</a>)</p>
 </li>
 </ul>
 </div>
@@ -88,7 +111,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>TODO: <a href="https://github.com">#14</a></p>
 </li>
 </ul>
 </div>
@@ -98,16 +121,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments):
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/168">#168</a>,
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/156">#156</a>,
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/152">#152</a>,
+<a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/80">#80</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Contributed to forum discussions (examples:  <a href="https://github.com/nus-cs2103-AY1819S1/forum/issues/106">1</a>,
+<a href="https://github.com/nus-cs2103-AY1819S1/forum/issues/115">2</a>)</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103-AY1819S1-F10-3/main/issues/248">1</a>)</p>
 </li>
 </ul>
 </div>
@@ -136,7 +161,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="3-contributions-to-the-user-guide"><a class="link" href="#3-contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -148,10 +173,138 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="switch-to-patient-management-mode-code-mode-patient-code"><a class="link" href="#switch-to-patient-management-mode-code-mode-patient-code">Switch to patient management mode : <code>mode patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>mode patient</code></p>
+</div>
+<div class="paragraph">
+<p>Switches the application to patient management mode. In this mode, you can view and manage patients’ data. When you
+enter a valid command regarding patient in appointment management mode, the application will switch to patient management
+mode automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mode_patient.PNG" alt="mode patient" width="600">
+</div>
+<div class="title">Figure 1. Patient Mode</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-to-appointment-management-mode-code-mode-appointment-code"><a class="link" href="#switch-to-appointment-management-mode-code-mode-appointment-code">Switch to appointment management mode : <code>mode appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>mode appointment</code></p>
+</div>
+<div class="paragraph">
+<p>Switches the application to appointment management mode. In this mode, you can view and manage your patient&#8217;s appointments.
+When you enter a valid command regarding appointment in patient management mode, the application will switch to
+appointment management mode automatically.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, the list panel only displays appointments in the future.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mode_appointment.PNG" alt="mode appointment" width="600">
+</div>
+<div class="title">Figure 2. Appointment Mode</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="select-a-patient-code-select-patient-code"><a class="link" href="#select-a-patient-code-select-patient-code">Select a patient : <code>select patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select patient PATIENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Selects an existing patient and its information will display on the right. If necessary, switches the application to patient management mode.
+Selecting patient replaces physically clicking an patient card. Hence, you can only select a patient that is displayed on the left.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You may select a deleted patient by first typing <code>list patient all</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select patient p1</code></p>
+</li>
+<li>
+<p><code>select patient p29</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/select_command_patient.PNG" alt="select command patient" width="600">
+</div>
+<div class="title">Figure 3. Select a patient</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="select-an-appointment-code-select-appointment-code"><a class="link" href="#select-an-appointment-code-select-appointment-code">Select an appointment : <code>select appointment</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>select appointment APPOINTMENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Selects an existing appointment and its details will display on the right. If necessary, switches the application to appointment management mode.
+Selecting appointment replaces physically clicking an appointment card. Hence, you can only select an appointment that is displayed on the left.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You may select a past appointment by first typing <code>list appointment all</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select appointment e5</code></p>
+</li>
+<li>
+<p><code>select appointment e29</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/select_command_appointment.PNG" alt="select command appointment" width="600">
+</div>
+<div class="title">Figure 4. Select an appointment</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="4-contributions-to-the-developer-guide"><a class="link" href="#4-contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -163,6 +316,196 @@
 </tr>
 </tbody>
 </table>
-<hr>
+<div class="sect2">
+<h3 id="ui-component"><a class="link" href="#ui-component">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:09:41 UTC</div></div></div></body></html>
+<div class="title">Figure 5. Structure of the UI Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI comprises two main interfaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MainWindow: Supports patient information management</p>
+</li>
+<li>
+<p>ScheduleMainWindow: Supports appointment management</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>MainWindow</code> is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code>
+ etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p><code>ScheduleMainWindow</code> consists of parts as well, including its own copy of <code>CommandBox</code>, <code>ResultDisplay</code>,
+and a <code>ScheduleListPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are
+ in the <code>src/main/resources/view</code> folder. For example, the layout of the
+ <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in
+ <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Binds itself to some data in a <code>Model</code> (Either <code>AddressBookModel</code> or <code>ScheduleModel</code>) so that the UI can auto-update
+when data in the <code>Model</code> changes.</p>
+</li>
+<li>
+<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="on-the-fly-switching-between-modes"><a class="link" href="#on-the-fly-switching-between-modes">On-the-fly Switching between Modes</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>This feature enables the software to separate patient information from appointment information clearly. The two modes
+are <code>patient management mode</code> and <code>appointment management mode</code>. Users can switch between one mode to the other mode using
+<code>mode command</code>. In addition, the feature supports auto-switch function. In other words, when user type in a valid command
+(add, delete, select, find or edit) to manipulate appointments in patient mode, the software will switch to appointment
+mode automatically, and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>The switching feature is mainly implemented using the eventbus and subscriber approach. The main logic of the switch is
+implemented inside the UiManager class.The UiManager class maintains an instance of each patient mode window and appointment
+mode window and each has an unique stage. When the software is initialised, both windows are initialised, but only the
+patient window is shown as it is the default mode.</p>
+</div>
+<div class="paragraph">
+<p>There are three steps involved in the processing of the switch feature:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. Event Post: When user types in a <code>mode command</code>,the ModeCommand will post a switchToPatientEvent or
+SwitchToAppointmentEvent to the event center.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Event Handle: UiManager is registered as an event handler. It subscribes from the events center and call
+relevant method (switchToPatient or switchToAppointment).</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Handle Switch: Inside the switch methods, the current window will be hided and the other window will be shown.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The implementation allows the window to know whether it is at the showing state. This is mainly to solve the problem
+that help window is initialised from both windows when <code>help command</code> is called. Hence, when switch methods are called,
+the showing state of the windows should also be updated. In addition, the feature that each window knows its showing
+state is also helpful for future refinements.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The auto-switch feature is implemented using similar approach. When a valid command is executed, a event is posted to the
+event center to switch to the corresponding mode. The way switch method is implemented allows the current showing window
+not to be checked. For now, when user switch from patient mode to patient mode, the method will still be called but
+it does not reflect any change in the UI. One way to refine is to allow software to check the current showing state and
+if user switch from one mode to the same mode, an exception will be thrown. This implementation is, however, not very necessary.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/mode_command_sequence.PNG" alt="mode command sequence" width="800">
+</div>
+<div class="title">Figure 6. Sequence diagram when user inputs "mode appointment"</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-switching-mode-or-switching-panel"><a class="link" href="#aspect-switching-mode-or-switching-panel">Aspect: Switching mode or switching panel</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Having an entire set of UI, in this case `Appointment Main Window`to hold the
+appointment related data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is more flexible for future change. It would be easier to add more modes in the future if needed.
+The design of the UI for various modes can be modified because they are independent from one another.</p>
+</li>
+<li>
+<p>Cons: It is more difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 :</strong> Only adding in an appointment panel and switching the panel if necessary.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:It is easier to implement.</p>
+</li>
+<li>
+<p>Cons: The program would be constrained if more modes are to be added in the future.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-execution-of-mode-command"><a class="link" href="#aspect-execution-of-mode-command">Aspect: Execution of mode command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Posting the switch mode event regardless of the current mode that user is in.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The logic do not have to be aware of the UI component and hence reduce coupling.</p>
+</li>
+<li>
+<p>Cons: Users can switch from one mode to the same mode.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 :</strong> The mode command maintains an instance of the UiManager and keep tracks of the current window
+that is showing. When user requires to switch mode, identifies the current mode and generate exception if the user is
+already in this mode.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It can respond more accurately when user wish to switch mode.</p>
+</li>
+<li>
+<p>Cons: It increases dependency on the code unnecessarily.
+---</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:13:28 UTC</div></div></div></body></html>
