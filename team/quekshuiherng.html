@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Quek Shui Herng - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Quek Shui Herng - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-patientbook"><a class="link" href="#project-patientbook">PROJECT: PatientBook</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>This portfolio serves to document my contributions to <a href="https://github.com/CS2103-AY1819S1-T12-2/main"><strong><em>PatientBook</em></strong></a>, my team&#8217;s product for our software engineering project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="1-overview"><a class="link" href="#1-overview">1. Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>PatientBook</strong> is a desktop application for doctors in Singapore.
+Its objective is to help streamline their workflow by managing their patient data and appointment schedules. It can also be used to find information on diseases, symptoms and drugs. <strong>PatientBook</strong> features a Command Line Interface, which makes it convenient for doctors to interact with the application since it is done solely via the keyboard.</p>
+</div>
+<div class="paragraph">
+<p>The application supports various important operations such as finding information on and adding appointments for a patient, predicting a disease from a set of symptoms, and querying for details on drugs approved for distribution in Singapore.</p>
+</div>
+<div class="paragraph">
+<p>This project is conceptualized and produced by the T12-2 development team, comprising five year-two computer science undergraduates from the School of Computing,
+National University of Singapore.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2-summary-of-contributions"><a class="link" href="#2-summary-of-contributions">2. Summary of Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides an overview of my contributions to <strong>PatientBook</strong>.
+All my pull requests (code contributions) may be found <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pulls?q=is%3Apr+author%3Ashuiherng">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancements"><a class="link" href="#major-enhancements">Major Enhancements</a></h3>
+<div class="paragraph">
+<p>I contributed to <strong>PatientBook</strong>'s backend code, by providing support for both appointment and patient information commands, as well as implementing many of the commands themselves. The following enumerated section contain the details of my contribution:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Support for all appointment scheduling operations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does:</strong> Implements an entirely new infrastructure (including command and storage level) code upon which my other project members can implement their appointment scheduling features.</p>
+</li>
+<li>
+<p><strong>Justification:</strong> This feature is a crucial first step as it will support almost half of <strong>PatientBook</strong>'s functionality in the form of a scheduler for appointments.</p>
+</li>
+<li>
+<p><strong>Highlights:</strong> As almost everyone&#8217;s code would depend on this new infrastructure, I had to design and implement this change extremely early on in the project (less than a week after our first project meeting), so that my other project mates have time to work on their features.</p>
+</li>
+<li>
+<p><strong>Notable Code Contributions:</strong> <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/12">Command</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/34">Storage</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/72">Integration</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>New command operations</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does:</strong> Morphs the existing command set to support our new appointment scheduling feature, while retaining its <code>person</code> management (now patient management) functionality. Added and tested all appointment schedule operations besides backend code for <code>add appointment</code>.</p>
+</li>
+<li>
+<p><strong>Justification:</strong> Implementation of an entirely new command set just for the appointment scheduler render the usage of all commands extremely unintuitive.</p>
+</li>
+<li>
+<p><strong>Highlights:</strong> I had to strike a balance between the ease of use of the commands and the ease of implementation. The following were the two possibilities considered:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>My implementation: I added <code>patient</code> and <code>appointment</code> as identifiers for commands, so users can simply enter commands like <code>add patient</code> or <code>edit appointment</code> to perform the desired operations.</p>
+</li>
+<li>
+<p>Alternative implementation considered: I could have had separate commands to perform operations on the patient database and appointment schedule. For instance, to add an entry, I would use one of the two different commands <code>addPatient</code> and <code>addAppointment</code>, depending on what I wanted to add. However, this meant that for every single operation, I would have to implement two different commands, which was not only tedious to do, but also unintuitive for the user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Notable Code Contributions:</strong> <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/63">Command</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pu">Integration 1</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/88">Integration 2</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancements"><a class="link" href="#minor-enhancements">Minor Enhancements</a></h3>
+<div class="paragraph">
+<p>I refactored much of the original <strong>AddressBook 4</strong> codebase, and implemented a new patient and appointment tracking system to support our project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Use of 'soft-delete' for patients</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does:</strong> Marks deleted patients as absent, rather than removing them altogether.</p>
+</li>
+<li>
+<p><strong>Justification:</strong> A patient&#8217;s information is sensitive, so it is appropriate to keep their information stored rather than deleting it even if it is no longer required.</p>
+</li>
+<li>
+<p><strong>Code Contributions:</strong> <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/9">Soft-Delete</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Use of ID as unique identifiers</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What is does:</strong> Uses Patient ID and Appointment ID to uniquely identify a patient and an appointment respectively.</p>
+</li>
+<li>
+<p><strong>Justification:</strong> The existing code in AddressBook 4 identifies if two people are identical by comparing every property of the two <code>Person</code> objects. This is tedious, especially since the appointment entries have to be tied to a unique individual, which implies all the attributes of the patient will have to be stored.</p>
+</li>
+<li>
+<p><strong>Code Contributions:</strong> <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/9">Person ID</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/12">Appointment ID</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other Contributions</a></h3>
+<div class="paragraph">
+<p>The following are other notable contributions to the project which do not fall into the two categories above:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Project Management</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Coordinated integration between components to ensure that they worked correctly: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/72">link 1</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/88">link 2</a></p>
+</li>
+<li>
+<p>Managed issue tracker and release <code>v1.3</code> on Github</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Documentation</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated model class diagrams to incorporate new <code>AddressBookModel</code> and <code>ScheduleModel</code> classes: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/39">link</a></p>
+</li>
+<li>
+<p>Added and updated implementation details in the Developer Guide: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/39">link</a></p>
+</li>
+<li>
+<p>Added details for new patient management commands in User Guide: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/pull/45">link</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Community</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reviewed issues: <a href="https://github.com/CS2103-AY1819S1-T12-2/main/issues/37">37</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/issues/47">47</a>, <a href="https://github.com/CS2103-AY1819S1-T12-2/main/issues/133">133</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="3-contributions-to-the-user-guide"><a class="link" href="#3-contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="add-a-patient-code-add-patient-code"><a class="link" href="#add-a-patient-code-add-patient-code">Add a patient : <code>add patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>add patient n/NAME p/PHONE a/ADDRESS e/EMAIL [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Creates a new patient record and saves it in the list of all patient records. If necessary, switches the application to patient management mode.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Any number of tags may be included, or none at all.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add patient n/John Smith p/90516038 a/New Smith Street, Singapore 519321 e/johnsmith@gmail.com</code></p>
+</li>
+<li>
+<p><code>add patient n/Alice Barker p/62353535 a/4 Pizza Road, Singapore 941023 e/alice_barker@yahoo.com.sg t/friend t/groupmate</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-patient-information-code-edit-patient-code"><a class="link" href="#edit-patient-information-code-edit-patient-code">Edit patient information : <code>edit patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>edit patient PATIENT_ID [n/NAME] [p/PHONE] [a/ADDRESS] [e/EMAIL] [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Edits an existing patient record. If necessary, switches the application to patient management mode.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At least one of the optional fields must be provided.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Editing tags will remove all existing tags from the patient and replace them with the new tags. To remove all tags from a patient, use <code>t/</code> without any further input after the <code>/</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit patient p229 n/Bob Ross p/95106202</code></p>
+</li>
+<li>
+<p><code>edit patient p24 t/replacedTag t/friend</code></p>
+</li>
+<li>
+<p><code>edit patient p510 a/New Address Road, Singapore 401914 t/</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-patients-code-list-patient-code"><a class="link" href="#list-all-patients-code-list-patient-code">List all patients : <code>list patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>list patient [all]</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all patients in the patient record. Using <code>all</code> will display all patients deleted in the past. If necessary, switches the application to appointment management mode.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-patients-code-find-patient-code"><a class="link" href="#locate-patients-code-find-patient-code">Locate patients : <code>find patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find patient KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative Format:</strong> <code>find patient PATIENT_ID</code></p>
+</div>
+<div class="paragraph">
+<p>Notable Behaviour:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive, eg. <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of keywords do not matter, eg. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>Only names in the patient record are searched</p>
+</li>
+<li>
+<p>Patients which are marked as deleted can only be found by looking up their Patient ID explicitly. They may not be found via keyword search</p>
+</li>
+<li>
+<p>Only full words will be searched, eg. <code>Han</code> will <strong>not</strong> match <code>Hans</code></p>
+</li>
+<li>
+<p>Patient which match at least one of the keywords will be displayed after running the search, eg. <code>Hans Bo</code> will match <code>Hans Gruber</code> and <code>Bo Yang</code></p>
+</li>
+<li>
+<p>Finding a patient via their ID will match and display patients who have the exact same ID as the search term, unless the ID is for some reason part of another patient&#8217;s name, in which case they will be displayed as well</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find patient john</code></p>
+</li>
+<li>
+<p><code>find patient Alice bob</code></p>
+</li>
+<li>
+<p><code>find patient p510</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-a-patient-record-code-delete-patient-code"><a class="link" href="#delete-a-patient-record-code-delete-patient-code">Delete a patient record : <code>delete patient</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>delete patient PATIENT_ID</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Patient records will only be marked as deleted, rather than being removed altogether. This is due to the sensitive nature of patient information
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete patient p510</code></p>
+</li>
+<li>
+<p><code>delete patient p29</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="4-contributions-to-the-developer-guide"><a class="link" href="#4-contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following 2 diagrams showcase the new images used in the developer guide to illustrate the data structures and mechanisms present in PatientBook:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Model Component</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 2. Structure of the Storage Component</div>
+</div>
+<div class="sect2">
+<h3 id="deletion-of-entries-from-working-dataset"><a class="link" href="#deletion-of-entries-from-working-dataset">Deletion of Entries from Working Dataset</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Instances of <code>Person</code> are currently being deleted via soft-delete: setting the instance variable <code>exists</code> to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instances of <code>ScheduleEvent</code> are currently being deleted directly: removing the objects themselves altogether from the
+data structure encapsulated within <code>Schedule</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-deletion-of-person-or-scheduleevent-entries"><a class="link" href="#aspect-deletion-of-person-or-scheduleevent-entries">Aspect: Deletion of Person or ScheduleEvent Entries</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Deletion is accomplished via soft-delete.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This was chosen for deleting patients from the address book in order to ensure that a patient can never be permanently removed. Preventing deletion ensures that even deceased patients may have their information accessed, and guarantees that accidental deletion will never lead to important patient data being lost. Implementation is done via the addition of an <code>exists</code> field in the Person class.</p>
+</li>
+<li>
+<p>Using this approach for deleting appointments from the schedule will work but is unnecessary as appointment information is not nearly as sensitive as patient data.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Person deletion is accomplished via actual deletion from the person list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Patient data is no longer recoverable after deletion (unless undo/redo is implemented). This is the approach chosen for deleting appointments from the schedule instead, since this information may easily be recovered and is not nearly as sensitive as a patient&#8217;s medical information.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:36:44 UTC</div></div></div></body></html>
