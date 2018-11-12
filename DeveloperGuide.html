@@ -81,8 +81,11 @@
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#addition">H.2. Addition</a></li>
-<li><a href="#deletion">H.3. Deletion</a></li>
+<li><a href="#add">H.2. Add</a></li>
+<li><a href="#delete">H.3. Delete</a></li>
+<li><a href="#clear">H.4. Clear</a></li>
+<li><a href="#edit">H.5. Edit</a></li>
+<li><a href="#list">H.6. List</a></li>
 </ul>
 </li>
 </ul>
@@ -2722,9 +2725,28 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="addition"><a class="link" href="#addition">H.2. Addition</a></h3>
+<h3 id="add"><a class="link" href="#add">H.2. Add</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>Adding a patient</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add patient n/Jonathan Smith p/98014555 e/jonathansmith@gmail.com a/10 New Bridge Street, Singapore 510319</code><br>
+Expected: Patient with name Jonathan Smith is added to the displayed list. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/Jonathan Smith p/98014555 e/jonathansmith@gmail.com a/10 New Bridge Street, Singapore 510319</code><br>
+Expected: No patient is added. Error details are shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>add patient n/Jonathan Smith</code>, <code>add</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Adding an appointment (initial input in command box)</p>
 <div class="olist loweralpha">
@@ -2848,7 +2870,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deletion"><a class="link" href="#deletion">H.3. Deletion</a></h3>
+<h3 id="delete"><a class="link" href="#delete">H.3. Delete</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2892,5 +2914,105 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="clear"><a class="link" href="#clear">H.4. Clear</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clearing the appointment schedule</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>clear appointment</code><br>
+Expected: All appointments are removed from the displayed list. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>clear patient</code><br>
+Expected: No effect. Patient list is not cleared, and error details are shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:36:43 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit"><a class="link" href="#edit">H.5. Edit</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a patient</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>edit patient p5 n/Jonah Smith p/90885132</code><br>
+Expected: Patient with ID p5 now takes the name Jonah Smith, and his phone number is now changed to 90885132. Changes are reflected in the displayed list. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>edit patient n/Jonah Smith p/90885132</code><br>
+Expected: No patient is modified. Error details are shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Test case: <code>edit patient p5 n/Jonah Smith p/51029310 a/</code><br>
+Expected: No patient is modified. Error details are shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing an appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>edit appointment e53 p/p5 t/11/01/2019 12:00 - 13:30</code>
+Expected: Appointment with ID e53 is now scheduled for patient with ID p5, and (if the new date does not clash with an existing appointment and takes place after the time now) will schedule it for 11th January 2019, from 1200 to 1330 hrs.</p>
+</li>
+<li>
+<p>Test case: <code>edit appointment p/p5 t/11/01/2019 12:00 - 13:30</code>
+Expected: No appointment is modified. Error details are shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list"><a class="link" href="#list">H.6. List</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing patients</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list patient</code><br>
+Expected: Displays the list of patients which have not been deleted.</p>
+</li>
+<li>
+<p>Test case: <code>list patient all</code><br>
+Expected: Lists all patients, including deleted ones.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing appointments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list appointment</code><br>
+Expected: Displays the list of appointments which take place from now.</p>
+</li>
+<li>
+<p>Test case: <code>list appointment all</code><br>
+Expected: List all appointments, including those that took place in the past.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:14:15 UTC</div></div></div></body></html>
