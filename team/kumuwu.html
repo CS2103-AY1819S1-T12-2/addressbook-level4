@@ -13,33 +13,36 @@
 <p>This Project Portfolio documents my contribution to the software project PatientBook, a group project collectively done by five Computer Science Undergraduate students in National University of Singapore.</p>
 </div>
 <div class="paragraph">
-<p>PatientBook is a Command Line Interface (CLI) desktop application targeted at medical professionals in Singapore. It aims to provide convenience and assurance for doctors, by allowing efficient management of patients and appointments. Doctors can also retrieve information from the built-in disease-symptom database and drug database.</p>
+<p>PatientBook is a Command Line Interface desktop application targeted at medical professionals in Singapore. It aims to provide convenience and assurance for doctors, by allowing efficient management of patients and appointments. Doctors can also retrieve information from the built-in disease-symptom database and drug database.</p>
 </div>
 <div class="paragraph">
-<p>My main contribution to the project includes adding the ability to add appointments into the system in natural expressions.</p>
+<p>My main contribution to the project includes implementing the feature to add appointments in natural expressions.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="2-summary-of-contributions"><a class="link" href="#2-summary-of-contributions">2. Summary of Contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section summarises my contributions to the project.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=kumuwu">Code</a>]</p>
 </li>
 <li>
-<p><strong>Main feature implemented</strong>: added <strong>the ability to add appointments into the schedule system using natural expressions and in a conversational process</strong>.</p>
+<p><strong>Main feature implemented</strong>: implemented <strong>the ability to add appointments into the schedule system using natural expressions and in a conversational process</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: This feature allows the user to add an appointment in a command format that uses natural expressions such as "next week" to indicate time. It also provides the user with a list of available time slots within the range for user to choose from.</p>
+<p>What it does: This feature allows the user to add an appointment in a command format that uses natural expressions such as "next week" to indicate time. It also provides the user with a list of available time slots within the time range for the user to choose from.</p>
 </li>
 <li>
 <p>Justification: This feature improves the user-friendliness of the product, as it allows the user to issue commands in intuitive and flexible ways that simulate our natural language and natural thinking process.</p>
 </li>
 <li>
-<p>Highlights: This feature involves several challenging algorithms such as the keyword search algorithm to find expressions that indicate time and the algorithm to find available time periods within a time range. Manipulating <code>java.util.Calendar</code> also requires in-depth analysis as there are a number of edge cases to consider.</p>
+<p>Highlights: This feature involves several challenging algorithms such as the keyword search algorithm to find time-related keywords and the algorithm to find available time periods within a time range. Manipulating <code>java.util.Calendar</code> also requires in-depth analysis as there are a number of edge cases to consider.</p>
 </li>
 </ul>
 </div>
@@ -53,7 +56,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote utility classes such as a generic class <code>Pair</code> and <code>ScheduleEventBuilder</code> class.</p>
+<p>Wrote utility classes such as a generic class <code>Pair</code> and a <code>ScheduleEventBuilder</code> class.</p>
 </li>
 </ul>
 </div>
@@ -113,12 +116,12 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write easy-to-follow documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="add-an-appointment-code-add-appointment-code"><a class="link" href="#add-an-appointment-code-add-appointment-code">Add an appointment : <code>add appointment</code></a></h3>
+<h3 id="add-an-appointment-code-add-appointment-code"><a class="link" href="#add-an-appointment-code-add-appointment-code">Add an Appointment : <code>add appointment</code></a></h3>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>add appointment for NAME TIME</code></p>
 </div>
@@ -141,8 +144,7 @@ Unlike other commands, this command does not require any prefixing.
 </table>
 </div>
 <div class="paragraph">
-<p>For <code>TIME</code> parameter, user may choose to use natural expressions to indicate the time or period where the appointment is to be scheduled. The list of natural expressions for <code>TIME</code>
-which are accepted by the program include:</p>
+<p>For <code>TIME</code> parameter, user may choose to use natural expressions to indicate the time or period where the appointment is to be scheduled. The list of natural expressions for <code>TIME</code> accepted by the programme include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -223,10 +225,10 @@ Adding an appointment with a time that is already past is allowed. However, this
 <p>A prompt window where user is required to provide a specific time slot for the appointment, from a list of available time periods, in <code>DD/MM/YYYY hh:mm - hh:mm</code> format.</p>
 </li>
 <li>
-<p>A prompt window where user may choose to provide any additional notes for the appointment.</p>
+<p>A prompt window where user may choose to provide any tags for the appointment.</p>
 </li>
 <li>
-<p>A prompt window where user may choose to provide any tags for the appointment.</p>
+<p>A prompt window where user may choose to provide any additional notes for the appointment.</p>
 </li>
 </ul>
 </div>
@@ -237,7 +239,7 @@ Adding an appointment with a time that is already past is allowed. However, this
 <p>Command entered: <code>add appointment for Xinze tomorrow</code></p>
 </div>
 <div class="paragraph">
-<p>1) There are multiple individuals named <code>Xinze</code> in the patient record, the program will request for a specific patient ID, in a prompt window similar to the following:</p>
+<p>1) There are multiple patients named <code>Xinze</code> in the patient record. Programme requests for a specific patient ID, in a prompt window similar to the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -246,7 +248,7 @@ Adding an appointment with a time that is already past is allowed. However, this
 <div class="title">Figure 1. Prompt Window for Patient ID</div>
 </div>
 <div class="paragraph">
-<p>2) Once <code>Xinze</code> is matched to a unique patient in the patient record, the program will display a list of available time periods during <code>tomorrow</code>, based on the current time at which the command is executed, in another prompt window similar to the following:</p>
+<p>2) Once <code>Xinze</code> is matched to a unique patient in the patient record, programme displays a list of available time periods during <code>tomorrow</code>, based on the current time at which the command is executed, in another prompt window similar to the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -255,7 +257,7 @@ Adding an appointment with a time that is already past is allowed. However, this
 <div class="title">Figure 2. Prompt Window for Time Slot</div>
 </div>
 <div class="paragraph">
-<p>3) User further input: <code>31/10/2018 9:30 - 10:30</code>. Program proceeds to request for tags to be attached to the appointment, in another prompt window similar to the following:</p>
+<p>3) User further inputs: <code>31/10/2018 9:30 - 10:30</code>. Programme proceeds to request for tags to be attached to the appointment, in another prompt window similar to the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -264,7 +266,7 @@ Adding an appointment with a time that is already past is allowed. However, this
 <div class="title">Figure 3. Prompt Window for Tags</div>
 </div>
 <div class="paragraph">
-<p>4) User may choose to provide or not provide any tags. In this case, the user does not wish to attach any tags. After that, program proceeds to request for additional notes for the appointment, in another prompt window similar to the following:</p>
+<p>4) User may choose to provide or not provide any tags. In this case, the user does not wish to attach any tags. After that, programme proceeds to request for additional notes for the appointment, in another prompt window similar to the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -273,7 +275,7 @@ Adding an appointment with a time that is already past is allowed. However, this
 <div class="title">Figure 4. Prompt Window for Additional Notes</div>
 </div>
 <div class="paragraph">
-<p>5) User may choose to provide or not provide any additional notes. In this case, the user does not wish to add any additional notes. Upon completion, program creates the appointment as indicated in the schedule, and displays the following message to the user:</p>
+<p>5) User may choose to provide or not provide any additional notes. In this case, the user does not wish to add any additional notes. Upon completion, programme creates the appointment and displays the following message to the user:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -300,10 +302,13 @@ Tags:</code></pre>
 </table>
 <div class="sect2">
 <h3 id="natural-language-processing-for-adding-an-appointment"><a class="link" href="#natural-language-processing-for-adding-an-appointment">Natural Language Processing for Adding an Appointment</a></h3>
+<div class="paragraph">
+<p>This feature facilitates scheduling, which enables the user to add appointments into the schedule system with user input phrased in natural expressions, and does so in a conversational process enabled by several prompt windows.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>This feature facilitates scheduling, which enables the user to add appointments into the schedule system with user input phrased in natural expressions, and does so in a conversational process enabled by several prompt windows. It mainly implements a <code>ScheduleEvent</code> parser which parses natural language user input, and creates the intended <code>ScheduleEvent</code> object to be stored.</p>
+<p>This feature currently mainly implements a <code>ScheduleEvent</code> parser which parses natural language user input, and creates the intended <code>ScheduleEvent</code> object to be stored.</p>
 </div>
 <div class="paragraph">
 <p>There are five steps involved in the processing of this feature:</p>
@@ -358,6 +363,7 @@ Tags:</code></pre>
 <div class="content">
 <img src="../images/breakDownInputActivityDiagram.png" alt="breakDownInputActivityDiagram" width="800">
 </div>
+<div class="title">Figure 5. Activity Diagram to Illustrate Step 1 Breaking Down</div>
 </div>
 <div class="paragraph">
 <p>Step 2. Patient Parsing: The string <code>David Lee</code> is parsed and converted into the corresponding <code>PersonId</code> object:</p>
@@ -384,30 +390,34 @@ Tags:</code></pre>
 <p>Programme executes a keyword search and invokes the method <code>getWeekDates(currentTime, 1)</code>, where it converts <code>next week</code> into a datetime range, by doing relevant calculations on the <code>Calendar</code> object which represents the current time. For instance, if the command is executed on 16/10/2018, <code>next week</code> becomes a datetime range from 22/10/2018 09:00 - 28/10/2018 18:00. This range takes into consideration the doctor&#8217;s working hours.</p>
 </li>
 <li>
-<p>Programme searches the list of already scheduled appointments within the datetime range obtained. It finds a list of available time periods by taking the complement within that range (taking into consideration the doctor&#8217;s working hours), and passes the list as a <code>String</code> into a <code>Prompt</code> object, where the list is displayed to the user in a <code>PromptWindow</code>.</p>
+<p>Programme searches the list of already scheduled appointments within the time range obtained. It finds a list of available time periods by taking the complement within that range (taking into consideration the doctor&#8217;s working hours), and passes the list as a <code>String</code> into a <code>Prompt</code> object, where the list is displayed to the user in a <code>PromptWindow</code>.</p>
 </li>
 <li>
-<p>User inputs a specific time slot from the list of available time periods. For instance, user inputs <code>22/10/2018 09:00 - 10:00</code>. The refined time slot string is then passed back to <code>DateTimeParser</code> and converted into a <code>Pair&lt;Calendar&gt;</code> object that represents this time slot, by invoking the method <code>parseTimeSlot(timeSlotString)</code>.</p>
+<p>User inputs a specific time slot from the list of available time periods. For instance, user inputs <code>22/10/2018 09:00 - 10:00</code>. This string is then passed back to <code>DateTimeParser</code> and converted into a <code>Pair&lt;Calendar&gt;</code> object that represents this time slot, by invoking the method <code>parseTimeSlot(timeSlotString)</code>.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Step 4. Further Prompting: The user is presented with two more <code>PromptWindow</code>, where they can provide further inputs for tagsand additional notes for the appointment. This is done through a simple I/O mechanism.</p>
+<p>Step 4. Further Prompting: The user is presented with two more <code>PromptWindow</code>, where they can provide further inputs for tags and additional notes for the appointment. This is done through a simple I/O mechanism.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. Generating Appointment: Results from the previous steps are used to fill the attributes of a newly created <code>ScheduleEvent</code> object which is then returned.</p>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below summarises this feature, showing notable steps. Note that step 4 and 5 are omitted in the diagram as they are relatively trivial:</p>
+<p>The sequence diagram below summarises this feature. Note that step 4 and 5 are omitted in the diagram as they are relatively trivial:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/NaturalLanguageProcessingSequenceDiagram.png" alt="NaturalLanguageProcessingSequenceDiagram" width="800">
 </div>
+<div class="title">Figure 6. Sequence Diagram to Illustrate Feature</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>This section discusses design considerations for current and alternative implementations for this feature.</p>
+</div>
 <div class="sect4">
 <h5 id="aspect-abstraction-over-time-slot"><a class="link" href="#aspect-abstraction-over-time-slot">Aspect: Abstraction over time slot</a></h5>
 <div class="ulist">
@@ -433,7 +443,7 @@ Tags:</code></pre>
 <p>Pros: It is easy for new developers to understand the context by defining methods such as <code>getStartTime()</code>, at the same time not exposing the internal implementation.</p>
 </li>
 <li>
-<p>Cons: Defining this class may be not worth the effort as it has only one use case (as an attribute in <code>ScheduleEvent</code>) in the application.</p>
+<p>Cons: Defining this class may not be worth the effort as it has only one use case (as an attribute in <code>ScheduleEvent</code>) in the application.</p>
 </li>
 </ul>
 </div>
@@ -446,7 +456,14 @@ Tags:</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Loop through the list of appointments twice. The first time is to find available time slots in days where there are scheduled appointments. The second time is to find completely free days. The code snippets below show the two loops.</p>
+<p><strong>Alternative 1 (current choice):</strong> Loop through the list of appointments twice. The first time is to find available time slots in days where there are scheduled appointments. The second time is to find completely free days. Refer to the code snippets below for illustration.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: It is easy to implement.</p>
+</li>
+<li>
+<p>Cons: Performance is adversely affected because the list has to be searched through twice.</p>
 <div class="literalblock">
 <div class="content">
 <pre>private List&lt;Pair&lt;Calendar&gt;&gt; getAvailableSlotList(List&lt;ScheduleEvent&gt; scheduledAppts, Pair&lt;Calendar&gt; dateInterval) {
@@ -473,26 +490,24 @@ Tags:</code></pre>
 }</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: It is easy to implement.</p>
-</li>
-<li>
-<p>Cons: Performance is adversely affected because the list has to be searched through twice.</p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Code Snippets to Illustrate the Algorithm to find Available Time Slots</div>
+<ul>
 <li>
-<p><strong>Alternative 2:</strong> Keep a day pointer and loop through the list of appointments only once to find all available time slots.</p>
+<p><strong>Alternative 2:</strong> Keep a day pointer and loop through the list of appointments once to find all available time slots.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: It enhances performance because the list is searched through only once.</p>
 </li>
 <li>
-<p>Cons: It is harder to implement, due to the difficulties in manipulating <code>java.util.Calendar</code> as a day pointer. Edge cases such as crossing the year boundaries are difficult to handle.</p>
+<p>Cons: It is harder to implement due to the difficulties in manipulating <code>java.util.Calendar</code> as a day pointer. Edge cases such as crossing the year boundaries are difficult to handle.</p>
 </li>
 </ul>
 </div>
@@ -503,4 +518,4 @@ Tags:</code></pre>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:39:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:46:41 UTC</div></div></div></body></html>
