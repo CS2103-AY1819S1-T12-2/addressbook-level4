@@ -87,7 +87,8 @@
 <li><a href="#edit">H.5. Edit</a></li>
 <li><a href="#list">H.6. List</a></li>
 <li><a href="#find">H.7. Find</a></li>
-<li><a href="#predict">H.8. Predict</a></li>
+<li><a href="#seeing-more-information-about-drugs">H.8. Seeing More Information About Drugs</a></li>
+<li><a href="#predict">H.9. Predict</a></li>
 </ul>
 </li>
 </ul>
@@ -1318,7 +1319,7 @@ the database in the form of a <code>String[]</code>. Once there are no matching 
 <li>
 <p>The DrugSearch.find() method adds the matching results returned by the <code>DrugCsvUtil</code> to a static
 cache, one after the other. Once it receives <code>null</code> as a return value,
-it formats just the <em>Name, Classification and Active Ingredients</em> of the drug results in the cache
+it formats just the <em>Name, Classification and Active Ingredient(s)</em> of the drug results in the cache
 into a <code>String</code> of search results and returns it to <code>FindCommand</code>, which
 displays them. The full information can be displayed using the <code>moreinfo</code> command (discussed later).
 If the cache is empty (i.e. there were no matches in the database), <code>DrugSearch.find()</code> returns a specific error String instead,
@@ -1335,7 +1336,7 @@ of entering the command <code>moreinfo [RESULTNO]</code> to view more informatio
 </li>
 <li>
 <p>The argument of the command is parsed by <code>MoreInfoCommandParser</code> to ensure that it is numeric,
-not less than or equal to zero, and not larger than 10,000.
+not less than or equal to zero, and is less than 10,000.
 If the parse fails, a <code>ParseException</code> is thrown and the user sees the
 error message that corresponds to the problem with their input.</p>
 </li>
@@ -3219,11 +3220,99 @@ Expected: No list of symptoms is displayed. The error message will be shown in t
 </ol>
 </div>
 </li>
+<li>
+<p>finding drugs</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find drug Lyrica</code><br>
+Expected: This displays a list of search results, consisting of the
+Name, Classification and Active Ingredient(s) of all matching drugs.</p>
+</li>
+<li>
+<p>Test case: <code>find drug syrup</code>
+Expected: This displays the error message
+'Your search keyword is too generic. It will lead to hundreds of results.
+Try a more specific keyword instead.'</p>
+</li>
+<li>
+<p>Test case: <code>find drug somedrug123</code>
+Expected: This displays the error message 'Invalid command format!' followed
+by instructions on how to use the <code>find</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>find drug dfvwlub</code>
+Expected: This displays the error message 'No results found. Try again
+with a different query.'</p>
+</li>
+</ol>
+</div>
+</li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="predict"><a class="link" href="#predict">H.8. Predict</a></h3>
+<h3 id="seeing-more-information-about-drugs"><a class="link" href="#seeing-more-information-about-drugs">H.8. Seeing More Information About Drugs</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Seeing more information about a search result</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following test case will hold true only if the most recent drug searched
+produced at least one result. In this example,
+<code>find drug Glycomet</code> has been assumed to be the most recent drug search.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo 1</code>
+Expected: This displays additional information about the first search result.</p>
+</li>
+<li>
+<p>Test case: <code>moreinfo 3</code>
+Expected: This displays the error message 'This result is not in the list'.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following two test cases will hold true regardless of what command
+was entered immediately prior.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo -1</code>
+Expected: This displays the error message 'Invalid command format! followed
+by instructions on how to use the <code>moreinfo</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>moreinfo 10000</code>
+Expected: This displays the error message 'Invalid command format! followed
+by instructions on how to use the <code>moreinfo</code> command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Note:</em> The following test case will hold true either if no drug search has been carried
+out since the program was started, or if the most recent drug search produced no results
+or was unsuccessful. In this example, <code>find drug Niacin</code> has been assumed to be
+the most recent drug search.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreinfo 1</code>
+Expected: This displays the error message 'Please carry out a search
+using "find drug [drugname]" first.'.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="predict"><a class="link" href="#predict">H.9. Predict</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3249,4 +3338,4 @@ Expected: No list of diseases is displayed. The error message will be shown in t
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:16:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:34:27 UTC</div></div></div></body></html>
