@@ -1,4 +1,6 @@
 = Patient Book
+
+image:https://api.codacy.com/project/badge/Grade/c387f0eda1874a4bab5b255ef53eb2c0[link="https://app.codacy.com/app/lixinze777/main?utm_source=github.com&utm_medium=referral&utm_content=CS2103-AY1819S1-T12-2/main&utm_campaign=Badge_Grade_Dashboard"]
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://ci.appveyor.com/project/damithc/addressbook-level4[image:https://ci.appveyor.com/api/projects/status/3boko2x2vr5cc3w2?svg=true[Build status]]
