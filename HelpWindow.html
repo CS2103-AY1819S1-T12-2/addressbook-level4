@@ -763,6 +763,16 @@ with prefix <code>s/</code>. Duplicate symptoms can be included but only one wil
 <li>
 <p><code>add disease d/acne s/pustules s/blackheads</code></p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuccessfulAddDisease.png" alt="SuccessfulAddDisease" width="600">
+</div>
+<div class="title">Figure 10. Message for Adding Disease Successfully</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>add disease d/alcohol misuse s/stroke s/stroke s/mouth cancer</code><br>
 Symptom 'stroke' will be included once in our record.</p>
@@ -778,7 +788,35 @@ be prompted to enter a correct command:</p>
 <div class="content">
 <img src="images/ErrorMessageForWrongAddDiseaseCommand.png" alt="ErrorMessageForWrongAddDiseaseCommand" width="600">
 </div>
-<div class="title">Figure 10. Error Message for Wrong Add Disease Format</div>
+<div class="title">Figure 11. Error Message for Duplicate Disease Parameter</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add disease d/averylongdiseaseparameter s/dummySymptom</code><br>
+Returns an error message:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddDiseaseLimit.png" alt="AddDiseaseLimit" width="600">
+</div>
+<div class="title">Figure 12. Error Message for Long Disease Parameter</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add disease d/invalid,disease s/dummySymptom</code><br>
+Returns an error message:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddDiseaseComma.png" alt="AddDiseaseComma" width="600">
+</div>
+<div class="title">Figure 13. Error Message for Invalid Disease Parameter</div>
 </div>
 </div>
 <div class="sect2">
@@ -804,6 +842,16 @@ displayed in alphabetic order.</p>
 <li>
 <p>The search is case insensitive; e.g. ‘HIV’, ‘hIV’ and ‘hiv’ are all equivalent.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindHiv.png" alt="FindHiv" width="600">
+</div>
+<div class="title">Figure 14. Display for find disease hIV</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Only full words will be matched; e.g. ‘confus’ will not match ‘confusion’.</p>
 </li>
@@ -824,7 +872,7 @@ Returns all the symptoms related to disease ‘influenza’:</p>
 <div class="content">
 <img src="images/FindDiseaseInfluenza.png" alt="FindDiseaseInfluenza" width="600">
 </div>
-<div class="title">Figure 11. Result for Command 'find disease influenza'</div>
+<div class="title">Figure 15. Result for Command 'find disease influenza'</div>
 </div>
 </div>
 <div class="sect2">
@@ -869,7 +917,7 @@ Returns diseases which contain the two symptoms:</p>
 <div class="content">
 <img src="images/PredictDiseaseValidDemo.png" alt="PredictDiseaseValidDemo" width="600">
 </div>
-<div class="title">Figure 12. Result for Valid Command 'predict s/fever s/blackout'</div>
+<div class="title">Figure 16. Result for Valid Command 'predict s/fever s/blackout'</div>
 </div>
 <div class="ulist">
 <ul>
@@ -883,7 +931,21 @@ Returns an error message:</p>
 <div class="content">
 <img src="images/PredictDiseaseInvalidDemo.png" alt="PredictDiseaseInvalidDemo" width="600">
 </div>
-<div class="title">Figure 13. Error Message for Command 'predict s/cry'</div>
+<div class="title">Figure 17. Error Message for Command 'predict s/cry'</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>predict s/</code><br>
+Returns an error message:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PredictEmptySymptom.png" alt="PredictEmptySymptom" width="600">
+</div>
+<div class="title">Figure 18. Error Message for Empty Symptom Parameter</div>
 </div>
 </div>
 <div class="sect2">
@@ -992,4 +1054,4 @@ Tip: Pressing up and down arrows will display the previous and next input respec
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:13:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:25:11 UTC</div></div></div></body></html>

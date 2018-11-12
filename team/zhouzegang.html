@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Zhou Zegang - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Zhou Zegang - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-patientbook"><a class="link" href="#project-patientbook">PROJECT: PatientBook</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="1-overview"><a class="link" href="#1-overview">1. Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project portfolio documents <code>Zhou Zegang</code>’s contributions to project <code>PatientBook</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>PatientBook</code> is an all-in-one convenient desktop application for medical professionals in Singapore.
+It is a <code>Command Line Interface(CLI)</code> application in which doctors can type simple commands on keyboard to store and
+manage patients’ data and appointment’ details easily. It can also be used to retrieve information about
+disease, symptoms and drugs.</p>
+</div>
+<div class="paragraph">
+<p>The <code>T12-2</code> development team consists of five year-two computer science undergraduates from School of Computing,
+<code>National University of Singapore</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>PatientBook</code> supports various important operations such as finding information about a patient,
+adding an appointment for a patient and predicting a disease from a set of symptoms.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2-summary-of-contributions"><a class="link" href="#2-summary-of-contributions">2. Summary of Contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>diagnosis model which supports add disease, find disease, list disease and predict
+disease command</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This feature allows medical professionals to <code>add</code> a disease and its related symptoms,
+<code>find</code> symptoms of an existing disease,
+<code>list</code> all stored diseases and <code>predict</code> a disease from a given set of symptoms in PatientBook.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a doctor can check up a disease’s symptoms
+and ascertain the accuracy of the diagnosis using <code>predict</code> command. Thus, this enhancement will reduce the likelihood
+of medical malpractice to a large extent.</p>
+</li>
+<li>
+<p>Highlight: This enhancement is totally another separate model from two existing models, namely <code>patient model</code> and
+<code>appointment model</code>. As a result, it required an in-depth analysis of design and how it can integrate with the other two
+models. The implementation too was challenging as it required changes to existing project structure.</p>
+</li>
+<li>
+<p>Credit: The <code>diagnosis model</code> uses an existing disease-symptom knowledge database
+from <code>Columbia University</code>. [<a href="http://people.dbmi.columbia.edu/~friedma/Projects/DiseaseSymptomKB/index.html">Database</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: designed and added a generic method which converts a list of items to an <code>alphabetically ordered</code>
+string message so that it can be clearly displayed in the application.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] TO-DO</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
+</li>
+<li>
+<p>Managed issue trackers on GitHub (examples:  TO-DO)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:
+TO-DO</p>
+</li>
+<li>
+<p>Documentation:
+TO-DO</p>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>reviewed PRs (with non-trivial review comments): TO-DO</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams (examples:  TO-DO)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="3-contributions-to-the-user-guide"><a class="link" href="#3-contributions-to-the-user-guide">3. Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="add-a-disease-code-add-disease-code"><a class="link" href="#add-a-disease-code-add-disease-code">Add a disease : <code>add disease</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>add disease d/DISEASE s/SYMPTOM</code></p>
+</div>
+<div class="paragraph">
+<p>Adds a new disease to the patient book.</p>
+</div>
+<div class="paragraph">
+<p>You must include one and only one <code>DISEASE</code> parameter with prefix <code>d/</code> and at least one <code>SYMPTOM</code> for that disease
+with prefix <code>s/</code>. Duplicate symptoms can be included but only one will be added into the patient book. The <code>DISEASE</code>
+ and <code>SYMPTOM</code> parameter can take any characters except <code>comma</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you try to add an existing disease into the patient book, the following error message will be shown to you:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ErrorMessageForAddingExistingDisease.png" alt="ErrorMessageForAddingExistingDisease" width="600">
+</div>
+<div class="title">Figure 1. Error Message for Duplicate Diseases</div>
+</div>
+<div class="paragraph">
+<p>Hence, you may try command <code>find disease NAME</code> to find related symptoms of this existing disease.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add disease d/acne s/pustules s/blackheads</code></p>
+</li>
+<li>
+<p><code>add disease d/alcohol misuse s/stroke s/stroke s/mouth cancer</code><br>
+Symptom 'stroke' will be included once in our record.</p>
+</li>
+<li>
+<p><code>add disease d/obesity d/obesities</code><br>
+This is an invalid command due to multiple occurrence of disease and zero occurrence of symptom. Hence, you will
+be prompted to enter a correct command:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ErrorMessageForWrongAddDiseaseCommand.png" alt="ErrorMessageForWrongAddDiseaseCommand" width="600">
+</div>
+<div class="title">Figure 2. Error Message for Wrong Add Disease Format</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-diseases-code-list-disease-code"><a class="link" href="#list-all-diseases-code-list-disease-code">List all diseases : <code>list disease</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>list disease</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all diseases in the patient book.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locate-diseases-code-find-disease-code"><a class="link" href="#locate-diseases-code-find-disease-code">Locate diseases  : <code>find disease</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find disease NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Finds the disease which its name is specified in the command and return its related symptoms
+displayed in alphabetic order.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive; e.g. ‘HIV’, ‘hIV’ and ‘hiv’ are all equivalent.</p>
+</li>
+<li>
+<p>Only full words will be matched; e.g. ‘confus’ will not match ‘confusion’.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find disease influenza</code><br>
+Returns all the symptoms related to disease ‘influenza’:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindDiseaseInfluenza.png" alt="FindDiseaseInfluenza" width="600">
+</div>
+<div class="title">Figure 3. Result for Command 'find disease influenza'</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="predict-disease-code-predict-code"><a class="link" href="#predict-disease-code-predict-code">Predict disease  : <code>predict</code></a></h3>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>predict s/SYMPTOM</code></p>
+</div>
+<div class="paragraph">
+<p>You must include at least one <code>SYMPTOM</code> parameter with prefix <code>s/</code> to predict a disease. All
+diseases that contain the set of symptoms will be returned and displayed in alphabetic order.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>SYMPTOM</code> parameter is case insensitive; e.g. ‘fever’ will match ‘FeVER’.</p>
+</li>
+<li>
+<p>Only diseases containing all the symptoms given in the command will be returned; e.g.
+For command <code>predict s/fever s/blackout</code>, even if disease ‘bacteremia’ contains symptom ‘fever’,
+it will not be returned since it does not contain symptom ‘blackout’.</p>
+</li>
+<li>
+<p>If none of diseases contain the given set of symptoms, an error message will be shown to you:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>predict s/fever s/blackout</code><br>
+Returns diseases which contain the two symptoms:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PredictDiseaseValidDemo.png" alt="PredictDiseaseValidDemo" width="600">
+</div>
+<div class="title">Figure 4. Result for Valid Command 'predict s/fever s/blackout'</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>predict s/cry</code><br>
+Returns an error message:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PredictInvalidDemo.png" alt="PredictInvalidDemo" width="600">
+</div>
+<div class="title">Figure 5. Error Message for Invalid Command 'predict s/cry'</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="4-contributions-to-the-developer-guide"><a class="link" href="#4-contributions-to-the-developer-guide">4. Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="diagnosis"><a class="link" href="#diagnosis">Diagnosis</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The diagnosis feature is facilitated by <code>Diagnosis</code> class. This class contains a private attribute called
+<code>matcher</code> of type <code>HashMap&lt;Disease, Set&lt;Symptom&gt;&gt;</code>. Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Diagnosis#hasDisease(Disease disease)</code> – Check if the application contains the <code>disease</code> input by users</p>
+</li>
+<li>
+<p><code>Diagnosis#getSymptoms(Disease disease)</code> – Return a <code>list</code> of all the related <code>symptoms</code> of a <code>disease</code> input by users</p>
+</li>
+<li>
+<p><code>Diagnosis#getDiseases()</code> – Return a <code>list</code> of existing <code>diseases</code> from the database</p>
+</li>
+<li>
+<p><code>Diagnosis#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> – Store a particular <code>disease</code> with its set of <code>symptoms</code> in database.</p>
+</li>
+<li>
+<p><code>Diagnosis#predictDisease(Set&lt;Symptom&gt; symptoms)</code> – Predict a <code>disease</code> for a set of <code>symptoms</code> input by users.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>DiagnosisModel</code> interface as
+<code>DiagnosisModel# hasDisease(Disease disease)</code>,
+<code>DiagnosisModel#getSymptoms(Disease disease)</code>, <code>DiagnosisModel#getDiseases()</code>,
+<code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code> and
+<code>DiagnosisModel#predictDisease(Set&lt;Symptom&gt; symptoms)</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the <code>diagnosis</code> mechanism behaves at each step:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DiagnosisSequenceDiagram.png" alt="DiagnosisSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 6. Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>Diagnosis</code> will be instantiated and its
+private attribute <code>matcher</code> will be initialized by calling the <code>static</code> method <code>Diagnosis#readDataFromCsvFile()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>find disease Influenza</code> command to get symptoms of “Influenza” stored in the patient book.
+The <code>find disease</code> command calls <code>DiagnosisModel#hasDisease(Disease disease)</code> first, if the return <code>Boolean</code> value is <code>false</code>,
+the user will be notified with a <code>command exception</code> thrown . If the return value is <code>true</code>, it will continue to call
+<code>DiagnosisModel#getSymptoms(Disease disease)</code> and get all the <code>symptoms</code> related to “Influenza” in a <code>List&lt;Symptom&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. If the disease is not present in the database record, the user can execute
+<code>add disease d/Influenza s/ncoordination s/fever s/pleuritic pain…</code> command to insert the data into the database record.
+Now, the <code>add disease</code> command calls <code>DiagnosisModel#addMatcher(Disease disease, Set&lt;Symptom&gt; symptoms)</code>.
+Now it will call the <code>static</code> method <code>writeDataFromCsvFile(Disease disease, Set&lt;Symptom&gt; symptoms)</code> which returns
+a <code>Hashmap</code> of type <code>HashMap&lt;Disease, Set&lt;Symptom&gt;&gt;</code> and assigns it to <code>this.matcher</code> to update the <code>private</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The user executes <code>list disease</code> command to get a list of diseases stored in the patient book.
+The <code>list disease</code> command calls <code>DiagnosisModel#getDiseases()</code> which returns a <code>list</code> of diseases present in the
+<code>key set of matcher</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. Now the user decides to execute the command <code>predict</code> to search for a <code>disease</code> in database that
+matches with input symptoms. This command calls <code>DiasnosisModel#predictDisease(Set&lt;Symptom&gt;)</code> which returns a <code>list</code>
+of diseases that are mapped to a set of symptoms containing the given set.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-disease-symptom-matching-data-structures"><a class="link" href="#aspect-disease-symptom-matching-data-structures">Aspect: Disease-symptom matching data structures</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a <code>HashMap</code> where the <code>key</code> and <code>value</code> are the disease and set of
+related symptoms respectively.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Better performance in terms of efficiency; duplicate values are also eliminated.</p>
+</li>
+<li>
+<p>Cons: Difficult for other developers to understand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Define a <code>Match</code> class with two private attributes representing the disease and a set of
+related symptoms, then maintain a <code>list</code> of <code>Match</code> objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for new developers to understand when disease-symptom pairs are encapsulated in an object.</p>
+</li>
+<li>
+<p>Cons: May take up more memory, leading to performance issues.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-searching-algorithm-to-support-disease-prediction-operation"><a class="link" href="#aspect-searching-algorithm-to-support-disease-prediction-operation">Aspect: Searching algorithm to support disease prediction operation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>stream</code> to search and collect all potential diseases.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and easy for new developers to understand.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of lower efficiency.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a more systematic way to determine the suitability of each disease by
+calculating the similarity of its pre-existing set of symptoms and the set of symptoms given by users.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More accurate in determining the correct diseases.</p>
+</li>
+<li>
+<p>Cons: Hard to implement and understand.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:25:11 UTC</div></div></div></body></html>
