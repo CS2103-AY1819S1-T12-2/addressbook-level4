@@ -86,6 +86,8 @@
 <li><a href="#clear">H.4. Clear</a></li>
 <li><a href="#edit">H.5. Edit</a></li>
 <li><a href="#list">H.6. List</a></li>
+<li><a href="#find">H.7. find</a></li>
+<li><a href="#predict">H.8. predict</a></li>
 </ul>
 </li>
 </ul>
@@ -2866,6 +2868,33 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </li>
+<li>
+<p>Adding a Disease</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add disease d/acne s/pustules s/blackheads</code><br>
+Expected: Disease acne with its symptoms including pustules and blackheads is added. This can be verified with find command.</p>
+</li>
+<li>
+<p>Test case: <code>add disease d/autism s/loneliness</code><br>
+Expected: Disease autism with its symptom loneliness is added. This can be verified with find command.</p>
+</li>
+<li>
+<p>Test case: <code>add disease d/obesity d/obesities s/overweight</code><br>
+Expected: Disease will not be added. Error message will be shown in the CommandResult box.</p>
+</li>
+<li>
+<p>Test case: <code>add disease d/averylongdiseaseparameter s/dummySymptom</code><br>
+Expected: Disease will not be added. Error message will be shown in the CommandResult box.</p>
+</li>
+<li>
+<p>Test case: <code>add disease d/invalid,disease s/dummySymptom</code><br>
+Expected: Disease will not be added. Error message will be shown in the CommandResult box.</p>
+</li>
+</ol>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -2987,11 +3016,11 @@ Expected: No appointment is modified. Error details are shown in the status mess
 <ol class="loweralpha" type="a">
 <li>
 <p>Test case: <code>list patient</code><br>
-Expected: Displays the list of patients which have not been deleted.</p>
+Expected: This displays the list of patients which have not been deleted.</p>
 </li>
 <li>
 <p>Test case: <code>list patient all</code><br>
-Expected: Lists all patients, including deleted ones.</p>
+Expected: This lists all patients, including deleted ones.</p>
 </li>
 </ol>
 </div>
@@ -3002,11 +3031,74 @@ Expected: Lists all patients, including deleted ones.</p>
 <ol class="loweralpha" type="a">
 <li>
 <p>Test case: <code>list appointment</code><br>
-Expected: Displays the list of appointments which take place from now.</p>
+Expected: This displays the list of appointments which take place from now.</p>
 </li>
 <li>
 <p>Test case: <code>list appointment all</code><br>
-Expected: List all appointments, including those that took place in the past.</p>
+Expected: This lists all appointments, including those that took place in the past.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing diseases</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list disease</code><br>
+Expected: This displays the list of diseases which have been stored in alphabetic order.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find"><a class="link" href="#find">H.7. find</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>finding diseases</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find disease hIV</code><br>
+Expected: This displays the list of symptoms of hiv in alphabetic order.</p>
+</li>
+<li>
+<p>Test case: <code>find disease influenza</code><br>
+Expected: This displays the list of symptoms of influenza in alphabetic order.</p>
+</li>
+<li>
+<p>Test case: <code>find disease sad</code><br>
+Expected: No list of symptoms is displayed. The error message will be shown in the CommandResult box.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="predict"><a class="link" href="#predict">H.8. predict</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>predicting diseases</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>predict s/fever s/blackout</code><br>
+Expected: This displays the list of diseases containing the symptoms above in alphabetic order.</p>
+</li>
+<li>
+<p>Test case: <code>predict s/cry</code><br>
+Expected: No list of diseases is displayed. The error message will be shown in the CommandResult box.</p>
+</li>
+<li>
+<p>Test case: <code>predict s/</code><br>
+Expected: No list of diseases is displayed. The error message will be shown in the CommandResult box.</p>
 </li>
 </ol>
 </div>
@@ -3015,4 +3107,4 @@ Expected: List all appointments, including those that took place in the past.</p
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:40:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:14:25 UTC</div></div></div></body></html>
